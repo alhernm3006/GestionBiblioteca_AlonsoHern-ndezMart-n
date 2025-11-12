@@ -6,7 +6,18 @@ using System.Threading.Tasks;
 
 namespace LógicaNegocio
 {
-    public class PersonalBiblioteca
+    public abstract class PersonalBiblioteca
     {
+        private String NSS;
+        private String nombre;
+        
+        public PersonalBiblioteca(String nss,String nombre) {
+            this.NSS = nss;
+            this.nombre = nombre;
+        }
+        public String getNss() {  return NSS; }
+
     }
+
+    // para préstamo public enum estado { Prestado=0,Disponible=1}
 }
