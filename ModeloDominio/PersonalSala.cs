@@ -6,8 +6,8 @@ using System.Threading.Tasks;
 
 namespace ModeloDominio
 {
-    public class PersonaSala : PersonalBiblioteca
+    public class PersonalSala : PersonalBiblioteca
     {
-        public PersonaSala(string nss, string nombre) : base(nss, nombre){}
+        public PersonalSala(string nss, string nombre) : base(nss, nombre){}
     }
 }
