@@ -1,5 +1,4 @@
-﻿using LógicaNegocio;
-using System;
+﻿using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
@@ -17,11 +16,11 @@ namespace ModeloDominio
         private EstadoPrestamo estado;
         private Usuario usuario;
         private PersonalSala trabajador;
-        private List<Ejemplar> ejemplar;
+        private List<Ejemplar> ejemplares;
 
         public Prestamo(string ID, DateTime fechaInicio, DateTime fechaFin,
                     EstadoPrestamo estado, Usuario usuario,
-                    PersonalSala trabajador, List<Ejemplar> ejemplar)
+                    PersonalSala trabajador, List<Ejemplar> ejemplares)
         {
             this.ID = ID;
             this.fechaInicio = fechaInicio;
@@ -29,7 +28,7 @@ namespace ModeloDominio
             this.estado = estado;
             this.usuario = usuario;
             this.trabajador = trabajador;
-            this.ejemplar =  new ArrayList<Ejemplar>(); // evita null
+            this.ejemplares = new List<Ejemplar>(ejemplares);
         }
 
         public String getID() {  return ID; }
@@ -39,6 +38,6 @@ namespace ModeloDominio
         public void setEstado(EstadoPrestamo estado) { this.estado = estado; }
         public Usuario getUsuario() { return usuario; }
         public PersonalSala getPersonalSala() { return trabajador; }
-        public ArrayList getEjemplares() { return ejemplar; }
+        public List<Ejemplar> getEjemplares() { return ejemplares; }
     }
 }
