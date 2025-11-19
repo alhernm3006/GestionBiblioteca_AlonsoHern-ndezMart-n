@@ -12,7 +12,7 @@ namespace LógicaNegocio
 
         public PersonaSala(string nss, string nombre) : base(nss, nombre)
         {
-       
+            
         }
 
         public void realizarPrestamo() { }

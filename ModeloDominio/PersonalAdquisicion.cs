@@ -8,5 +8,6 @@ namespace LógicaNegocio
 {
     internal class PersonalAdquisicion : PersonalBiblioteca
     {
+
     }
 }
