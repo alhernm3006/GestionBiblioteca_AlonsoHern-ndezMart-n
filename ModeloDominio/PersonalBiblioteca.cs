@@ -4,18 +4,20 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace LógicaNegocio
+namespace ModeloDominio
 {
     public abstract class PersonalBiblioteca
     {
         private String NSS;
-        private String nombre;
+        private String usuario;
         
-        public PersonalBiblioteca(String nss,String nombre) {
+        public PersonalBiblioteca(String nss, String usuario) {
             this.NSS = nss;
-            this.nombre = nombre;
+            this.usuario = usuario;
         }
-        public String getNss() {  return NSS; }
+        public String getNSS() {  return NSS; }
+
+        public String getUSUario() { return usuario; }
 
     }
 
