@@ -48,6 +48,7 @@
     <Compile Include="PersonalAdquisicion.cs" />
     <Compile Include="PersonalBiblioteca.cs" />
     <Compile Include="PersonaSala.cs" />
+    <Compile Include="Prestamo.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Usuario.cs" />
   </ItemGroup>
