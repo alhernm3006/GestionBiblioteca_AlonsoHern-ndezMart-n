@@ -6,8 +6,5 @@ using System.Threading.Tasks;
 
 namespace ModeloDominio
 {
-    public class Class1
-    {
-        private int contador;
-    }
+    public enum EstadoEjemplar{disponible,prestado,archivado}
 }
