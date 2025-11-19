@@ -4,10 +4,10 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace LógicaNegocio
+namespace ModeloDominio
 {
-    internal class PersonalAdquisicion : PersonalBiblioteca
+    public class PersonalAdquisicion : PersonalBiblioteca
     {
-
+        public PersonalAdquisicion(String nss, String usuario): base(nss, usuario){}
     }
 }
