@@ -41,9 +41,10 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="AudioLibro.cs" />
+    <Compile Include="AudioLibroDato.cs" />
+    <Compile Include="BD.cs" />
     <Compile Include="DocumentoDato.cs" />
-    <Compile Include="EjemlarDato.cs" />
+    <Compile Include="EjemplarDato.cs" />
     <Compile Include="Entity.cs" />
     <Compile Include="LibroPapelDato.cs" />
     <Compile Include="PersonalBibliotecaDato.cs" />

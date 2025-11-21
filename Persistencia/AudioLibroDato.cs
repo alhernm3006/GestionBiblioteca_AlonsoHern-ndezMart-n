@@ -6,12 +6,12 @@ using System.Threading.Tasks;
 
 namespace Persistencia
 {
-    internal class AudioLibro : Entity<String>
+    internal class AudioLibroDato : Entity<String>
     {
         private string formato;
         private float duracion;
 
-        public AudioLibro(String isbn, String formato, float duracion) : base(isbn)
+        public AudioLibroDato(String isbn, String formato, float duracion) : base(isbn)
         {
             this.formato = formato;
             this.duracion = duracion;

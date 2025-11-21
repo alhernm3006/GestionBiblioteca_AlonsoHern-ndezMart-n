@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Persistencia
 {
-    internal class EjemlarDato: Entity<T>
+    internal class EjemplarDato: Entity<T>
     {
     }
 }
