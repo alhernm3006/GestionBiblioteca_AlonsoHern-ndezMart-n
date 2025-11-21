@@ -10,7 +10,7 @@ namespace ModeloDominio
     internal class Prestamo
     {
 
-        private String ID;
+        private String id;
         private DateTime fechaInicio;
         private DateTime fechaFin;
         private EstadoPrestamo estado;
@@ -22,7 +22,7 @@ namespace ModeloDominio
                     EstadoPrestamo estado, Usuario usuario,
                     PersonalSala trabajador, List<Ejemplar> ejemplares)
         {
-            this.ID = ID;
+            this.id = ID;
             this.fechaInicio = fechaInicio;
             this.fechaFin = fechaFin;
             this.estado = estado;
@@ -31,13 +31,12 @@ namespace ModeloDominio
             this.ejemplares = new List<Ejemplar>(ejemplares);
         }
 
-        public String getID() {  return ID; }
-        public DateTime getFechaInicio() { return fechaInicio; }
-        public DateTime getFechaFin() { return fechaFin; }
-        public EstadoPrestamo getEstado() { return estado; }
-        public void setEstado(EstadoPrestamo estado) { this.estado = estado; }
-        public Usuario getUsuario() { return usuario; }
-        public PersonalSala getPersonalSala() { return trabajador; }
-        public List<Ejemplar> getEjemplares() { return ejemplares; }
+        public String ID { get { return id; } }
+        public DateTime FechaInicio { get { return fechaInicio; } }
+        public DateTime FechaFin { get { return fechaFin; } }
+        public EstadoPrestamo Estado { get { return estado; } set { this.estado = value; } }
+        public Usuario Usuario { get { return usuario; } }
+        public PersonalSala PersonalSala { get { return trabajador; } }
+        public List<Ejemplar> Ejemplares { get { return ejemplares; } }
     }
 }

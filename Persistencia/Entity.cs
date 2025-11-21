@@ -14,6 +14,7 @@ namespace Persistencia
         {
             this.id = id;
         }
+
         public T Id
         {
             get { return this.Id; }

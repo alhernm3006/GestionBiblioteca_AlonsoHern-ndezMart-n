@@ -8,18 +8,16 @@ namespace ModeloDominio
 {
     public abstract class PersonalBiblioteca
     {
-        private String NSS;
+        private String nss;
         private String usuario;
         
         public PersonalBiblioteca(String nss, String usuario) {
-            this.NSS = nss;
+            this.nss = nss;
             this.usuario = usuario;
         }
-        public String getNSS() {  return NSS; }
+        public String NSS{ get { return nss; } }
 
-        public String getUSUario() { return usuario; }
+        public String Usuario { get { return usuario; } }
 
     }
-
-    // para préstamo public enum estado { Prestado=0,Disponible=1}
 }

@@ -9,7 +9,7 @@ namespace ModeloDominio
 {
     public abstract class Documento
     {
-        private string ISBN;
+        private string isbn;
         private string titulo;
         private string autor;
         private int año;
@@ -17,7 +17,7 @@ namespace ModeloDominio
         private EstadoActivoInactivo estado;
         public Documento(string ISBN, string titulo, string autor, int año, string editorial)
         {
-            this.ISBN = ISBN;
+            this.isbn = ISBN;
             this.titulo = titulo;
             this.autor = autor;
             this.año = año;
@@ -25,26 +25,46 @@ namespace ModeloDominio
             this.estado = EstadoActivoInactivo.inactivo;
         }
 
-        public string getISBN() {
-            return ISBN;
+        public string ISBN {
+            get
+            {
+                return isbn;
+            }
         }
-        public string getTitulo() {
-            return titulo;
+        public string Titulo {
+            get
+            {
+                return titulo;
+            }
         }
-        public string getAutor() {
-            return autor;
+        public string Autor {
+            get
+            {
+                return autor;
+            }
         }
-        public int getAño() {
-            return año;
+        public int Año {
+            get
+            {
+                return año;
+            }
         }
-        public string getEditorial() { 
-           return editorial;
+        public string Editorial
+        {
+            get
+            {
+                return editorial;
+            }
         }
-        public EstadoActivoInactivo getEstado() {
-           return estado;
-        }
-        public void setEstado(EstadoActivoInactivo estado) { 
-            this.estado = estado;
+        public EstadoActivoInactivo Estado {
+            get
+            {
+                return estado;
+            }
+            set
+            {
+                this.estado = value;
+            }
         }
     }
 }

@@ -21,11 +21,18 @@ namespace ModeloDominio
             this.trabajador = trabajador;
         }
 
-        public Documento getDocumento() { return documento; }
-        public String getCodigo() { return codigo; }
-        public EstadoEjemplar getEstado() { return estado; }
-        public PersonalAdquisicion getPersonalAdquisicion() { return trabajador; }
-        public void setEstado(EstadoEjemplar estado) { this.estado = estado; }
-        public String toString() { return ("ISBN: " + this.documento.getISBN() + " código: " + this.codigo + " estado: " + this.trabajador + "\n"); }
+        public Documento Documento
+        {
+            get { return documento; }
+        }
+        public String Codigo { get { return codigo; } }
+        public EstadoEjemplar Estado { 
+            get { return estado; }
+            set { this.estado = value; }
+        }
+        public PersonalAdquisicion PersonalAdquisicion {
+            get { return trabajador; }
+        }
+        public String toString() { return ("ISBN: " + this.documento.ISBN + " código: " + this.codigo + " estado: " + this.trabajador + "\n"); }
     }
 }
