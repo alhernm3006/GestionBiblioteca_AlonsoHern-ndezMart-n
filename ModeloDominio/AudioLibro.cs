@@ -15,14 +15,14 @@ namespace ModeloDominio
             this.formato = formato;
             this.duracion = duracion;
         }
-        public string getFormato() {
-            return this.formato;        
+        public string Formato {
+            get{return this.formato;}      
         }
-        public float getDuracion() {
-            return this.duracion;        
+        public float Duracion {
+            get{return this.duracion;  }      
         }
         public string toString() {
-            return ("ISBN: " + this.getISBN() + "\n" + "TITULO: " + this.getTitulo() + "\n" + "AUTOR: " + this.getAutor() + "\n" + "AÑO: " + this.getAño() + "\n" + "EDITORIAL: " + this.getEditorial() + "\n" + "ESTADO: " + this.getEstado() + "\n"+"FORMATO: "+this.formato+"\n"+"DURACION: "+this.duracion+"\n");
+            return ("ISBN: " + this.ISBN + "\n" + "TITULO: " + this.Titulo + "\n" + "AUTOR: " + this.Autor + "\n" + "AÑO: " + this.Año + "\n" + "EDITORIAL: " + this.Editorial + "\n" + "ESTADO: " + this.Estado + "\n"+"FORMATO: "+this.formato+"\n"+"DURACION: "+this.duracion+"\n");
         }
     }
 }
