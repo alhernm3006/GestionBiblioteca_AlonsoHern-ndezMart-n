@@ -14,11 +14,11 @@ namespace ModeloDominio
         private String nombre;
         private EstadoActivoInactivo estado;
 
-        public Usuario(String DNI, String nombre, EstadoActivoInactivo estado)
+        public Usuario(String DNI, String nombre)
         {
             this.dni = DNI;
             this.nombre = nombre;
-            this.estado = estado;
+            this.estado = EstadoActivoInactivo.inactivo;
         }
 
         public String DNI {  get{ return dni; } }

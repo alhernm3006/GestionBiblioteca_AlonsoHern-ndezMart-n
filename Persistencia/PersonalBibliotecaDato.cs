@@ -9,9 +9,9 @@ namespace Persistencia
     internal class PersonalBibliotecaDato: Entity<String>
     {
         private String nss;
-        private Type rol;
+        private String rol;
 
-        public PersonalBibliotecaDato (String nss, String usuario, Type rol): base(usuario)
+        public PersonalBibliotecaDato (String nss, String usuario, String rol): base(usuario)
         {
             this.nss = nss;
             this.rol = rol;
