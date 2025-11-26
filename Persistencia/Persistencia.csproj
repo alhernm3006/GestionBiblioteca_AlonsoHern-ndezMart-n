@@ -43,6 +43,8 @@
   <ItemGroup>
     <Compile Include="AudioLibroDato.cs" />
     <Compile Include="BD.cs" />
+    <Compile Include="ClaveEjemplar.cs" />
+    <Compile Include="ClavePrestamoEjemplar.cs" />
     <Compile Include="DocumentoDato.cs" />
     <Compile Include="EjemplarDato.cs" />
     <Compile Include="Entity.cs" />

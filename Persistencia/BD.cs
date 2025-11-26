@@ -8,89 +8,108 @@ namespace Persistencia
 {
     internal static class BD
     {
-        private static Tabla<String, UsuarioDato> tablaUsuarios;
-        private static Tabla<String, PrestamoDato> tablaPrestamos;
-        private static Tabla<String, PersonalBibliotecaDato> tablaPersonal;
-        private static Tabla<String, DocumentoDato> tablaDocumentos;
-        //private static Tabla<?, EjemplarDato> tablaEjemplares;
-        private static Tabla<String, LibroPapelDato> tablaLibrosPapel;
-        private static Tabla<String, AudioLibroDato> tablaAudioLibros;
-        //private static Tabla<?, Prestamo_EjemplarDato> tablaPrestamosEjemplares;
+        private static Tabla<String> tablaUsuarios;
+        private static Tabla<String> tablaPrestamos;
+        private static Tabla<String> tablaPersonal;
+        private static Tabla<String> tablaDocumentos;
+        private static Tabla<ClaveEjemplar> tablaEjemplares;
+        private static Tabla<String> tablaLibrosPapel;
+        private static Tabla<String> tablaAudioLibros;
+        private static Tabla<ClavePrestamoEjemplar> tablaPrestamosEjemplares;
 
-        public static Tabla<String, UsuarioDato> TablaUsuarios
+        public static Tabla<String> TablaUsuarios
         {
             get
             {
                 if (tablaUsuarios == null)
                 {
-                    tablaUsuarios = new Tabla<String, UsuarioDato>();
+                    tablaUsuarios = new Tabla<String>();
                 }
                 return tablaUsuarios;
             }
-
         }
 
-        public static Tabla<String, PrestamoDato> TablaPrestamos
+        public static Tabla<String> TablaPrestamos
         {
             get
             {
                 if (tablaPrestamos == null)
                 {
-                    tablaPrestamos = new Tabla<String, PrestamoDato>();
+                    tablaPrestamos = new Tabla<String>();
                 }
                 return tablaPrestamos;
             }
-
         }
 
-        public static Tabla<String, PersonalBibliotecaDato> TablaPersonal
+        public static Tabla<String> TablaPersonal
         {
             get
             {
                 if (tablaPersonal == null)
                 {
-                    tablaPersonal = new Tabla<String, PersonalBibliotecaDato>();
+                    tablaPersonal = new Tabla<String>();
                 }
                 return tablaPersonal;
             }
-
         }
 
-        public static Tabla<String, DocumentoDato> TablaDocumentos
+        public static Tabla<String> TablaDocumentos
         {
             get
             {
                 if (tablaDocumentos == null)
                 {
-                    tablaDocumentos = new Tabla<String, DocumentoDato>();
+                    tablaDocumentos = new Tabla<String>();
                 }
                 return tablaDocumentos;
             }
-
         }
 
-        public static Tabla<String, LibroPapelDato> TablaLibrosPapel
+        public static Tabla<String> TablaLibrosPapel
         {
             get
             {
                 if (tablaLibrosPapel == null)
                 {
-                    tablaLibrosPapel = new Tabla<String, LibroPapelDato>();
+                    tablaLibrosPapel = new Tabla<String>();
                 }
                 return tablaLibrosPapel;
             }
-
         }
 
-        public static Tabla<String, AudioLibroDato> TablaAudioLibros
+        public static Tabla<String> TablaAudioLibros
         {
             get
             {
                 if (tablaAudioLibros == null)
                 {
-                    tablaAudioLibros = new Tabla<String, AudioLibroDato>();
+                    tablaAudioLibros = new Tabla<String>();
                 }
                 return tablaAudioLibros;
+            }
+        }
+
+        public static Tabla<ClaveEjemplar> TablaEjemplares
+        {
+            get
+            {
+                if (tablaAudioLibros == null)
+                {
+                    tablaAudioLibros = new Tabla<String>();
+                }
+                return tablaEjemplares;
+            }
+        }
+
+        public static Tabla<ClavePrestamoEjemplar> TablaPrestamosEjemplares
+        {
+            get
+            {
+                if (tablaAudioLibros == null)
+                {
+                    tablaAudioLibros = new Tabla<String>();
+                }
+                return tablaPrestamosEjemplares;
             }
         }
     }

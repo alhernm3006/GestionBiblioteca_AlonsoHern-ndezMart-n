@@ -7,11 +7,11 @@ using System.Threading.Tasks;
 
 namespace Persistencia
 {
-    internal class Tabla<T,U>: KeyedCollection<T,U> where U : Entity<T>
+    internal class Tabla<T>: KeyedCollection<T,Entity<T>>
     {
-        protected override T GetKeyForItem(U u)
+        protected override T GetKeyForItem(Entity<T> t)
         {
-            return u.Id;
+            return t.Id;
         }
     }
 }
