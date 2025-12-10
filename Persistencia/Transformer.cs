@@ -19,7 +19,7 @@ namespace Persistencia
 
         {
 
-            return new Ejemplar(//poner cosas); 
+            return new Ejemplar(dato, dato.Codigo, dato.Trabajador); 
 
         }
 
@@ -27,7 +27,7 @@ namespace Persistencia
 
         {
 
-            return new EjemplarDato(//poner cosas); 
+            return new EjemplarDato(new ClaveEjemplar(id.Documento.ISBN,id.Codigo),id.Estado.ToString(),id.PersonalAdquisicion.NSS); 
 
         }
 
@@ -35,7 +35,7 @@ namespace Persistencia
 
         {
 
-            return new AudioLibro(//poner cosas); 
+            return new AudioLibro(audioLibro.Durecion,audioLibro.Formato); 
 
         }
 
@@ -43,16 +43,16 @@ namespace Persistencia
 
         {
 
-            return new AudioLibroDato(//poner cosas); 
+            return new AudioLibroDato(); 
 
         }
-        public static Documento DocumentoDatoADocumento(DocumentoDato documentoDato)
+      /*  public static Documento DocumentoDatoADocumento(DocumentoDato documentoDato)
 
         {
 
-            return new Documento(//poner cosas); 
+            return new Documento(documentoDato.Isbn, documentoDato.Titulo, documentoDato.Autor, documentoDato.Año, documentoDato.Editorial);
 
-        }
+        }*/
         public static DocumentoDato DocumentoADocumentoDato(Documento documento)
 
         {
@@ -81,7 +81,7 @@ namespace Persistencia
 
         {
 
-            return new Prestamo(//poner cosas); 
+            return new Prestamo(prestamoDato.Id,prestamoDato.FechaInicio,prestamoDato.FechaFin,prestamoDato.Estado,prestamoDato.DniUsuario,prestamoDato.NssTrabajador,new List<Ejemplar>()); 
 
         }
 
