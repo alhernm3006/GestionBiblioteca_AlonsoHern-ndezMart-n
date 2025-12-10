@@ -16,5 +16,17 @@ namespace Persistencia
             this.formato = formato;
             this.duracion = duracion;
         }
+
+        public string Formato
+        {
+            get { return formato; }
+            set { formato = value; }
+        }
+
+        public float Durecion
+        {
+            get { return duracion; }
+            set { duracion = value; }
+        }
     }
 }

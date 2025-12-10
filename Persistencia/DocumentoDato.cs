@@ -13,7 +13,7 @@ namespace Persistencia
         private string autor;
         private int año;
         private string editorial;
-        private String estado;
+        private string estado;
 
         public DocumentoDato(string ISBN, string titulo, string autor, int año, string editorial) : base(ISBN)
         {
@@ -25,5 +25,40 @@ namespace Persistencia
             this.estado = "inactivo";
         }
 
+        public string Isbn
+        {
+            get { return isbn; }
+            set { isbn = value; }
+        }
+
+        public string Titulo
+        {
+            get { return titulo; }
+            set { titulo = value; }
+        }
+
+        public string Autor
+        {
+            get { return autor; }
+            set { autor = value; }
+        }
+
+        public int Año
+        {
+            get { return año; }
+            set { año = value; }
+        }
+
+        public string Editorial
+        {
+            get { return editorial; }
+            set { editorial = value; }
+        }
+
+        public string Estado
+        {
+            get { return estado; }
+            set { estado = value; }
+        }
     }
 }
