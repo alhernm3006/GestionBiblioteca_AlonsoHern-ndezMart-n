@@ -8,16 +8,15 @@ namespace Persistencia
 {
     internal class PrestamoDato : Entity<String>
     {
-        private String id;
         private DateTime fechaInicio;
         private DateTime fechaFin;
-        private String estado;
-        private String dniUsuario;
-        private String nssTrabajador;
+        private string estado;
+        private string dniUsuario;
+        private string nssTrabajador;
 
         public PrestamoDato(string ID, DateTime fechaInicio, DateTime fechaFin,
-                    String estado, String dni,
-                    String nss) : base(ID)
+                    string estado, string dni,
+                    string nss) : base(ID)
         {
             this.fechaInicio = fechaInicio;
             this.fechaFin = fechaFin;
@@ -26,5 +25,34 @@ namespace Persistencia
             this.nssTrabajador = nss;
         }
 
+        public DateTime FechaInicio
+        {
+            get { return fechaInicio; }
+            set { fechaInicio = value;}
+        }
+
+        public DateTime FechaFin
+        {
+            get { return fechaFin; }
+            set { fechaFin = value; }
+        }
+
+        public string Estado
+        {
+            get { return estado; }
+            set { estado = value; }
+        }
+
+        public string DniUsuario
+        {
+            get { return dniUsuario; }
+            set { dniUsuario = value; }
+        }
+
+        public string NssTrabajador
+        {
+            get { return nssTrabajador; }
+            set { nssTrabajador = value; }
+        }
     }
 }

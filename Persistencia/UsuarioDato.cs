@@ -16,5 +16,16 @@ namespace Persistencia
             this.nombre = nombre;
             this.estado = estado;
         }
+
+        public String Nombre
+        {
+            get { return nombre; }
+            set { nombre = value; }
+        }
+
+        public  String Estado {
+            get { return estado; } 
+            set { estado = value; } 
+        }
     }
 }

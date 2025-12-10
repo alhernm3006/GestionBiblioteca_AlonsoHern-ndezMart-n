@@ -54,7 +54,14 @@
     <Compile Include="Prestamo_EjemplarDato.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Tabla.cs" />
+    <Compile Include="Transformer.cs" />
     <Compile Include="UsuarioDato.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\ModeloDominio\ModeloDominio.csproj">
+      <Project>{edb5fe91-0cec-4d25-afc3-b2b4ec80939c}</Project>
+      <Name>ModeloDominio</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
