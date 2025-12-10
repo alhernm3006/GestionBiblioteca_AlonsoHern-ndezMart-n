@@ -93,20 +93,36 @@ namespace Persistencia
 
         }
 
-        public static PersonalBilbioteca PersonalBilbiotecaDatoAPersonalBilbioteca(PersonalBilbiotecaDato personalBibliotecaDato)
-
+        public static PersonalBiblioteca PersonalBilbiotecaDatoAPersonalBilbioteca(PersonalBibliotecaDato dato)
         {
-
-            return new PersonalBilbioteca(//poner cosas); 
-
+            switch (dato.Rol.ToLower())
+            {
+                case "adquisicion":
+                    return new PersonalAdquisicion(dato.Id, dato.Usuario);
+                case "sala":
+                    return new PersonalSala(dato.Id, dato.Usuario); // El constructor de PersonalSala toma 'nombre' que es el 'usuario' en la base
+                default:
+                    throw new ArgumentException("Rol de PersonalBibliotecaDato no reconocido.");
+            }
         }
 
-        public static PersonalBilbiotecaDato PersonalBilbiotecaAPersonalBilbiotecaDato(PersonalBilbioteca personalBiblioteca)
-
+        public static PersonalBibliotecaDato PersonalBilbiotecaAPersonalBilbiotecaDato(PersonalBiblioteca personalBiblioteca)
         {
+            string rol;
+            if (personalBiblioteca is PersonalAdquisicion)
+            {
+                rol = "adquisicion";
+            }
+            else if (personalBiblioteca is PersonalSala)
+            {
+                rol = "sala";
+            }
+            else
+            {
+                throw new ArgumentException("Rol de PersonalBiblioteca no reconocido.");
+            }
 
-            return new PersonalBilbiotecaDato(//poner cosas); 
-
+            return new PersonalBibliotecaDato(personalBiblioteca.NSS, personalBiblioteca.Usuario, rol);
         }
 
     }

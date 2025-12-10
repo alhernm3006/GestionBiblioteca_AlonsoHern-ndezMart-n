@@ -15,8 +15,8 @@ namespace Persistencia
 
         public EjemplarDato(ClaveEjemplar clave, string estado, string nss) : base(clave)
         {
-            this.isbn = isbn;
-            this.codigo = codigo;
+            this.isbn = clave.ISBN;
+            this.codigo = clave.Codigo;
             this.estado = estado;
             this.nss = nss;
         }
