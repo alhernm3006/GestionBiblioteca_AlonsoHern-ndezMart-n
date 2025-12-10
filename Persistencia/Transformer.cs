@@ -19,7 +19,7 @@ namespace Persistencia
 
         {
 
-            return new Ejemplar(dato, dato.Codigo, dato.Trabajador); 
+            return new Ejemplar(, dato.Codigo, dato.Trabajador); 
 
         }
 
@@ -89,7 +89,7 @@ namespace Persistencia
 
         {
 
-            return new PrestamoDato(//poner cosas); 
+            return new PrestamoDato(prestamo.ID,prestamo.FechaInicio,prestamo.FechaFin,prestamo.Estado.ToString(),prestamo.Usuario.DNI,prestamo.PersonalSala.NSS); 
 
         }
 

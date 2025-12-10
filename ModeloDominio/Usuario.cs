@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace ModeloDominio
 {
-    internal class Usuario
+    public class Usuario
     {
 
         private String dni;

@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace ModeloDominio
 {
-    internal class Prestamo
+    public class Prestamo
     {
 
         private String id;
