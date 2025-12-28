@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace Persistencia
 {
-    internal class Personal_CRUD
+    public class Personal_CRUD
     {
         public void Insertar(PersonalBiblioteca personal)
         {

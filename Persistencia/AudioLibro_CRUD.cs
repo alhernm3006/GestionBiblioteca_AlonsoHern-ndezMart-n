@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace Persistencia
 {
-    internal class AudioLibro_CRUD
+    public class AudioLibro_CRUD
     {
         public void Insertar(AudioLibro audio)
         {

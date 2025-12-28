@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace Persistencia
 {
-    internal class Prestamo_CRUD
+    public class Prestamo_CRUD
     {
         public void Insertar(Prestamo prestamo)
         {
@@ -81,6 +81,61 @@ namespace Persistencia
 
             // 2. Borrar el préstamo de la tabla principal
             BD.TablaPrestamos.Remove(idPrestamo);
+        }
+
+        public List<Prestamo> ListarTodos()
+        {
+            List<Prestamo> lista = new List<Prestamo>();
+            foreach (var item in BD.TablaPrestamos)
+            {
+                // Reutilizamos Buscar para que traiga los ejemplares ya cargados
+                PrestamoDato pDato = (PrestamoDato)item;
+                lista.Add(this.Buscar(pDato.Id));
+            }
+            return lista;
+        }
+
+        public List<Prestamo> ListarPorUsuario(string dni)
+        {
+            List<Prestamo> lista = new List<Prestamo>();
+            foreach (var item in BD.TablaPrestamos)
+            {
+                PrestamoDato pDato = (PrestamoDato)item;
+                if (pDato.DniUsuario == dni)
+                {
+                    lista.Add(this.Buscar(pDato.Id));
+                }
+            }
+            return lista;
+        }
+
+        public void RegistrarDevolucionEjemplar(string isbn, string codigo)
+        {
+            // Recorremos la tabla de relaciones Prestamo-Ejemplar
+            foreach (var item in BD.TablaPrestamosEjemplares)
+            {
+                Prestamo_EjemplarDato peDato = (Prestamo_EjemplarDato)item;
+
+                // 1. Buscamos coincidencias por ISBN y Código
+                if (peDato.Id.Ejemplar.ISBN == isbn && peDato.Id.Ejemplar.Codigo == codigo)
+                {
+                    // 2. Verificamos que el préstamo padre exista y esté ACTIVO (enProceso)
+                    // Esto es crucial porque el libro pudo prestarse anteriormente y esas líneas viejas no se tocan.
+                    if (BD.TablaPrestamos.Contains(peDato.Id.Id))
+                    {
+                        PrestamoDato pDato = (PrestamoDato)BD.TablaPrestamos[peDato.Id.Id];
+
+                        if (pDato.Estado == EstadoPrestamo.enProceso.ToString())
+                        {
+                            // 3. Establecemos la fecha de devolución real al momento actual
+                            peDato.FechaDevolucion = DateTime.Now;
+
+                            // Ya encontramos el préstamo activo para este libro, terminamos.
+                            return;
+                        }
+                    }
+                }
+            }
         }
     }
 }

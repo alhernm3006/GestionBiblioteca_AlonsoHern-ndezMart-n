@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace Persistencia
 {
-    internal class Ejemplar_CRUD
+    public class Ejemplar_CRUD
     {
         public void Insertar(Ejemplar ejemplar)
         {
@@ -50,5 +50,39 @@ namespace Persistencia
                 throw new Exception("El ejemplar no existe.");
             }
         }
+
+        public List<Ejemplar> ListarPorDocumento(string isbn)
+        {
+            List<Ejemplar> resultados = new List<Ejemplar>();
+
+            foreach (var item in BD.TablaEjemplares)
+            {
+                EjemplarDato eDato = (EjemplarDato)item;
+
+                // Comparamos el ISBN del dato con el solicitado
+                if (eDato.Isbn == isbn)
+                {
+                    resultados.Add(Transformer.EjemplarDatoAEjemplar(eDato));
+                }
+            }
+
+            return resultados;
+        }
+
+        public void ActualizarEstado(string isbn, string codigo, EstadoEjemplar nuevoEstado)
+        {
+            ClaveEjemplar clave = new ClaveEjemplar(isbn, codigo);
+
+            if (BD.TablaEjemplares.Contains(clave))
+            {
+                EjemplarDato eDato = (EjemplarDato)BD.TablaEjemplares[clave];
+                eDato.Estado = nuevoEstado.ToString();
+            }
+            else
+            {
+                throw new Exception("No se puede actualizar el estado: El ejemplar no existe.");
+            }
+        }
+
     }
 }

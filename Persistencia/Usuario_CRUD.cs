@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace Persistencia
 {
-    internal class Usuario_CRUD
+    public class Usuario_CRUD
     {
         public void Insertar(Usuario usuario)
         {
@@ -36,6 +36,20 @@ namespace Persistencia
             {
                 BD.TablaUsuarios.Remove(dni);
             }
+        }
+        public List<Usuario> ListarTodos()
+        {
+            List<Usuario> resultados = new List<Usuario>();
+
+            // Iteramos sobre la tabla interna BD (accesible solo aquí en Persistencia)
+            foreach (var item in BD.TablaUsuarios)
+            {
+                // Convertimos el dato de persistencia a objeto de dominio
+                UsuarioDato uDato = (UsuarioDato)item;
+                resultados.Add(Transformer.UsuarioDatoAUsuario(uDato));
+            }
+
+            return resultados;
         }
     }
 }
