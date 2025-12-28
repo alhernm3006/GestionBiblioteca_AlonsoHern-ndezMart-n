@@ -1,5 +1,7 @@
-﻿using System;
+﻿using ModeloDominio;
+using System;
 using System.Collections.Generic;
+using System.Data.SqlClient;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -27,5 +29,7 @@ namespace Persistencia
             get { return estado; } 
             set { estado = value; } 
         }
+
+    
     }
 }

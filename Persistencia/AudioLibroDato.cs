@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Persistencia
 {
-    internal class AudioLibroDato : Entity<String>
+    internal class AudioLibroDato : Entity<String>, 
     {
         private string formato;
         private float duracion;

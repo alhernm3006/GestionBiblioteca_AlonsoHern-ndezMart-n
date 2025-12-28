@@ -42,9 +42,16 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="AudioLibroDato.cs" />
+    <Compile Include="AudioLibro_CRUD.cs" />
     <Compile Include="BD.cs" />
+    <Compile Include="Documento_CRUD.cs" />
+    <Compile Include="Personal_CRUD.cs" />
+    <Compile Include="Prestamo_CRUD.cs" />
     <Compile Include="ClaveEjemplar.cs" />
     <Compile Include="ClavePrestamoEjemplar.cs" />
+    <Compile Include="Ejemplar_CRUD.cs" />
+    <Compile Include="Libro_CRUD.cs" />
+    <Compile Include="Usuario_CRUD.cs" />
     <Compile Include="DocumentoDato.cs" />
     <Compile Include="EjemplarDato.cs" />
     <Compile Include="Entity.cs" />
