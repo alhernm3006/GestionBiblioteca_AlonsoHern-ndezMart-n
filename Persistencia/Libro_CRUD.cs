@@ -14,7 +14,6 @@ namespace Persistencia
             if (BD.TablaDocumentos.Contains(libro.ISBN))
                 throw new Exception("Ya existe un documento con ese ISBN.");
 
-            // Guardar en las dos tablas necesarias
             BD.TablaDocumentos.Add(Transformer.DocumentoADocumentoDato(libro));
             BD.TablaLibrosPapel.Add(Transformer.LibroPapelALibroPapelDato(libro));
         }
@@ -23,7 +22,6 @@ namespace Persistencia
         {
             if (BD.TablaLibrosPapel.Contains(isbn))
             {
-                // El Transformer interno ya se encarga de buscar en TablaDocumentos
                 LibroPapelDato datoEspecifico = (LibroPapelDato)BD.TablaLibrosPapel[isbn];
                 return Transformer.LibroPapelDatoALibroPapel(datoEspecifico);
             }

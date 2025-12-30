@@ -14,9 +14,13 @@ namespace Persistencia
             ClaveEjemplar clave = new ClaveEjemplar(ejemplar.Documento.ISBN, ejemplar.Codigo);
 
             if (BD.TablaEjemplares.Contains(clave))
+            {
                 throw new Exception("Ya existe este ejemplar.");
-
-            BD.TablaEjemplares.Add(Transformer.EjemplarAEjemplarDato(ejemplar));
+            }
+            else
+            {
+                BD.TablaEjemplares.Add(Transformer.EjemplarAEjemplarDato(ejemplar));
+            }
         }
 
         public Ejemplar Buscar(string isbn, string codigo)
@@ -36,14 +40,15 @@ namespace Persistencia
 
             if (BD.TablaEjemplares.Contains(clave))
             {
-                // Opcional: Verificar si el libro está prestado antes de borrarlo
                 EjemplarDato dato = (EjemplarDato)BD.TablaEjemplares[clave];
                 if (dato.Estado == "prestado")
                 {
                     throw new Exception("No se puede eliminar un ejemplar que está prestado actualmente.");
                 }
-
-                BD.TablaEjemplares.Remove(clave);
+                else
+                {
+                    dato.Estado = "archivado";
+                }
             }
             else
             {
@@ -59,7 +64,6 @@ namespace Persistencia
             {
                 EjemplarDato eDato = (EjemplarDato)item;
 
-                // Comparamos el ISBN del dato con el solicitado
                 if (eDato.Isbn == isbn)
                 {
                     resultados.Add(Transformer.EjemplarDatoAEjemplar(eDato));

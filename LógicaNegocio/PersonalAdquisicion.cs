@@ -65,7 +65,6 @@ namespace LógicaNegocio
 
         public List<Documento> obtenerDocumentos()
         {
-            // Requiere el método auxiliar en Documento_CRUD (ver abajo)
             return documentoCRUD.ListarTodos();
         }
 
@@ -76,7 +75,7 @@ namespace LógicaNegocio
 
             // 1. Obtener historial completo de préstamos
             List<Prestamo> todosLosPrestamos = prestamoCRUD.ListarTodos();
-
+            
             Dictionary<string, int> conteoISBN = new Dictionary<string, int>();
 
             // 2. Contar apariciones

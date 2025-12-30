@@ -34,7 +34,8 @@ namespace Persistencia
         {
             if (BD.TablaUsuarios.Contains(dni))
             {
-                BD.TablaUsuarios.Remove(dni);
+                UsuarioDato uDato = (UsuarioDato)BD.TablaUsuarios[dni];
+                uDato.Estado = "inactivo";
             }
         }
         public List<Usuario> ListarTodos()
