@@ -52,10 +52,37 @@
     <Compile Include="Form1.Designer.cs">
       <DependentUpon>Form1.cs</DependentUpon>
     </Compile>
+    <Compile Include="FrmDetalleUsuario.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FrmDetalleUsuario.Designer.cs">
+      <DependentUpon>FrmDetalleUsuario.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FrmSolicitarDato.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FrmSolicitarDato.Designer.cs">
+      <DependentUpon>FrmSolicitarDato.cs</DependentUpon>
+    </Compile>
+    <Compile Include="menuPersonalSala.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="menuPersonalSala.Designer.cs">
+      <DependentUpon>menuPersonalSala.cs</DependentUpon>
+    </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <EmbeddedResource Include="Form1.resx">
       <DependentUpon>Form1.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FrmDetalleUsuario.resx">
+      <DependentUpon>FrmDetalleUsuario.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FrmSolicitarDato.resx">
+      <DependentUpon>FrmSolicitarDato.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="menuPersonalSala.resx">
+      <DependentUpon>menuPersonalSala.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
@@ -83,10 +110,6 @@
     <ProjectReference Include="..\LógicaNegocio\LógicaNegocio.csproj">
       <Project>{21ca451f-ec21-4186-8a00-5d892e2c1bb5}</Project>
       <Name>LógicaNegocio</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\ModeloDominio\ModeloDominio.csproj">
-      <Project>{EDB5FE91-0CEC-4D25-AFC3-B2B4EC80939C}</Project>
-      <Name>ModeloDominio</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

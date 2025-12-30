@@ -18,56 +18,58 @@ namespace Presentación
         public Form1()
         {
             InitializeComponent();
-           
+            // Ajuste visual por código si no se hace en el Designer
+            label_contraseña.Text = "Contraseña";
+            textBox_contraseña.PasswordChar = '*';
         }
 
         private void button_entrar_Click(object sender, EventArgs e)
         {
             string nombre = textBox_nombre.Text;
-            string password = textBox_apellido.Text; // Suponiendo que tienes este campo
+            string password = textBox_contraseña.Text; // Este campo actúa como contraseña
 
-            // 1. Validar que haya escrito el nombre
-            if (string.IsNullOrEmpty(nombre))
+            if (string.IsNullOrEmpty(nombre) || string.IsNullOrEmpty(password))
             {
-                MessageBox.Show("Por favor, introduce un nombre.");
+                MessageBox.Show("Por favor, introduce nombre y contraseña.");
                 return;
             }
-            
+
             LógicaNegocio.PersonalBiblioteca personal = null;
 
-            // 2. Verificar qué "Tipo empleado" se seleccionó
             if (radioButton_personalSala.Checked)
             {
-                // Se seleccionó "Personal sala"
-                // El constructor pide (NSS, Nombre). Simulamos el NSS por ahora o lo pedimos si hace falta.
-                personal = new PersonalSala();
+                // También es probable que necesites especificarlo aquí para evitar ambigüedad con PersonalSala
+                personal = new LógicaNegocio.PersonalSala();
             }
             else if (radioButton_personalAdquisiciones.Checked)
             {
-                // Se seleccionó "Personal adquisiciones"
-                personal = new PersonalAdquisicion();
+                // Y aquí
+                personal = new LógicaNegocio.PersonalAdquisicion();
             }
             else
             {
-                // No se seleccionó ninguno (raro en RadioButtons, pero posible si no hay default)
                 MessageBox.Show("Debes seleccionar un tipo de empleado.");
                 return;
             }
 
-            // 3. Intentar iniciar sesión
-            // Usamos el método polimórfico 'iniciarSesion' de la clase base PersonalBiblioteca
+            // Validar credenciales
             if (personal.iniciarSesion(nombre, password))
             {
-                // Login correcto: Abrir el menú principal pasándole el usuario creado
-                FrmMenuPrincipal menu = new FrmMenuPrincipal(personal);
+                // Pasamos el objeto 'personal' al menú para controlar permisos
+                menuPersonalSala menu = new menuPersonalSala((LógicaNegocio.PersonalSala)personal);
                 this.Hide();
-                menu.ShowDialog();
-                this.Close();
+                menu.ShowDialog(); // La ejecución se detiene aquí hasta que se cierre el menú
+                this.Close();      // Cierra la app al salir del menú
             }
             else
             {
                 MessageBox.Show("Error en el inicio de sesión.");
             }
+        }
+
+        private void Form1_Load(object sender, EventArgs e)
+        {
+
         }
     }
 }

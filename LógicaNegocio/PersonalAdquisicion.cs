@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace LógicaNegocio
 {
-    internal class PersonalAdquisicion : PersonalBiblioteca
+    public class PersonalAdquisicion : PersonalBiblioteca
     {
         private Libro_CRUD libroCRUD = new Libro_CRUD();
         private AudioLibro_CRUD audioCRUD = new AudioLibro_CRUD();

@@ -29,13 +29,13 @@
         private void InitializeComponent()
         {
             this.label_nombre = new System.Windows.Forms.Label();
-            this.label_apellido = new System.Windows.Forms.Label();
+            this.label_contraseña = new System.Windows.Forms.Label();
             this.textBox_nombre = new System.Windows.Forms.TextBox();
-            this.textBox_apellido = new System.Windows.Forms.TextBox();
+            this.textBox_contraseña = new System.Windows.Forms.TextBox();
             this.button_entrar = new System.Windows.Forms.Button();
             this.groupBox_tipoEmpleado = new System.Windows.Forms.GroupBox();
-            this.radioButton_personalSala = new System.Windows.Forms.RadioButton();
             this.radioButton_personalAdquisiciones = new System.Windows.Forms.RadioButton();
+            this.radioButton_personalSala = new System.Windows.Forms.RadioButton();
             this.groupBox_tipoEmpleado.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -48,14 +48,14 @@
             this.label_nombre.TabIndex = 0;
             this.label_nombre.Text = "Nombre";
             // 
-            // label_apellido
+            // label_contraseña
             // 
-            this.label_apellido.AutoSize = true;
-            this.label_apellido.Location = new System.Drawing.Point(188, 155);
-            this.label_apellido.Name = "label_apellido";
-            this.label_apellido.Size = new System.Drawing.Size(57, 16);
-            this.label_apellido.TabIndex = 1;
-            this.label_apellido.Text = "Apellido";
+            this.label_contraseña.AutoSize = true;
+            this.label_contraseña.Location = new System.Drawing.Point(188, 155);
+            this.label_contraseña.Name = "label_contraseña";
+            this.label_contraseña.Size = new System.Drawing.Size(76, 16);
+            this.label_contraseña.TabIndex = 1;
+            this.label_contraseña.Text = "Contraseña";
             // 
             // textBox_nombre
             // 
@@ -64,12 +64,13 @@
             this.textBox_nombre.Size = new System.Drawing.Size(100, 22);
             this.textBox_nombre.TabIndex = 2;
             // 
-            // textBox_apellido
+            // textBox_contraseña
             // 
-            this.textBox_apellido.Location = new System.Drawing.Point(436, 155);
-            this.textBox_apellido.Name = "textBox_apellido";
-            this.textBox_apellido.Size = new System.Drawing.Size(100, 22);
-            this.textBox_apellido.TabIndex = 3;
+            this.textBox_contraseña.Location = new System.Drawing.Point(436, 155);
+            this.textBox_contraseña.Name = "textBox_contraseña";
+            this.textBox_contraseña.PasswordChar = '*';
+            this.textBox_contraseña.Size = new System.Drawing.Size(100, 22);
+            this.textBox_contraseña.TabIndex = 3;
             // 
             // button_entrar
             // 
@@ -92,17 +93,6 @@
             this.groupBox_tipoEmpleado.TabStop = false;
             this.groupBox_tipoEmpleado.Text = "Tipo empleado";
             // 
-            // radioButton_personalSala
-            // 
-            this.radioButton_personalSala.AutoSize = true;
-            this.radioButton_personalSala.Location = new System.Drawing.Point(22, 32);
-            this.radioButton_personalSala.Name = "radioButton_personalSala";
-            this.radioButton_personalSala.Size = new System.Drawing.Size(111, 20);
-            this.radioButton_personalSala.TabIndex = 0;
-            this.radioButton_personalSala.TabStop = true;
-            this.radioButton_personalSala.Text = "Personal sala";
-            this.radioButton_personalSala.UseVisualStyleBackColor = true;
-            // 
             // radioButton_personalAdquisiciones
             // 
             this.radioButton_personalAdquisiciones.AutoSize = true;
@@ -114,6 +104,17 @@
             this.radioButton_personalAdquisiciones.Text = "Personal adquisiciones";
             this.radioButton_personalAdquisiciones.UseVisualStyleBackColor = true;
             // 
+            // radioButton_personalSala
+            // 
+            this.radioButton_personalSala.AutoSize = true;
+            this.radioButton_personalSala.Location = new System.Drawing.Point(22, 32);
+            this.radioButton_personalSala.Name = "radioButton_personalSala";
+            this.radioButton_personalSala.Size = new System.Drawing.Size(111, 20);
+            this.radioButton_personalSala.TabIndex = 0;
+            this.radioButton_personalSala.TabStop = true;
+            this.radioButton_personalSala.Text = "Personal sala";
+            this.radioButton_personalSala.UseVisualStyleBackColor = true;
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
@@ -121,12 +122,13 @@
             this.ClientSize = new System.Drawing.Size(800, 450);
             this.Controls.Add(this.groupBox_tipoEmpleado);
             this.Controls.Add(this.button_entrar);
-            this.Controls.Add(this.textBox_apellido);
+            this.Controls.Add(this.textBox_contraseña);
             this.Controls.Add(this.textBox_nombre);
-            this.Controls.Add(this.label_apellido);
+            this.Controls.Add(this.label_contraseña);
             this.Controls.Add(this.label_nombre);
             this.Name = "Form1";
             this.Text = "Form1";
+            this.Load += new System.EventHandler(this.Form1_Load);
             this.groupBox_tipoEmpleado.ResumeLayout(false);
             this.groupBox_tipoEmpleado.PerformLayout();
             this.ResumeLayout(false);
@@ -137,9 +139,9 @@
         #endregion
 
         private System.Windows.Forms.Label label_nombre;
-        private System.Windows.Forms.Label label_apellido;
+        private System.Windows.Forms.Label label_contraseña;
         private System.Windows.Forms.TextBox textBox_nombre;
-        private System.Windows.Forms.TextBox textBox_apellido;
+        private System.Windows.Forms.TextBox textBox_contraseña;
         private System.Windows.Forms.Button button_entrar;
         private System.Windows.Forms.GroupBox groupBox_tipoEmpleado;
         private System.Windows.Forms.RadioButton radioButton_personalAdquisiciones;

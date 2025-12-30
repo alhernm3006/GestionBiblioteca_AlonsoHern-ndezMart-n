@@ -9,8 +9,7 @@ using ModeloDominio;
 namespace LógicaNegocio
 {
 
-    namespace LógicaNegocio
-    {
+   
         public class PersonalSala : PersonalBiblioteca
         {
             // Instanciamos los CRUDs necesarios para las operaciones de Sala
@@ -145,4 +144,4 @@ namespace LógicaNegocio
             }
         }
     }
-}
+
