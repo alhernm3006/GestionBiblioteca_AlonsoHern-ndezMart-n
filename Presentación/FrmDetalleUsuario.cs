@@ -15,27 +15,23 @@ namespace Presentación
     public partial class FrmDetalleUsuario : Form
     {
         public Usuario UsuarioCreado;
-        public FrmDetalleUsuario(string dni)
+        public FrmDetalleUsuario(string dni, string operacion)
         {
             InitializeComponent();
-            this.Text = "Alta de usuario";
+            this.Text = operacion+" de usuario";
             textBox_DNI.Text = dni;
-            button_aceptar.Text = "Dar alta";
-        }
-
-        public FrmDetalleUsuario(Usuario u, string titulo)
-        {
-            InitializeComponent();
-            this.Text = titulo;
-            textBox_DNI.Text = u.DNI;
-            textBox_Nombre.Text = u.Nombre;
-
-           
-           
-            textBox_Nombre.ReadOnly = true;
-            button_aceptar.Text = "Aceptar"; // O "Dar de Baja" según el caso
+            if (operacion.Equals("Alta"))
+            {
+                textBox_DNI.ReadOnly = true;
+            }else if (operacion.Equals("Baja"))
+            {
+                textBox_DNI.ReadOnly = true;
+                textBox_Nombre.ReadOnly = true;
+            }
             
         }
+
+   
 
         private void button_aceptar_Click(object sender, EventArgs e)
         {

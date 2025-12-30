@@ -12,13 +12,21 @@ namespace Presentación
 {
     public partial class FrmSolicitarDato : Form
     {
+        private string op;
         public FrmSolicitarDato(string titulo, string etiqueta)
         {
     
             InitializeComponent();
             this.Text = titulo;        // Ej: "Introducir DNI"
             this.lblEtiqueta.Text = etiqueta; // Ej: "DNI:"
-            this.AcceptButton = button_aceptar;   // Permitir pulsar Enter
+        }
+        public FrmSolicitarDato(string titulo, string etiqueta, string op)
+        {
+
+            InitializeComponent();
+            this.Text = titulo;        // Ej: "Introducir DNI"
+            this.lblEtiqueta.Text = etiqueta; // Ej: "DNI:"
+            this.op = op;
         }
 
         private void button_aceptar_Click(object sender, EventArgs e)
@@ -29,6 +37,8 @@ namespace Presentación
                 return;
             }
             this.DialogResult = DialogResult.OK;
+            this.Hide();
+            new FrmDetalleUsuario(textBox_DNI.Text, this.op).Show();
             this.Close();
         }
 

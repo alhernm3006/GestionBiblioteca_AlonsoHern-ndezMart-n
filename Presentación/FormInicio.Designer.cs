@@ -1,6 +1,6 @@
 ﻿namespace Presentación
 {
-    partial class Form1
+    partial class FormInicio
     {
         /// <summary>
         /// Variable del diseñador necesaria.
@@ -74,7 +74,7 @@
             // 
             // button_entrar
             // 
-            this.button_entrar.Location = new System.Drawing.Point(436, 342);
+            this.button_entrar.Location = new System.Drawing.Point(383, 360);
             this.button_entrar.Name = "button_entrar";
             this.button_entrar.Size = new System.Drawing.Size(75, 23);
             this.button_entrar.TabIndex = 4;
@@ -96,7 +96,7 @@
             // radioButton_personalAdquisiciones
             // 
             this.radioButton_personalAdquisiciones.AutoSize = true;
-            this.radioButton_personalAdquisiciones.Location = new System.Drawing.Point(22, 59);
+            this.radioButton_personalAdquisiciones.Location = new System.Drawing.Point(22, 77);
             this.radioButton_personalAdquisiciones.Name = "radioButton_personalAdquisiciones";
             this.radioButton_personalAdquisiciones.Size = new System.Drawing.Size(169, 20);
             this.radioButton_personalAdquisiciones.TabIndex = 1;
@@ -107,7 +107,7 @@
             // radioButton_personalSala
             // 
             this.radioButton_personalSala.AutoSize = true;
-            this.radioButton_personalSala.Location = new System.Drawing.Point(22, 32);
+            this.radioButton_personalSala.Location = new System.Drawing.Point(22, 34);
             this.radioButton_personalSala.Name = "radioButton_personalSala";
             this.radioButton_personalSala.Size = new System.Drawing.Size(111, 20);
             this.radioButton_personalSala.TabIndex = 0;
@@ -115,7 +115,7 @@
             this.radioButton_personalSala.Text = "Personal sala";
             this.radioButton_personalSala.UseVisualStyleBackColor = true;
             // 
-            // Form1
+            // FormInicio
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
@@ -126,9 +126,8 @@
             this.Controls.Add(this.textBox_nombre);
             this.Controls.Add(this.label_contraseña);
             this.Controls.Add(this.label_nombre);
-            this.Name = "Form1";
-            this.Text = "Form1";
-            this.Load += new System.EventHandler(this.Form1_Load);
+            this.Name = "FormInicio";
+            this.Text = "Login";
             this.groupBox_tipoEmpleado.ResumeLayout(false);
             this.groupBox_tipoEmpleado.PerformLayout();
             this.ResumeLayout(false);

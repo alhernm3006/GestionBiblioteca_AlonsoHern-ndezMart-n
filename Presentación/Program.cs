@@ -18,10 +18,7 @@ namespace Presentación
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new Form1());
-
-            PersonalBiblioteca p1=new PersonalBiblioteca();
-            PersonalAdquisicion p2 = new PersonalAdquisicion();
+            Application.Run(new FormInicio());
         }
     }
 }

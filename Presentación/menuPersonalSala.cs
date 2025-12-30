@@ -26,9 +26,8 @@ namespace Presentación
 
         private void altaToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            // 1. Pedir DNI [cite: 211]
             FrmSolicitarDato frmDni = new FrmSolicitarDato("Introducir DNI", "DNI:");
-
+            /*
             // Bucle para permitir reintentar si ya existe [cite: 247]
             while (frmDni.ShowDialog() == DialogResult.OK)
             {
@@ -60,14 +59,14 @@ namespace Presentación
                     }
                     break; // Salir del bucle tras el proceso
                 }
-            }
+            }*/
         }
 
         private void búsquedaToolStripMenuItem_Click(object sender, EventArgs e)
         {
             // 1. Mostrar formulario para introducir DNI [cite: 1455]
             FrmSolicitarDato frmDni = new FrmSolicitarDato("Introducir DNI", "DNI:");
-
+            /*
             // Bucle para permitir reintentar si el usuario no existe
             while (frmDni.ShowDialog() == DialogResult.OK)
             {
@@ -94,6 +93,17 @@ namespace Presentación
                     frmDetalle.ShowDialog();
                     break;
                 }
+            }*/
+        }
+
+        private void usuariosToolStripMenuItem_DropDownItemClicked(object sender, ToolStripItemClickedEventArgs e)
+        {
+            FrmSolicitarDato solicitud = null;
+            switch (e.ClickedItem.Text)
+            {
+                case ("Búsqueda"): solicitud = new FrmSolicitarDato("Introducir DNI", "DNI:"); break;
+                default: solicitud = new FrmSolicitarDato("Introducir DNI", "DNI:", e.ClickedItem.Text); break;
             }
+            solicitud.Show();
         }
     } }

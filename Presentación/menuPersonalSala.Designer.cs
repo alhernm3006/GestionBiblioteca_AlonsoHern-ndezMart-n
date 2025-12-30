@@ -30,13 +30,19 @@
         {
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
             this.usuariosToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.altaToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.bajaToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.búsquedaToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.documentosToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.ejemplaresToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.préstamosToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.configuraciónToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.altaToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.bajaToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.búsquedaToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.altaToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
+            this.bajaToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
+            this.búsquedaToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
+            this.altaToolStripMenuItem2 = new System.Windows.Forms.ToolStripMenuItem();
+            this.bajaToolStripMenuItem2 = new System.Windows.Forms.ToolStripMenuItem();
+            this.búsquedaToolStripMenuItem2 = new System.Windows.Forms.ToolStripMenuItem();
             this.menuStrip1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -64,30 +70,7 @@
             this.usuariosToolStripMenuItem.Name = "usuariosToolStripMenuItem";
             this.usuariosToolStripMenuItem.Size = new System.Drawing.Size(79, 24);
             this.usuariosToolStripMenuItem.Text = "Usuarios";
-            // 
-            // documentosToolStripMenuItem
-            // 
-            this.documentosToolStripMenuItem.Name = "documentosToolStripMenuItem";
-            this.documentosToolStripMenuItem.Size = new System.Drawing.Size(107, 24);
-            this.documentosToolStripMenuItem.Text = "Documentos";
-            // 
-            // ejemplaresToolStripMenuItem
-            // 
-            this.ejemplaresToolStripMenuItem.Name = "ejemplaresToolStripMenuItem";
-            this.ejemplaresToolStripMenuItem.Size = new System.Drawing.Size(96, 24);
-            this.ejemplaresToolStripMenuItem.Text = "Ejemplares";
-            // 
-            // préstamosToolStripMenuItem
-            // 
-            this.préstamosToolStripMenuItem.Name = "préstamosToolStripMenuItem";
-            this.préstamosToolStripMenuItem.Size = new System.Drawing.Size(91, 24);
-            this.préstamosToolStripMenuItem.Text = "Préstamos";
-            // 
-            // configuraciónToolStripMenuItem
-            // 
-            this.configuraciónToolStripMenuItem.Name = "configuraciónToolStripMenuItem";
-            this.configuraciónToolStripMenuItem.Size = new System.Drawing.Size(116, 24);
-            this.configuraciónToolStripMenuItem.Text = "Configuración";
+            this.usuariosToolStripMenuItem.DropDownItemClicked += new System.Windows.Forms.ToolStripItemClickedEventHandler(this.usuariosToolStripMenuItem_DropDownItemClicked);
             // 
             // altaToolStripMenuItem
             // 
@@ -109,6 +92,74 @@
             this.búsquedaToolStripMenuItem.Text = "Búsqueda";
             this.búsquedaToolStripMenuItem.Click += new System.EventHandler(this.búsquedaToolStripMenuItem_Click);
             // 
+            // documentosToolStripMenuItem
+            // 
+            this.documentosToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.altaToolStripMenuItem1,
+            this.bajaToolStripMenuItem1,
+            this.búsquedaToolStripMenuItem1});
+            this.documentosToolStripMenuItem.Name = "documentosToolStripMenuItem";
+            this.documentosToolStripMenuItem.Size = new System.Drawing.Size(107, 26);
+            this.documentosToolStripMenuItem.Text = "Documentos";
+            // 
+            // ejemplaresToolStripMenuItem
+            // 
+            this.ejemplaresToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.altaToolStripMenuItem2,
+            this.bajaToolStripMenuItem2,
+            this.búsquedaToolStripMenuItem2});
+            this.ejemplaresToolStripMenuItem.Name = "ejemplaresToolStripMenuItem";
+            this.ejemplaresToolStripMenuItem.Size = new System.Drawing.Size(96, 26);
+            this.ejemplaresToolStripMenuItem.Text = "Ejemplares";
+            // 
+            // préstamosToolStripMenuItem
+            // 
+            this.préstamosToolStripMenuItem.Name = "préstamosToolStripMenuItem";
+            this.préstamosToolStripMenuItem.Size = new System.Drawing.Size(91, 26);
+            this.préstamosToolStripMenuItem.Text = "Préstamos";
+            // 
+            // configuraciónToolStripMenuItem
+            // 
+            this.configuraciónToolStripMenuItem.Name = "configuraciónToolStripMenuItem";
+            this.configuraciónToolStripMenuItem.Size = new System.Drawing.Size(116, 26);
+            this.configuraciónToolStripMenuItem.Text = "Configuración";
+            // 
+            // altaToolStripMenuItem1
+            // 
+            this.altaToolStripMenuItem1.Name = "altaToolStripMenuItem1";
+            this.altaToolStripMenuItem1.Size = new System.Drawing.Size(224, 26);
+            this.altaToolStripMenuItem1.Text = "Alta";
+            // 
+            // bajaToolStripMenuItem1
+            // 
+            this.bajaToolStripMenuItem1.Name = "bajaToolStripMenuItem1";
+            this.bajaToolStripMenuItem1.Size = new System.Drawing.Size(224, 26);
+            this.bajaToolStripMenuItem1.Text = "Baja";
+            // 
+            // búsquedaToolStripMenuItem1
+            // 
+            this.búsquedaToolStripMenuItem1.Name = "búsquedaToolStripMenuItem1";
+            this.búsquedaToolStripMenuItem1.Size = new System.Drawing.Size(224, 26);
+            this.búsquedaToolStripMenuItem1.Text = "Búsqueda";
+            // 
+            // altaToolStripMenuItem2
+            // 
+            this.altaToolStripMenuItem2.Name = "altaToolStripMenuItem2";
+            this.altaToolStripMenuItem2.Size = new System.Drawing.Size(224, 26);
+            this.altaToolStripMenuItem2.Text = "Alta";
+            // 
+            // bajaToolStripMenuItem2
+            // 
+            this.bajaToolStripMenuItem2.Name = "bajaToolStripMenuItem2";
+            this.bajaToolStripMenuItem2.Size = new System.Drawing.Size(224, 26);
+            this.bajaToolStripMenuItem2.Text = "Baja";
+            // 
+            // búsquedaToolStripMenuItem2
+            // 
+            this.búsquedaToolStripMenuItem2.Name = "búsquedaToolStripMenuItem2";
+            this.búsquedaToolStripMenuItem2.Size = new System.Drawing.Size(224, 26);
+            this.búsquedaToolStripMenuItem2.Text = "Búsqueda";
+            // 
             // menuPersonalSala
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
@@ -118,7 +169,6 @@
             this.MainMenuStrip = this.menuStrip1;
             this.Name = "menuPersonalSala";
             this.Text = "menuPersonalSala";
-            this.Load += new System.EventHandler(this.menuPersonalSala_Load);
             this.menuStrip1.ResumeLayout(false);
             this.menuStrip1.PerformLayout();
             this.ResumeLayout(false);
@@ -137,5 +187,11 @@
         private System.Windows.Forms.ToolStripMenuItem ejemplaresToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem préstamosToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem configuraciónToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem altaToolStripMenuItem1;
+        private System.Windows.Forms.ToolStripMenuItem bajaToolStripMenuItem1;
+        private System.Windows.Forms.ToolStripMenuItem búsquedaToolStripMenuItem1;
+        private System.Windows.Forms.ToolStripMenuItem altaToolStripMenuItem2;
+        private System.Windows.Forms.ToolStripMenuItem bajaToolStripMenuItem2;
+        private System.Windows.Forms.ToolStripMenuItem búsquedaToolStripMenuItem2;
     }
 }
