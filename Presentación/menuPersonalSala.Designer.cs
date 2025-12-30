@@ -107,6 +107,7 @@
             this.búsquedaToolStripMenuItem.Name = "búsquedaToolStripMenuItem";
             this.búsquedaToolStripMenuItem.Size = new System.Drawing.Size(224, 26);
             this.búsquedaToolStripMenuItem.Text = "Búsqueda";
+            this.búsquedaToolStripMenuItem.Click += new System.EventHandler(this.búsquedaToolStripMenuItem_Click);
             // 
             // menuPersonalSala
             // 

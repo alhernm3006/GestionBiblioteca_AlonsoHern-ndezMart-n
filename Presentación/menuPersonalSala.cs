@@ -26,10 +26,10 @@ namespace Presentación
 
         private void altaToolStripMenuItem_Click(object sender, EventArgs e)
         {
-           // 1. Pedir DNI [cite: 211]
+            // 1. Pedir DNI [cite: 211]
             FrmSolicitarDato frmDni = new FrmSolicitarDato("Introducir DNI", "DNI:");
 
-           // Bucle para permitir reintentar si ya existe [cite: 247]
+            // Bucle para permitir reintentar si ya existe [cite: 247]
             while (frmDni.ShowDialog() == DialogResult.OK)
             {
                 string dni = frmDni.DatoIntroducido;
@@ -37,13 +37,13 @@ namespace Presentación
                 // Verificar si existe (usando LógicaNegocio)
                 if (usuarioActual.getUsuario(dni) != null)
                 {
-                     DialogResult r = MessageBox.Show("Ya existe un usuario con ese DNI\n¿Quieres introducir otro?", "Error", MessageBoxButtons.YesNo, MessageBoxIcon.Question); [cite: 240, 243]
+                    DialogResult r = MessageBox.Show("Ya existe un usuario con ese DNI\n¿Quieres introducir otro?", "Error", MessageBoxButtons.YesNo, MessageBoxIcon.Question); [cite: 240, 243]
             if (r == DialogResult.No) break;
                     // Si dice Sí, el bucle while repite y muestra el form de DNI otra vez
                 }
                 else
                 {
-                   // No existe, procedemos al Alta [cite: 249]
+                    // No existe, procedemos al Alta [cite: 249]
                     FrmDetalleUsuario frmAlta = new FrmDetalleUsuario(dni);
                     if (frmAlta.ShowDialog() == DialogResult.OK)
                     {
@@ -62,5 +62,38 @@ namespace Presentación
                 }
             }
         }
-    }
-}
+
+        private void búsquedaToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            // 1. Mostrar formulario para introducir DNI [cite: 1455]
+            FrmSolicitarDato frmDni = new FrmSolicitarDato("Introducir DNI", "DNI:");
+
+            // Bucle para permitir reintentar si el usuario no existe
+            while (frmDni.ShowDialog() == DialogResult.OK)
+            {
+                string dni = frmDni.textBox_DNI;
+                // Consultar a la capa de negocio [cite: 1409]
+                Usuario usuarioEncontrado = usuarioActual.getUsuario(dni);
+
+                if (usuarioEncontrado == null)
+                {
+                   // Mensaje de error y pregunta de reintento según PDF Pág 4 [cite: 1456, 1459]
+                    DialogResult r = MessageBox.Show(
+                        "No existe un usuario con ese DNI\n¿Quieres introducir otro?",
+                        "Error",
+                        MessageBoxButtons.YesNo,
+                        MessageBoxIcon.Question);
+
+                    if (r == DialogResult.No) break;
+                }
+                else
+                {
+                   // Mostrar formulario con datos en modo lectura (ReadOnly) [cite: 1463]
+                                // Reutilizamos FrmDetalleUsuario aprovechando su constructor para usuarios existentes
+                    FrmDetalleUsuario frmDetalle = new FrmDetalleUsuario(usuarioEncontrado, "Datos de usuario");
+                    frmDetalle.ShowDialog();
+                    break;
+                }
+            }
+        }
+    } }
