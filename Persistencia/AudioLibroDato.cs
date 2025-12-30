@@ -23,7 +23,7 @@ namespace Persistencia
             set { formato = value; }
         }
 
-        public float Durecion
+        public float Duracion
         {
             get { return duracion; }
             set { duracion = value; }

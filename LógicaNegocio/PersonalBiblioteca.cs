@@ -14,15 +14,13 @@ namespace LógicaNegocio
         
         
             // Los CRUDs deben ser PUBLIC para usarse aquí
-            protected Usuario_CRUD usuarioCRUD;
-            protected Prestamo_CRUD prestamoCRUD;
-            protected Ejemplar_CRUD ejemplarCRUD;
+            protected Usuario_CRUD usuarioCRUD = new Usuario_CRUD();
+            protected Prestamo_CRUD prestamoCRUD = new Prestamo_CRUD();
+            protected Ejemplar_CRUD ejemplarCRUD = new Ejemplar_CRUD();
 
-            public PersonalBiblioteca(string nss, string usuario)
+            public PersonalBiblioteca()
             {
-                usuarioCRUD = new Usuario_CRUD();
-                prestamoCRUD = new Prestamo_CRUD();
-                ejemplarCRUD = new Ejemplar_CRUD();
+               
             }
 
             public bool iniciarSesion(string usuario, string contraseña)

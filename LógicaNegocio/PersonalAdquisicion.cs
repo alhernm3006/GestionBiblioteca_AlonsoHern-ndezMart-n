@@ -10,17 +10,14 @@ namespace LógicaNegocio
 {
     internal class PersonalAdquisicion : PersonalBiblioteca
     {
-        private Libro_CRUD libroCRUD;
-        private AudioLibro_CRUD audioCRUD;
-        private Documento_CRUD documentoCRUD;
-        private Ejemplar_CRUD ejemplarCRUD;
+        private Libro_CRUD libroCRUD = new Libro_CRUD();
+        private AudioLibro_CRUD audioCRUD = new AudioLibro_CRUD();
+        private Documento_CRUD documentoCRUD = new Documento_CRUD();
+        private Ejemplar_CRUD ejemplarCRUD = new Ejemplar_CRUD();
 
-        public PersonalAdquisicion(string nss, string usuario) : base(nss, usuario)
+        public PersonalAdquisicion() 
         {
-            libroCRUD = new Libro_CRUD();
-            audioCRUD = new AudioLibro_CRUD();
-            documentoCRUD = new Documento_CRUD();
-            ejemplarCRUD = new Ejemplar_CRUD();
+        
         }
 
         // --- Gestión de Documentos ---

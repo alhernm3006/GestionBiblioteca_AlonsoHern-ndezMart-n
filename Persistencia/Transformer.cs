@@ -76,7 +76,7 @@ namespace Persistencia
                 docDato.Año,        // Del DocumentoDato
                 docDato.Editorial,  // Del DocumentoDato
                 audioLibrodato.Formato,   // Del AudioLibroDato
-                audioLibrodato.Durecion   // Del AudioLibroDato (ojo con el nombre de la propiedad en tu clase)
+                audioLibrodato.Duracion   // Del AudioLibroDato (ojo con el nombre de la propiedad en tu clase)
             );
 
             // 3. Restaurar el estado
@@ -133,7 +133,7 @@ namespace Persistencia
                     documentoDato.Año,
                     documentoDato.Editorial,
                     audioDato.Formato,
-                    audioDato.Durecion
+                    audioDato.Duracion
                 );
                 audio.Estado = estadoEnum;
                 return audio;

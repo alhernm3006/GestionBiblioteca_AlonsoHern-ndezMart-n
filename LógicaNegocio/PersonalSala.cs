@@ -14,13 +14,12 @@ namespace LógicaNegocio
         public class PersonalSala : PersonalBiblioteca
         {
             // Instanciamos los CRUDs necesarios para las operaciones de Sala
-            private Prestamo_CRUD prestamoCRUD;
-            private Ejemplar_CRUD ejemplarCRUD;
+            private Prestamo_CRUD prestamoCRUD = new Prestamo_CRUD();
+            private Ejemplar_CRUD ejemplarCRUD = new Ejemplar_CRUD();
 
-            public PersonalSala(string nss, string usuario) : base(nss, usuario)
+            public PersonalSala()
             {
-                this.prestamoCRUD = new Prestamo_CRUD();
-                this.ejemplarCRUD = new Ejemplar_CRUD();
+             
             }
 
             public void realizarPrestamo(Prestamo prestamo)
