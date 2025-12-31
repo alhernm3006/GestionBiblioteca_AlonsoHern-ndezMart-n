@@ -19,7 +19,6 @@ namespace Persistencia
                 {
                     return null;
                 }
-              
 
                 return Transformer.DocumentoDatoADocumento(dato);
             }

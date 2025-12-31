@@ -37,7 +37,7 @@ namespace LógicaNegocio
             {
                 try
                 {
-                u.Estado = EstadoActivoInactivo.activo;
+                    u.Estado = EstadoActivoInactivo.activo;
                     usuarioCRUD.Insertar(u);
                     return true;
                 }

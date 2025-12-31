@@ -83,20 +83,12 @@ namespace Presentación
                     if (resultado.Equals(DialogResult.OK)) this.Close();  
                 }
             }
-
-            this.DialogResult = DialogResult.OK;
-            this.Close();
         }
 
         private void button_salir_Click(object sender, EventArgs e)
         {
             this.DialogResult = DialogResult.Cancel;
             this.Close();
-        }
-
-        public void ConfigurarBoton(string textoBoton)
-        {
-            button_aceptar.Text = textoBoton;
         }
     }
 }

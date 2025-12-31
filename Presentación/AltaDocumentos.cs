@@ -22,6 +22,11 @@ namespace Presentación
             this.Text = operacion + " de usuario";
             textBox_ISBN.Text = isbn;
             this.personal = personal;
+            label_formato.Visible = false;
+            label_duracion.Visible = false;
+            textBox_formato.Visible = false;
+            textBox_duracion.Visible = false;
+
             if (operacion.Equals("Alta"))
             {
                 this.operacion = operacion;
@@ -41,35 +46,30 @@ namespace Presentación
             this.textBox_editorial.Text = documento.Editorial;
             this.textBox_titulo.Text = documento.Titulo;
             this.operacion = operacion;
-
-          
+            this.radioButton_libro.Enabled = false;
+            this.radioButton_Audiolibro.Enabled = false;
+            this.button_darAlta.Text = "Dar Baja";
+            label_formato.Visible = false;
+            label_duracion.Visible = false;
+            textBox_formato.Visible = false;
+            textBox_duracion.Visible = false;
 
             if (this.documento is LibroPapel)
             {
                 radioButton_libro.Checked = true;
-                
             }
-            else if (this.documento is AudioLibro)
+            else
             {
                 radioButton_Audiolibro.Checked = true;
             }
-
-            this.radioButton_libro.Enabled = false;
-            this.radioButton_Audiolibro.Enabled = false;
-
-           
            
              if (operacion.Equals("Búsqueda"))
             {
-               
                 this.Text = "Datos de documento";
-                // Configuración de campos (IMPORTANTE: Faltaba esto en tu código)
-                textBox_ISBN.ReadOnly = true;
+                this.textBox_ISBN.ReadOnly = true;
                 this.textBox_autor.ReadOnly = true;
                 this.textBox_editorial.ReadOnly = true;
-                this.textBox_ISBN.ReadOnly = true;
                 this.textBox_titulo.ReadOnly = true;
-
 
                 button_darAlta.Hide();
                 button_cancelar.Hide();
@@ -79,63 +79,91 @@ namespace Presentación
 
         private void button_darAlta_Click(object sender, EventArgs e)
         {
-            if (string.IsNullOrWhiteSpace(textBox_ISBN.Text) ||
+            if (this.operacion.Equals("Alta"))
+            {
+                if (string.IsNullOrWhiteSpace(textBox_ISBN.Text) ||
         string.IsNullOrWhiteSpace(textBox_titulo.Text) ||
         string.IsNullOrWhiteSpace(textBox_autor.Text) ||
         string.IsNullOrWhiteSpace(textBox_editorial.Text))
+                {
+                    MessageBox.Show("Por favor, rellene todos los campos obligatorios.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    return;
+                }
+
+                if (!radioButton_Audiolibro.Checked && !radioButton_libro.Checked)
+                {
+                    MessageBox.Show("Por favor, seleccione el tipo de Documento.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    return;
+                }
+
+                // 2. Recoger datos de los controles existentes
+                string isbn = textBox_ISBN.Text;
+                string titulo = textBox_titulo.Text;
+                string autor = textBox_autor.Text;
+                string editorial = textBox_editorial.Text;
+                int anio = DateTime.Now.Year;
+
+                Documento nuevoDoc = null;
+                LógicaNegocio.PersonalAdquisicion p = (LógicaNegocio.PersonalAdquisicion)this.personal;
+
+                // 3. Crear la instancia según el tipo seleccionado (Libro o Audiolibro)
+                if (radioButton_libro.Checked)
+                {
+                    nuevoDoc = new LibroPapel(isbn, titulo, autor, anio, editorial);
+                    p.altaDocumento(nuevoDoc);
+
+                    DialogResult resultado = MessageBox.Show("Documento añadido", "Aviso", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+                    if (resultado.Equals(DialogResult.OK)) this.Close();
+                }
+                else if (radioButton_Audiolibro.Checked)
+                {
+                    // NOTA: Faltan campos en la interfaz para 'Formato' y 'Duración'.
+                    // Se usan valores por defecto para evitar errores de compilación.
+                    if(string.IsNullOrWhiteSpace(textBox_formato.Text) || string.IsNullOrWhiteSpace(textBox_duracion.Text)){
+                        return;
+                    }
+                    string formato = textBox_formato.Text;
+                    float duracion = float.Parse(textBox_duracion.Text);
+
+                    nuevoDoc = new AudioLibro(isbn, titulo, autor, anio, editorial, formato, duracion);
+                    p.altaDocumento(nuevoDoc);
+                    DialogResult resultado = MessageBox.Show("Documento añadido", "Aviso", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+                    if (resultado.Equals(DialogResult.OK)) this.Close();
+                }
+            }else if (this.operacion.Equals("Baja"))
             {
-                MessageBox.Show("Por favor, rellene todos los campos obligatorios.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                return;
+                DialogResult resultado = MessageBox.Show("¿Está seguro que desea dar de baja el documento?", "Aviso", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+                if (resultado.Equals(DialogResult.Yes))
+                {
+                    LógicaNegocio.PersonalAdquisicion p = (LógicaNegocio.PersonalAdquisicion)this.personal;
+                    p.bajaDocumento(textBox_ISBN.Text);
+                    DialogResult r2 = MessageBox.Show("Documento eliminado", "Aviso", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+                    if (resultado.Equals(DialogResult.OK)) this.Close();
+                }
             }
+        }
 
-            // 2. Recoger datos de los controles existentes
-            string isbn = textBox_ISBN.Text;
-            string titulo = textBox_titulo.Text;
-            string autor = textBox_autor.Text;
-            string editorial = textBox_editorial.Text;
-
-            // NOTA: El formulario actual no tiene campo de texto para el "Año", 
-            // por lo que usamos el año actual o 0 como valor por defecto.
-            int anio = DateTime.Now.Year;
-
-            Documento nuevoDocumento = null;
-
-            LógicaNegocio.PersonalAdquisicion p = (LógicaNegocio.PersonalAdquisicion)this.personal;
-
-            // 3. Crear la instancia según el tipo seleccionado (Libro o Audiolibro)
-            if (radioButton_libro.Checked)
+        private void radioButton_Audiolibro_CheckedChanged(object sender, EventArgs e)
+        {
+            if (radioButton_Audiolibro.Checked)
             {
-                nuevoDocumento = new LibroPapel(isbn, titulo, autor, anio, editorial);
-                p.altaDocumento(nuevoDocumento);
-                
-                DialogResult resultado = MessageBox.Show("Documento añadido", "Aviso", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
-                if (resultado.Equals(DialogResult.OK)) this.Close();
-            }
-            else if (radioButton_Audiolibro.Checked)
-            {
-                // NOTA: Faltan campos en la interfaz para 'Formato' y 'Duración'.
-                // Se usan valores por defecto para evitar errores de compilación.
-                string formato = "MP3";
-                float duracion = 0.0f;
-
-                nuevoDocumento = new AudioLibro(isbn, titulo, autor, anio, editorial, formato, duracion);
-                p.altaDocumento(nuevoDocumento);
-                DialogResult resultado = MessageBox.Show("Documento añadido", "Aviso", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
-                if (resultado.Equals(DialogResult.OK)) this.Close();
+                label_formato.Visible = true;
+                label_duracion.Visible = true;
+                textBox_formato.Visible = true;
+                textBox_duracion.Visible = true;
             }
             else
             {
-                MessageBox.Show("Debe seleccionar si es Libro o Audiolibro.", "Aviso", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                return;
+                label_formato.Visible = false;
+                label_duracion.Visible = false;
+                textBox_formato.Visible = false;
+                textBox_duracion.Visible = false;
             }
+        }
 
-            // Aseguramos que el estado sea activo al darlo de alta (el constructor lo pone inactivo por defecto)
-            nuevoDocumento.Estado = EstadoActivoInactivo.activo;
-
-            // 4. Llamar a la Lógica de Negocio
-           
-
-
+        private void button_cancelar_Click(object sender, EventArgs e)
+        {
+            this.Close();
         }
     }
 }

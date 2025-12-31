@@ -26,6 +26,7 @@ namespace LógicaNegocio
         {
             try
             {
+                doc.Estado = EstadoActivoInactivo.activo;
                 if (doc is LibroPapel libro)
                 {
                     libroCRUD.Insertar(libro);
