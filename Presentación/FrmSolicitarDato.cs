@@ -16,13 +16,15 @@ namespace Presentación
     {
         private LógicaNegocio.PersonalBiblioteca personal;
         private string op;
-        public FrmSolicitarDato(string titulo, string etiqueta, LógicaNegocio.PersonalBiblioteca personal)
+        private string etiqueta;
+       /* public FrmSolicitarDato(string titulo, string etiqueta, LógicaNegocio.PersonalBiblioteca personal)
         {
             InitializeComponent();
             this.Text = titulo;        // Ej: "Introducir DNI"
             this.lblEtiqueta.Text = etiqueta; // Ej: "DNI:"
             this.personal = personal;
-        }
+            
+        }*/
         public FrmSolicitarDato(string titulo, string etiqueta, string op, LógicaNegocio.PersonalBiblioteca personal)
         {
             InitializeComponent();
@@ -30,6 +32,7 @@ namespace Presentación
             this.lblEtiqueta.Text = etiqueta; // Ej: "DNI:"
             this.op = op;
             this.personal = personal;
+            this.etiqueta = etiqueta;
         }
 
         private void button_aceptar_Click(object sender, EventArgs e)
@@ -39,11 +42,11 @@ namespace Presentación
                 MessageBox.Show("El campo no puede estar vacío.");
                 return;
             }
-
+            
             // Eliminamos el DialogResult.OK aquí para controlar mejor el flujo de ventanas
             // this.DialogResult = DialogResult.OK; 
 
-            if (this.op.Equals("Alta"))
+            if( (this.op.Equals("Alta")) && (this.etiqueta=="DNI:"))
             {
                 // Comprobamos si el usuario YA existe
                 if (personal.getUsuario(textBox_DNI.Text) != null)
@@ -69,7 +72,7 @@ namespace Presentación
                     this.Close();
                 }
             }
-            else if (this.op.Equals("Baja"))
+            else if (this.op.Equals("Baja") && (this.etiqueta == "DNI:"))
             {
                 // ... (resto del código igual para Baja) ...
                 if (personal.getUsuario(textBox_DNI.Text) != null)
@@ -96,7 +99,7 @@ namespace Presentación
                     }
                 }
             }
-            else if (this.op.Equals("Búsqueda"))
+            else if (this.op.Equals("Búsqueda") && (this.etiqueta == "DNI:"))
             {
                 Usuario usuario= personal.getUsuario(textBox_DNI.Text);
                 if (usuario == null || usuario.Estado==EstadoActivoInactivo.inactivo)
@@ -135,8 +138,109 @@ namespace Presentación
                     ).Show();
                     this.Close();
                 }
+
+
             }
-        }
+
+            if ((this.op.Equals("Alta")) && (this.etiqueta == "ISBN:"))
+            {
+                LógicaNegocio.PersonalAdquisicion p = (LógicaNegocio.PersonalAdquisicion)personal;
+                // Comprobamos si el usuario YA existe
+                if (p.buscarPorISBN((textBox_DNI.Text)) != null)
+                {
+                    DialogResult resultado = MessageBox.Show("¿Quieres introducir otro?", "Ya existe un documento con ese ISBN", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+                    if (resultado.Equals(DialogResult.Yes))
+                    {
+                        this.Hide();
+                        new AltaDocumentos(textBox_DNI.Text, this.op, personal).Show();
+                        this.Close();
+                    }
+                    else
+                    {
+                        this.Close();
+                    }
+
+                }
+                else
+                {
+                    // --- CÓDIGO AÑADIDO: Si no existe, procedemos al Alta ---
+                    this.Hide();
+                    // Abrimos el formulario de detalle pasando el DNI, la operación y la referencia al personal
+                    new AltaDocumentos(textBox_DNI.Text, this.op, this.personal).Show();
+                    this.Close();
+                }
+
+            }
+            else if (this.op.Equals("Baja") && (this.etiqueta == "ISBN:"))
+            {
+                LógicaNegocio.PersonalAdquisicion p = (LógicaNegocio.PersonalAdquisicion)personal;
+                // ... (resto del código igual para Baja) ...
+                if (p.buscarPorISBN((textBox_DNI.Text)) != null)
+                {
+                    // Lógica existente para cuando SI existe en Baja: mostrar detalles para borrar
+                    this.Hide();
+                    // Nota: aquí usabas el constructor de 4 parámetros, asegúrate de que exista
+                    new AltaDocumentos(textBox_DNI.Text, this.op, p.buscarPorISBN((textBox_DNI.Text)), this.personal).Show();
+                    this.Close();
+                }
+                else
+                {
+                    // Lógica existente para cuando NO existe en Baja: preguntar de nuevo
+                    DialogResult resultado = MessageBox.Show("¿Quieres introducir otro?", "No existe un documento con ese ISBN", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+                    if (resultado.Equals(DialogResult.Yes))
+                    {
+                        this.Hide();
+                        new FrmSolicitarDato("Introducir ISBN","ISBN:", this.op, personal).Show();
+                        this.Close();
+                    }
+                    else
+                    {
+                        this.Close();
+                    }
+                }
+            }
+            else if (this.op.Equals("Búsqueda") && (this.etiqueta == "ISBN:"))
+            {
+                LógicaNegocio.PersonalAdquisicion p = (LógicaNegocio.PersonalAdquisicion)personal;
+               // Usuario usuario = personal.getUsuario(textBox_DNI.Text);
+                if (p.buscarPorISBN((textBox_DNI.Text)) == null || p.buscarPorISBN((textBox_DNI.Text)) .Estado== EstadoActivoInactivo.inactivo)
+                {
+
+                    // Si NO existe, mostramos el mensaje correcto (en tu código original decía "Ya existe")
+                    DialogResult resultado = MessageBox.Show(
+                        "¿Quieres introducir otro?",
+                        "No existe un documento con ese ISBN",
+                        MessageBoxButtons.YesNo,
+                        MessageBoxIcon.Question
+                    );
+
+                    if (resultado.Equals(DialogResult.Yes))
+                    {
+                        this.Hide();
+                        new FrmSolicitarDato("Introducir ISBN", "ISBN:", this.op, personal).Show();
+                        this.Close();
+                    }
+                    else
+                    {
+                        this.Close();
+                    }
+                }
+                else
+                {
+
+                    // Si SÍ existe, abrimos la ventana de detalles con los datos del usuario
+                    this.Hide();
+                    // Usamos el constructor que acepta DNI, Operación, Nombre y Personal
+                    new AltaDocumentos(
+                        textBox_DNI.Text,
+                        this.op,
+                        p.buscarPorISBN((textBox_DNI.Text)),
+                        this.personal
+                    ).Show();
+                    this.Close();
+                }
+            }
+            }
 
 
 

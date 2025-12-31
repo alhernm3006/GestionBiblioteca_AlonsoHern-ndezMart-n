@@ -151,6 +151,12 @@ namespace LógicaNegocio
             return "Ejemplar no encontrado.";
         }
 
+        public Documento buscarPorISBN(string ISBN)
+        {
+            Documento d=documentoCRUD.Buscar(ISBN);
+            return d;
+        }
+
         public DateTime fechaDisponibilidad(string isbn)
         {
             // 1. Si hay ejemplares disponibles YA, la fecha es ahora mismo.

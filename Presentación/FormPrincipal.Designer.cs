@@ -99,23 +99,24 @@
             this.documentosToolStripMenuItem.Name = "documentosToolStripMenuItem";
             this.documentosToolStripMenuItem.Size = new System.Drawing.Size(107, 24);
             this.documentosToolStripMenuItem.Text = "Documentos";
+            this.documentosToolStripMenuItem.DropDownItemClicked += new System.Windows.Forms.ToolStripItemClickedEventHandler(this.documentosToolStripMenuItem_DropDownItemClicked);
             // 
             // altaToolStripMenuItem1
             // 
             this.altaToolStripMenuItem1.Name = "altaToolStripMenuItem1";
-            this.altaToolStripMenuItem1.Size = new System.Drawing.Size(157, 26);
+            this.altaToolStripMenuItem1.Size = new System.Drawing.Size(224, 26);
             this.altaToolStripMenuItem1.Text = "Alta";
             // 
             // bajaToolStripMenuItem1
             // 
             this.bajaToolStripMenuItem1.Name = "bajaToolStripMenuItem1";
-            this.bajaToolStripMenuItem1.Size = new System.Drawing.Size(157, 26);
+            this.bajaToolStripMenuItem1.Size = new System.Drawing.Size(224, 26);
             this.bajaToolStripMenuItem1.Text = "Baja";
             // 
             // búsquedaToolStripMenuItem1
             // 
             this.búsquedaToolStripMenuItem1.Name = "búsquedaToolStripMenuItem1";
-            this.búsquedaToolStripMenuItem1.Size = new System.Drawing.Size(157, 26);
+            this.búsquedaToolStripMenuItem1.Size = new System.Drawing.Size(224, 26);
             this.búsquedaToolStripMenuItem1.Text = "Búsqueda";
             // 
             // ejemplaresToolStripMenuItem

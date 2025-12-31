@@ -11,9 +11,15 @@ namespace Persistencia
     {
         public Documento Buscar(string isbn)
         {
-            if (BD.TablaDocumentos.Contains(isbn))
+            if (BD.TablaDocumentos.Contains(isbn) )
             {
                 DocumentoDato dato = (DocumentoDato) BD.TablaDocumentos[isbn];
+
+                if (dato.Estado == "inactivo")
+                {
+                    return null;
+                }
+              
 
                 return Transformer.DocumentoDatoADocumento(dato);
             }
