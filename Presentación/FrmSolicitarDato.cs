@@ -1,4 +1,5 @@
 ﻿using LógicaNegocio;
+using ModeloDominio;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -13,16 +14,16 @@ namespace Presentación
 {
     public partial class FrmSolicitarDato : Form
     {
-        private PersonalBiblioteca personal;
+        private LógicaNegocio.PersonalBiblioteca personal;
         private string op;
-        public FrmSolicitarDato(string titulo, string etiqueta, PersonalBiblioteca personal)
+        public FrmSolicitarDato(string titulo, string etiqueta, LógicaNegocio.PersonalBiblioteca personal)
         {
             InitializeComponent();
             this.Text = titulo;        // Ej: "Introducir DNI"
             this.lblEtiqueta.Text = etiqueta; // Ej: "DNI:"
             this.personal = personal;
         }
-        public FrmSolicitarDato(string titulo, string etiqueta, string op, PersonalBiblioteca personal)
+        public FrmSolicitarDato(string titulo, string etiqueta, string op, LógicaNegocio.PersonalBiblioteca personal)
         {
             InitializeComponent();
             this.Text = titulo;        // Ej: "Introducir DNI"
@@ -97,9 +98,10 @@ namespace Presentación
             }
             else if (this.op.Equals("Búsqueda"))
             {
-
-                if (personal.getUsuario(textBox_DNI.Text) == null)
+                Usuario usuario= personal.getUsuario(textBox_DNI.Text);
+                if (usuario == null || usuario.Estado==EstadoActivoInactivo.inactivo)
                 {
+                   
                     // Si NO existe, mostramos el mensaje correcto (en tu código original decía "Ya existe")
                     DialogResult resultado = MessageBox.Show(
                         "¿Quieres introducir otro?",
@@ -121,6 +123,7 @@ namespace Presentación
                 }
                 else
                 {
+                  
                     // Si SÍ existe, abrimos la ventana de detalles con los datos del usuario
                     this.Hide();
                     // Usamos el constructor que acepta DNI, Operación, Nombre y Personal

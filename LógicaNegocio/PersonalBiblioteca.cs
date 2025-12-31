@@ -37,6 +37,7 @@ namespace LógicaNegocio
             {
                 try
                 {
+                u.Estado = EstadoActivoInactivo.activo;
                     usuarioCRUD.Insertar(u);
                     return true;
                 }
@@ -47,6 +48,7 @@ namespace LógicaNegocio
             {
                 try
                 {
+                   
                     usuarioCRUD.Eliminar(dni);
                     return true;
                 }

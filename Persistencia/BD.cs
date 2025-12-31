@@ -93,9 +93,11 @@ namespace Persistencia
         {
             get
             {
-                if (tablaAudioLibros == null)
+                // CORREGIDO: Antes comprobaba tablaAudioLibros
+                if (tablaEjemplares == null)
                 {
-                    tablaAudioLibros = new Tabla<String>();
+                    // CORREGIDO: Antes inicializaba tablaAudioLibros y con Tabla<String>
+                    tablaEjemplares = new Tabla<ClaveEjemplar>();
                 }
                 return tablaEjemplares;
             }
@@ -105,9 +107,11 @@ namespace Persistencia
         {
             get
             {
-                if (tablaAudioLibros == null)
+                // CORREGIDO: Antes comprobaba tablaAudioLibros
+                if (tablaPrestamosEjemplares == null)
                 {
-                    tablaAudioLibros = new Tabla<String>();
+                    // CORREGIDO: Antes inicializaba tablaAudioLibros y con Tabla<String>
+                    tablaPrestamosEjemplares = new Tabla<ClavePrestamoEjemplar>();
                 }
                 return tablaPrestamosEjemplares;
             }
