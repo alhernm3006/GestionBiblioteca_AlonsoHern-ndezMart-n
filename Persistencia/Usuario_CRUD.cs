@@ -25,6 +25,13 @@ namespace Persistencia
             if (BD.TablaUsuarios.Contains(dni))
             {
                 UsuarioDato uDato = (UsuarioDato)BD.TablaUsuarios[dni];
+
+                // AGREGAR ESTA COMPROBACIÓN:
+                // Si el usuario está inactivo, devolvemos null como si no existiera
+                if (uDato.Estado == "inactivo")
+                {
+                    return null;
+                }
                 return Transformer.UsuarioDatoAUsuario(uDato);
             }
             return null;
