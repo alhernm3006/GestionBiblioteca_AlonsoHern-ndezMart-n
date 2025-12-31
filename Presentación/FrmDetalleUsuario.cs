@@ -1,4 +1,5 @@
-﻿using ModeloDominio;
+﻿using LógicaNegocio;
+using ModeloDominio;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -14,24 +15,39 @@ namespace Presentación
 {
     public partial class FrmDetalleUsuario : Form
     {
-        public Usuario UsuarioCreado;
-        public FrmDetalleUsuario(string dni, string operacion)
+        private LógicaNegocio.PersonalBiblioteca personal;
+        private string operacion;
+        public FrmDetalleUsuario(string dni, string operacion, LógicaNegocio.PersonalBiblioteca personal)
         {
             InitializeComponent();
             this.Text = operacion+" de usuario";
             textBox_DNI.Text = dni;
+            this.personal = personal;
             if (operacion.Equals("Alta"))
             {
+                this.operacion = operacion;
                 textBox_DNI.ReadOnly = true;
-            }else if (operacion.Equals("Baja"))
-            {
-                textBox_DNI.ReadOnly = true;
-                textBox_Nombre.ReadOnly = true;
             }
-            
         }
-
-   
+        public FrmDetalleUsuario(string dni, string operacion, string nombre, LógicaNegocio.PersonalBiblioteca personal)
+        {
+            InitializeComponent();
+            this.Text = operacion + " de usuario";
+            textBox_DNI.Text = dni;
+            this.personal = personal;
+            if (operacion.Equals("Baja"))
+            {
+                this.operacion = operacion;
+                textBox_DNI.ReadOnly = true;
+                textBox_Nombre.Text = nombre;
+                textBox_Nombre.ReadOnly = true;
+            }else if (operacion.Equals("Búsqueda"))
+            {
+                this.operacion = operacion;
+                button_aceptar.Hide();
+                button_salir.Hide();
+            }
+        }
 
         private void button_aceptar_Click(object sender, EventArgs e)
         {
@@ -40,11 +56,25 @@ namespace Presentación
             {
                 if (string.IsNullOrWhiteSpace(textBox_Nombre.Text))
                 {
-                     MessageBox.Show("Debes introducir un nombre para el usuario", "Error");
+                    MessageBox.Show("Debes introducir un nombre para el usuario", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                     return;
                 }
-                // Creamos el usuario para que lo recoja el formulario principal
-                UsuarioCreado = new Usuario(textBox_DNI.Text, textBox_Nombre.Text);
+                else
+                {
+                    personal.altaUsuario(new Usuario(textBox_DNI.Text, textBox_Nombre.Text));
+                    DialogResult resultado = MessageBox.Show("Usuario añadido", "Aviso", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+                    if (resultado.Equals(DialogResult.OK)) this.Close();
+                }
+            }
+            else
+            {
+                DialogResult resultado = MessageBox.Show("¿Está seguro que desea dar de baja al usuario?", "Aviso", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+                if (resultado.Equals(DialogResult.Yes))
+                {
+                    personal.bajaUsuario(textBox_Nombre.Text);
+                    DialogResult r2 = MessageBox.Show("Usuario eliminado", "Aviso", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+                    if (resultado.Equals(DialogResult.OK)) this.Close();  
+                }
             }
 
             this.DialogResult = DialogResult.OK;

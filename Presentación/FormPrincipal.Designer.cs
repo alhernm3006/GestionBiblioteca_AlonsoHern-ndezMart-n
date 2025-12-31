@@ -1,6 +1,6 @@
 ﻿namespace Presentación
 {
-    partial class menuPersonalSala
+    partial class FrmPrincipal
     {
         /// <summary>
         /// Required designer variable.
@@ -34,15 +34,15 @@
             this.bajaToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.búsquedaToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.documentosToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.ejemplaresToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.préstamosToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.configuraciónToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.altaToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
             this.bajaToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
             this.búsquedaToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
+            this.ejemplaresToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.altaToolStripMenuItem2 = new System.Windows.Forms.ToolStripMenuItem();
             this.bajaToolStripMenuItem2 = new System.Windows.Forms.ToolStripMenuItem();
             this.búsquedaToolStripMenuItem2 = new System.Windows.Forms.ToolStripMenuItem();
+            this.préstamosToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.configuraciónToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.menuStrip1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -77,7 +77,6 @@
             this.altaToolStripMenuItem.Name = "altaToolStripMenuItem";
             this.altaToolStripMenuItem.Size = new System.Drawing.Size(224, 26);
             this.altaToolStripMenuItem.Text = "Alta";
-            this.altaToolStripMenuItem.Click += new System.EventHandler(this.altaToolStripMenuItem_Click);
             // 
             // bajaToolStripMenuItem
             // 
@@ -90,7 +89,6 @@
             this.búsquedaToolStripMenuItem.Name = "búsquedaToolStripMenuItem";
             this.búsquedaToolStripMenuItem.Size = new System.Drawing.Size(224, 26);
             this.búsquedaToolStripMenuItem.Text = "Búsqueda";
-            this.búsquedaToolStripMenuItem.Click += new System.EventHandler(this.búsquedaToolStripMenuItem_Click);
             // 
             // documentosToolStripMenuItem
             // 
@@ -99,8 +97,26 @@
             this.bajaToolStripMenuItem1,
             this.búsquedaToolStripMenuItem1});
             this.documentosToolStripMenuItem.Name = "documentosToolStripMenuItem";
-            this.documentosToolStripMenuItem.Size = new System.Drawing.Size(107, 26);
+            this.documentosToolStripMenuItem.Size = new System.Drawing.Size(107, 24);
             this.documentosToolStripMenuItem.Text = "Documentos";
+            // 
+            // altaToolStripMenuItem1
+            // 
+            this.altaToolStripMenuItem1.Name = "altaToolStripMenuItem1";
+            this.altaToolStripMenuItem1.Size = new System.Drawing.Size(157, 26);
+            this.altaToolStripMenuItem1.Text = "Alta";
+            // 
+            // bajaToolStripMenuItem1
+            // 
+            this.bajaToolStripMenuItem1.Name = "bajaToolStripMenuItem1";
+            this.bajaToolStripMenuItem1.Size = new System.Drawing.Size(157, 26);
+            this.bajaToolStripMenuItem1.Text = "Baja";
+            // 
+            // búsquedaToolStripMenuItem1
+            // 
+            this.búsquedaToolStripMenuItem1.Name = "búsquedaToolStripMenuItem1";
+            this.búsquedaToolStripMenuItem1.Size = new System.Drawing.Size(157, 26);
+            this.búsquedaToolStripMenuItem1.Text = "Búsqueda";
             // 
             // ejemplaresToolStripMenuItem
             // 
@@ -109,65 +125,47 @@
             this.bajaToolStripMenuItem2,
             this.búsquedaToolStripMenuItem2});
             this.ejemplaresToolStripMenuItem.Name = "ejemplaresToolStripMenuItem";
-            this.ejemplaresToolStripMenuItem.Size = new System.Drawing.Size(96, 26);
+            this.ejemplaresToolStripMenuItem.Size = new System.Drawing.Size(96, 24);
             this.ejemplaresToolStripMenuItem.Text = "Ejemplares";
-            // 
-            // préstamosToolStripMenuItem
-            // 
-            this.préstamosToolStripMenuItem.Name = "préstamosToolStripMenuItem";
-            this.préstamosToolStripMenuItem.Size = new System.Drawing.Size(91, 26);
-            this.préstamosToolStripMenuItem.Text = "Préstamos";
-            // 
-            // configuraciónToolStripMenuItem
-            // 
-            this.configuraciónToolStripMenuItem.Name = "configuraciónToolStripMenuItem";
-            this.configuraciónToolStripMenuItem.Size = new System.Drawing.Size(116, 26);
-            this.configuraciónToolStripMenuItem.Text = "Configuración";
-            // 
-            // altaToolStripMenuItem1
-            // 
-            this.altaToolStripMenuItem1.Name = "altaToolStripMenuItem1";
-            this.altaToolStripMenuItem1.Size = new System.Drawing.Size(224, 26);
-            this.altaToolStripMenuItem1.Text = "Alta";
-            // 
-            // bajaToolStripMenuItem1
-            // 
-            this.bajaToolStripMenuItem1.Name = "bajaToolStripMenuItem1";
-            this.bajaToolStripMenuItem1.Size = new System.Drawing.Size(224, 26);
-            this.bajaToolStripMenuItem1.Text = "Baja";
-            // 
-            // búsquedaToolStripMenuItem1
-            // 
-            this.búsquedaToolStripMenuItem1.Name = "búsquedaToolStripMenuItem1";
-            this.búsquedaToolStripMenuItem1.Size = new System.Drawing.Size(224, 26);
-            this.búsquedaToolStripMenuItem1.Text = "Búsqueda";
             // 
             // altaToolStripMenuItem2
             // 
             this.altaToolStripMenuItem2.Name = "altaToolStripMenuItem2";
-            this.altaToolStripMenuItem2.Size = new System.Drawing.Size(224, 26);
+            this.altaToolStripMenuItem2.Size = new System.Drawing.Size(157, 26);
             this.altaToolStripMenuItem2.Text = "Alta";
             // 
             // bajaToolStripMenuItem2
             // 
             this.bajaToolStripMenuItem2.Name = "bajaToolStripMenuItem2";
-            this.bajaToolStripMenuItem2.Size = new System.Drawing.Size(224, 26);
+            this.bajaToolStripMenuItem2.Size = new System.Drawing.Size(157, 26);
             this.bajaToolStripMenuItem2.Text = "Baja";
             // 
             // búsquedaToolStripMenuItem2
             // 
             this.búsquedaToolStripMenuItem2.Name = "búsquedaToolStripMenuItem2";
-            this.búsquedaToolStripMenuItem2.Size = new System.Drawing.Size(224, 26);
+            this.búsquedaToolStripMenuItem2.Size = new System.Drawing.Size(157, 26);
             this.búsquedaToolStripMenuItem2.Text = "Búsqueda";
             // 
-            // menuPersonalSala
+            // préstamosToolStripMenuItem
+            // 
+            this.préstamosToolStripMenuItem.Name = "préstamosToolStripMenuItem";
+            this.préstamosToolStripMenuItem.Size = new System.Drawing.Size(91, 24);
+            this.préstamosToolStripMenuItem.Text = "Préstamos";
+            // 
+            // configuraciónToolStripMenuItem
+            // 
+            this.configuraciónToolStripMenuItem.Name = "configuraciónToolStripMenuItem";
+            this.configuraciónToolStripMenuItem.Size = new System.Drawing.Size(116, 24);
+            this.configuraciónToolStripMenuItem.Text = "Configuración";
+            // 
+            // FrmPrincipal
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 450);
             this.Controls.Add(this.menuStrip1);
             this.MainMenuStrip = this.menuStrip1;
-            this.Name = "menuPersonalSala";
+            this.Name = "FrmPrincipal";
             this.Text = "menuPersonalSala";
             this.menuStrip1.ResumeLayout(false);
             this.menuStrip1.PerformLayout();

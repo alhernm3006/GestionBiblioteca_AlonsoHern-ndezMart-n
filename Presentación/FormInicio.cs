@@ -51,7 +51,7 @@ namespace Presentación
             if (personal.iniciarSesion(nombre, password))
             {
                 // Pasamos el objeto 'personal' al menú para controlar permisos
-                menuPersonalSala menu = new menuPersonalSala((LógicaNegocio.PersonalSala) personal);
+                FrmPrincipal menu = new FrmPrincipal(personal);
                 this.Hide();
                 menu.ShowDialog(); // La ejecución se detiene aquí hasta que se cierre el menú
                 this.Close();      // Cierra la app al salir del menú
