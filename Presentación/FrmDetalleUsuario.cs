@@ -44,6 +44,13 @@ namespace Presentación
             }else if (operacion.Equals("Búsqueda"))
             {
                 this.operacion = operacion;
+                this.Text = "Datos de usuario";
+
+                // Configuración de campos (IMPORTANTE: Faltaba esto en tu código)
+                textBox_DNI.ReadOnly = true;
+                textBox_Nombre.Text = nombre;    // Asignamos el nombre que viene de la BD
+                textBox_Nombre.ReadOnly = true;  // Bloqueamos la edición
+
                 button_aceptar.Hide();
                 button_salir.Hide();
             }

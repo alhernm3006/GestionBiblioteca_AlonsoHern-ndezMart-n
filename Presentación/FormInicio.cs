@@ -15,6 +15,8 @@ namespace Presentación
 {
     public partial class FormInicio : Form
     {
+        private string nombre;
+        private string password;
         public FormInicio()
         {
             InitializeComponent();
@@ -22,8 +24,8 @@ namespace Presentación
 
         private void button_entrar_Click(object sender, EventArgs e)
         {
-            string nombre = textBox_nombre.Text;
-            string password = textBox_contraseña.Text;
+            nombre = textBox_nombre.Text;
+            password = textBox_contraseña.Text;
 
             if (string.IsNullOrEmpty(nombre) || string.IsNullOrEmpty(password))
             {

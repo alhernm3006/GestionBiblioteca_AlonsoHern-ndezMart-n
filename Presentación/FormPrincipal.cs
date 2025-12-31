@@ -26,7 +26,7 @@ namespace Presentación
             FrmSolicitarDato solicitud = null;
             switch (e.ClickedItem.Text)
             {
-                case ("Búsqueda"): solicitud = new FrmSolicitarDato("Introducir DNI", "DNI:", personal); break;
+                //case ("Búsqueda"): solicitud = new FrmSolicitarDato("Introducir DNI", "DNI:", personal); break;
                 default: solicitud = new FrmSolicitarDato("Introducir DNI", "DNI:", e.ClickedItem.Text, personal); break;
             }
             solicitud.Show();
