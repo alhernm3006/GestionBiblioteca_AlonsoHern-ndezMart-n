@@ -93,6 +93,7 @@
             this.button_añadirEjemplar.TabIndex = 4;
             this.button_añadirEjemplar.Text = "Añadir ejemplares";
             this.button_añadirEjemplar.UseVisualStyleBackColor = true;
+            this.button_añadirEjemplar.Visible = false;
             // 
             // button_darAlta
             // 

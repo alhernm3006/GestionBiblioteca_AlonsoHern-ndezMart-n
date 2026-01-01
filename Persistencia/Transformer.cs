@@ -146,7 +146,13 @@ namespace Persistencia
 
         {
 
-            return new DocumentoDato(doc.ISBN, doc.Titulo, doc.Autor, doc.Año, doc.Editorial);
+            DocumentoDato dato = new DocumentoDato(doc.ISBN, doc.Titulo, doc.Autor, doc.Año, doc.Editorial);
+
+            // 2. CORRECCIÓN IMPORTANTE: Copiamos el estado del objeto de dominio al objeto de datos.
+            // Sin esto, se guarda siempre como "inactivo" (valor por defecto del constructor de DocumentoDato)
+            dato.Estado = doc.Estado.ToString();
+
+            return dato;
 
         }
 

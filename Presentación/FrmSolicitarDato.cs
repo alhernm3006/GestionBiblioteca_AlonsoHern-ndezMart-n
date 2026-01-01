@@ -177,7 +177,7 @@ namespace Presentación
                     if (resultado.Equals(DialogResult.Yes))
                     {
                         this.Hide();
-                        new FrmSolicitarDato("Introducir ISBN","ISBN:", this.op, personal).Show();
+                        new FrmSolicitarDato("Introducir ISBN", "ISBN:", this.op, personal).Show();
                     }
                     this.Close();
                 }
@@ -185,40 +185,37 @@ namespace Presentación
             else if (this.op.Equals("Búsqueda") && (this.etiqueta == "ISBN:"))
             {
                 LógicaNegocio.PersonalAdquisicion p = (LógicaNegocio.PersonalAdquisicion)personal;
-                Documento d = p.buscarPorISBN((textBox_DNI.Text));
-                if (d == null || d.Estado.Equals(EstadoActivoInactivo.inactivo))
+
+                // Usamos el texto introducido (textBox_DNI se reutiliza para ISBN)
+                Documento d = p.buscarPorISBN(textBox_DNI.Text);
+
+                // Verificamos si es nulo o está inactivo
+                if (d == null || d.Estado == EstadoActivoInactivo.inactivo)
                 {
-                    // Si NO existe, mostramos el mensaje correcto (en tu código original decía "Ya existe")
                     DialogResult resultado = MessageBox.Show(
-                        "¿Quieres introducir otro?",
-                        "No existe un documento con ese ISBN",
+                        "No se ha encontrado ningún documento activo con ese ISBN. ¿Desea buscar otro?",
+                        "Búsqueda sin resultados",
                         MessageBoxButtons.YesNo,
                         MessageBoxIcon.Question
                     );
 
-                    if (resultado.Equals(DialogResult.Yes))
+                    if (resultado == DialogResult.Yes)
                     {
                         this.Hide();
+                        // Reabrimos la ventana para intentarlo de nuevo
                         new FrmSolicitarDato("Introducir ISBN", "ISBN:", this.op, personal).Show();
                     }
                     this.Close();
                 }
                 else
                 {
-
-                    // Si SÍ existe, abrimos la ventana de detalles con los datos del usuario
+                    // SI LO ENCUENTRA: Abrimos el formulario de detalle
                     this.Hide();
-                    // Usamos el constructor que acepta DNI, Operación, Nombre y Personal
-                    new AltaDocumentos(
-                        textBox_DNI.Text,
-                        this.op,
-                        d,
-                        this.personal
-                    ).Show();
+                    new AltaDocumentos(textBox_DNI.Text, this.op, d, this.personal).Show();
                     this.Close();
                 }
             }
-        }
+            }
 
 
 
