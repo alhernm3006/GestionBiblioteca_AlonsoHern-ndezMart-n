@@ -53,6 +53,12 @@
     <Compile Include="AltaDocumentos.Designer.cs">
       <DependentUpon>AltaDocumentos.cs</DependentUpon>
     </Compile>
+    <Compile Include="AltaEjemplar.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="AltaEjemplar.Designer.cs">
+      <DependentUpon>AltaEjemplar.cs</DependentUpon>
+    </Compile>
     <Compile Include="FormInicio.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -81,6 +87,9 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <EmbeddedResource Include="AltaDocumentos.resx">
       <DependentUpon>AltaDocumentos.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="AltaEjemplar.resx">
+      <DependentUpon>AltaEjemplar.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="FormInicio.resx">
       <DependentUpon>FormInicio.cs</DependentUpon>

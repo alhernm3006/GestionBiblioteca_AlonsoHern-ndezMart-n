@@ -35,7 +35,6 @@
             this.búsquedaToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.documentosToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.altaToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
-            this.bajaToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
             this.búsquedaToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
             this.ejemplaresToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.altaToolStripMenuItem2 = new System.Windows.Forms.ToolStripMenuItem();
@@ -94,7 +93,6 @@
             // 
             this.documentosToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.altaToolStripMenuItem1,
-            this.bajaToolStripMenuItem1,
             this.búsquedaToolStripMenuItem1});
             this.documentosToolStripMenuItem.Name = "documentosToolStripMenuItem";
             this.documentosToolStripMenuItem.Size = new System.Drawing.Size(107, 24);
@@ -106,12 +104,6 @@
             this.altaToolStripMenuItem1.Name = "altaToolStripMenuItem1";
             this.altaToolStripMenuItem1.Size = new System.Drawing.Size(224, 26);
             this.altaToolStripMenuItem1.Text = "Alta";
-            // 
-            // bajaToolStripMenuItem1
-            // 
-            this.bajaToolStripMenuItem1.Name = "bajaToolStripMenuItem1";
-            this.bajaToolStripMenuItem1.Size = new System.Drawing.Size(224, 26);
-            this.bajaToolStripMenuItem1.Text = "Baja";
             // 
             // búsquedaToolStripMenuItem1
             // 
@@ -128,23 +120,24 @@
             this.ejemplaresToolStripMenuItem.Name = "ejemplaresToolStripMenuItem";
             this.ejemplaresToolStripMenuItem.Size = new System.Drawing.Size(96, 24);
             this.ejemplaresToolStripMenuItem.Text = "Ejemplares";
+            this.ejemplaresToolStripMenuItem.DropDownItemClicked += new System.Windows.Forms.ToolStripItemClickedEventHandler(this.ejemplaresToolStripMenuItem_DropDownItemClicked);
             // 
             // altaToolStripMenuItem2
             // 
             this.altaToolStripMenuItem2.Name = "altaToolStripMenuItem2";
-            this.altaToolStripMenuItem2.Size = new System.Drawing.Size(157, 26);
+            this.altaToolStripMenuItem2.Size = new System.Drawing.Size(224, 26);
             this.altaToolStripMenuItem2.Text = "Alta";
             // 
             // bajaToolStripMenuItem2
             // 
             this.bajaToolStripMenuItem2.Name = "bajaToolStripMenuItem2";
-            this.bajaToolStripMenuItem2.Size = new System.Drawing.Size(157, 26);
+            this.bajaToolStripMenuItem2.Size = new System.Drawing.Size(224, 26);
             this.bajaToolStripMenuItem2.Text = "Baja";
             // 
             // búsquedaToolStripMenuItem2
             // 
             this.búsquedaToolStripMenuItem2.Name = "búsquedaToolStripMenuItem2";
-            this.búsquedaToolStripMenuItem2.Size = new System.Drawing.Size(157, 26);
+            this.búsquedaToolStripMenuItem2.Size = new System.Drawing.Size(224, 26);
             this.búsquedaToolStripMenuItem2.Text = "Búsqueda";
             // 
             // préstamosToolStripMenuItem
@@ -187,7 +180,6 @@
         private System.Windows.Forms.ToolStripMenuItem préstamosToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem configuraciónToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem altaToolStripMenuItem1;
-        private System.Windows.Forms.ToolStripMenuItem bajaToolStripMenuItem1;
         private System.Windows.Forms.ToolStripMenuItem búsquedaToolStripMenuItem1;
         private System.Windows.Forms.ToolStripMenuItem altaToolStripMenuItem2;
         private System.Windows.Forms.ToolStripMenuItem bajaToolStripMenuItem2;

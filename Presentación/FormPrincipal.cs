@@ -51,5 +51,18 @@ namespace Presentación
             }
             solicitud.Show();
         }
+
+       
+
+        private void ejemplaresToolStripMenuItem_DropDownItemClicked(object sender, ToolStripItemClickedEventArgs e)
+        {
+            FrmSolicitarDato solicitud = null;
+            switch (e.ClickedItem.Text)
+            {
+                //case ("Búsqueda"): solicitud = new FrmSolicitarDato("Introducir DNI", "DNI:", personal); break;
+                default: solicitud = new FrmSolicitarDato("Introducir codigo", "Codigo:", e.ClickedItem.Text, personal); break;
+            }
+            solicitud.Show();
+        }
     } 
 }

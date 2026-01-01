@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
+
 namespace ModeloDominio
 {
     public  class Ejemplar
@@ -12,6 +13,9 @@ namespace ModeloDominio
         private String codigo;
         private EstadoEjemplar estado;
         private PersonalAdquisicion trabajador;
+        private Documento documentoSeleccionado;
+     
+      
 
         public Ejemplar(Documento documento, string codigo, PersonalAdquisicion trabajador)
         {
@@ -20,6 +24,8 @@ namespace ModeloDominio
             this.estado = EstadoEjemplar.archivado;
             this.trabajador = trabajador;
         }
+
+     
 
         public Documento Documento
         {

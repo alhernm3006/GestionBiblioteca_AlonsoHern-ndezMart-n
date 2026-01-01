@@ -215,7 +215,32 @@ namespace Presentación
                     this.Close();
                 }
             }
+            if ((this.op.Equals("Alta")) && (this.etiqueta == "Codigo:"))
+            {
+                // Comprobamos si el usuario YA existe
+                if (personal.getUsuario(textBox_DNI.Text) != null)
+                {
+                    DialogResult resultado = MessageBox.Show("¿Quieres introducir otro?", "Ya existe un ejemplar con ese codigo", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+                    if (resultado.Equals(DialogResult.Yes))
+                    {
+                        this.Hide();
+                        new FrmSolicitarDato("Introducir codigo", "codigo:", this.op, personal).Show();
+                        this.Close();
+                    }
+                    else
+                    {
+                        this.Close();
+                    }
+                }
+                else
+                {
+                    this.Hide();
+                    // Abrimos el formulario de detalle pasando el DNI, la operación y la referencia al personal
+                    new FrmDetalleUsuario(textBox_DNI.Text, this.op, this.personal).Show();
+                    this.Close();
+                }
             }
+        }
 
 
 
