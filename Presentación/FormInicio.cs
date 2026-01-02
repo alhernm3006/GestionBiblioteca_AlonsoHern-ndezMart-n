@@ -1,6 +1,7 @@
 ﻿
 using LógicaNegocio;
 using ModeloDominio;
+using Persistencia;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
