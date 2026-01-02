@@ -15,19 +15,20 @@ namespace Presentación
 {
     public partial class FormInicio : Form
     {
-        private string nombre;
+        private string idUsuario;
         private string password;
         public FormInicio()
         {
+            
             InitializeComponent();
         }
 
         private void button_entrar_Click(object sender, EventArgs e)
         {
-            nombre = textBox_nombre.Text;
+            idUsuario = textBox_nombre.Text;
             password = textBox_contraseña.Text;
 
-            if (string.IsNullOrEmpty(nombre) || string.IsNullOrEmpty(password))
+            if (string.IsNullOrEmpty(idUsuario) || string.IsNullOrEmpty(password))
             {
                 MessageBox.Show("Por favor, introduce nombre y contraseña.");
                 return;
@@ -50,7 +51,7 @@ namespace Presentación
             }
 
             // Validar credenciales
-            if (personal.iniciarSesion(nombre, password))
+            if (personal.iniciarSesion(idUsuario, password))
             {
                 // Pasamos el objeto 'personal' al menú para controlar permisos
                 FrmPrincipal menu = new FrmPrincipal(personal);

@@ -8,16 +8,16 @@ namespace ModeloDominio
 {
     public abstract class PersonalBiblioteca
     {
-        private String nss;
-        private String usuario;
+        private String idUsuario;
+        private String contraseña;
         
-        public PersonalBiblioteca(String nss, String usuario) {
-            this.nss = nss;
-            this.usuario = usuario;
+        public PersonalBiblioteca(String id, String contraseña) {
+            this.idUsuario = id;
+            this.contraseña = contraseña;
         }
-        public String NSS{ get { return nss; } }
+        public String IdUsuario{ get { return idUsuario; } }
 
-        public String Usuario { get { return usuario; } }
+        public String Contraseña { get { return contraseña; } }
 
     }
 }

@@ -20,6 +20,8 @@ namespace LógicaNegocio
         
         }
 
+      
+
         // --- Gestión de Documentos ---
 
         public bool altaDocumento(Documento doc)
@@ -140,6 +142,11 @@ namespace LógicaNegocio
             List<Ejemplar> lista = ejemplarCRUD.ListarPorDocumento(isbn);
             // Usamos LINQ para ver si alguno está disponible
             return lista.Any(e => e.Estado == EstadoEjemplar.disponible);
+        }
+
+        public Ejemplar getEjemplar(String isbnDocu,String codigo)
+        {
+           return  ejemplarCRUD.Buscar(isbnDocu,codigo);
         }
 
         public string informacionEjemplar(string isbn, string codigo)

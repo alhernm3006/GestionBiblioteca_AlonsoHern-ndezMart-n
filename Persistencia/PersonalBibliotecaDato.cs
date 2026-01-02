@@ -10,10 +10,12 @@ namespace Persistencia
     internal class PersonalBibliotecaDato: Entity<String>
     {
         private String usuario;
+        private String contraseña;
         private String rol;
 
-        public PersonalBibliotecaDato (String nss, String usuario, String rol): base(usuario)
+        public PersonalBibliotecaDato ( String usuario,String contraseña, String rol): base(usuario)
         {
+            this.contraseña = contraseña;
             this.usuario = usuario;
             this.rol = rol;
         }
@@ -28,6 +30,11 @@ namespace Persistencia
         {
             get { return rol; }
             set { rol = value; }
+        }
+
+        public String Contraseña
+        {
+            get { return contraseña; }
         }
     }
 }

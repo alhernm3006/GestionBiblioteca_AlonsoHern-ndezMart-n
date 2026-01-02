@@ -17,14 +17,14 @@ namespace Presentación
         private LógicaNegocio.PersonalBiblioteca personal;
         private string op;
         private string etiqueta;
-       /* public FrmSolicitarDato(string titulo, string etiqueta, LógicaNegocio.PersonalBiblioteca personal)
-        {
-            InitializeComponent();
-            this.Text = titulo;        // Ej: "Introducir DNI"
-            this.lblEtiqueta.Text = etiqueta; // Ej: "DNI:"
-            this.personal = personal;
-            
-        }*/
+        /* public FrmSolicitarDato(string titulo, string etiqueta, LógicaNegocio.PersonalBiblioteca personal)
+         {
+             InitializeComponent();
+             this.Text = titulo;        // Ej: "Introducir DNI"
+             this.lblEtiqueta.Text = etiqueta; // Ej: "DNI:"
+             this.personal = personal;
+
+         }*/
         public FrmSolicitarDato(string titulo, string etiqueta, string op, LógicaNegocio.PersonalBiblioteca personal)
         {
             InitializeComponent();
@@ -43,7 +43,7 @@ namespace Presentación
                 return;
             }
 
-            if( (this.op.Equals("Alta")) && (this.etiqueta=="DNI:"))
+            if ((this.op.Equals("Alta")) && (this.etiqueta == "DNI:"))
             {
                 // Comprobamos si el usuario YA existe
                 if (personal.getUsuario(textBox_DNI.Text) != null)
@@ -95,10 +95,10 @@ namespace Presentación
             }
             else if (this.op.Equals("Búsqueda") && (this.etiqueta == "DNI:"))
             {
-                Usuario usuario= personal.getUsuario(textBox_DNI.Text);
-                if (usuario == null || usuario.Estado==EstadoActivoInactivo.inactivo)
+                Usuario usuario = personal.getUsuario(textBox_DNI.Text);
+                if (usuario == null || usuario.Estado == EstadoActivoInactivo.inactivo)
                 {
-                   
+
                     // Si NO existe, mostramos el mensaje correcto (en tu código original decía "Ya existe")
                     DialogResult resultado = MessageBox.Show(
                         "¿Quieres introducir otro?",
@@ -120,7 +120,7 @@ namespace Presentación
                 }
                 else
                 {
-                  
+
                     // Si SÍ existe, abrimos la ventana de detalles con los datos del usuario
                     this.Hide();
                     // Usamos el constructor que acepta DNI, Operación, Nombre y Personal
@@ -217,30 +217,70 @@ namespace Presentación
             }
             if ((this.op.Equals("Alta")) && (this.etiqueta == "Codigo:"))
             {
-                // Comprobamos si el usuario YA existe
-                if (personal.getUsuario(textBox_DNI.Text) != null)
+                LógicaNegocio.PersonalAdquisicion p = (LógicaNegocio.PersonalAdquisicion)personal;
+
+                if (p.obtenerDocumentos().Count == 0)
                 {
-                    DialogResult resultado = MessageBox.Show("¿Quieres introducir otro?", "Ya existe un ejemplar con ese codigo", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
-                    if (resultado.Equals(DialogResult.Yes))
+                    MessageBox.Show("No hay documentos registrados en el sistema. Debe dar de alta un documento antes de crear ejemplares.", "Aviso", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    this.Close();
+                    return;
+                }
+
+                this.Hide();
+
+                // --- CORRECCIÓN DEL ERROR ---
+                // Antes tenías: new AltaEjemplar(textBox_DNI.Text, p); 
+                // Ahora DEBES poner:
+                new AltaEjemplar(textBox_DNI.Text, p, "Alta").Show();
+
+                this.Close();
+            }
+           
+                else if (this.op.Equals("Búsqueda") && (this.etiqueta == "Codigo:"))
+                {
+                    LógicaNegocio.PersonalAdquisicion p = (LógicaNegocio.PersonalAdquisicion)personal;
+                    string codigoBuscado = textBox_DNI.Text; // Reutilizamos el textBox
+                    bool encontrado = false;
+
+                    // Buscar si el ejemplar existe en CUALQUIER documento
+                    foreach (ModeloDominio.Documento doc in p.obtenerDocumentos())
                     {
-                        this.Hide();
-                        new FrmSolicitarDato("Introducir codigo", "codigo:", this.op, personal).Show();
+                        if (p.getEjemplar(doc.ISBN, codigoBuscado) != null)
+                        {
+                            encontrado = true;
+                            break;
+                        }
+                    }
+
+                    if (!encontrado)
+                    {
+                        DialogResult resultado = MessageBox.Show(
+                            "No se ha encontrado ningún ejemplar con ese código. ¿Desea buscar otro?",
+                            "Búsqueda sin resultados",
+                            MessageBoxButtons.YesNo,
+                            MessageBoxIcon.Question
+                        );
+
+                        if (resultado == DialogResult.Yes)
+                        {
+                            this.Hide();
+                            new FrmSolicitarDato("Introducir codigo", "Codigo:", this.op, personal).Show();
+                        }
                         this.Close();
                     }
                     else
                     {
+                        // EJEMPLAR ENCONTRADO: Abrimos la ventana en modo "Búsqueda"
+                        this.Hide();
+                        // AQUÍ PASAMOS 3 ARGUMENTOS
+                        new AltaEjemplar(codigoBuscado, p, "Búsqueda").Show();
                         this.Close();
                     }
                 }
-                else
-                {
-                    this.Hide();
-                    // Abrimos el formulario de detalle pasando el DNI, la operación y la referencia al personal
-                    new FrmDetalleUsuario(textBox_DNI.Text, this.op, this.personal).Show();
-                    this.Close();
-                }
             }
-        }
+    
+
+
 
 
 

@@ -49,7 +49,7 @@ namespace Persistencia
 
         {
 
-            return new EjemplarDato(new ClaveEjemplar(id.Documento.ISBN,id.Codigo),id.Estado.ToString(),id.PersonalAdquisicion.NSS); 
+            return new EjemplarDato(new ClaveEjemplar(id.Documento.ISBN,id.Codigo),id.Estado.ToString(),id.PersonalAdquisicion.IdUsuario); 
 
         }
 
@@ -223,7 +223,7 @@ namespace Persistencia
 
         {
 
-            return new PrestamoDato(prestamo.ID,prestamo.FechaInicio,prestamo.FechaFin,prestamo.Estado.ToString(),prestamo.Usuario.DNI,prestamo.PersonalSala.NSS); 
+            return new PrestamoDato(prestamo.ID,prestamo.FechaInicio,prestamo.FechaFin,prestamo.Estado.ToString(),prestamo.Usuario.DNI,prestamo.PersonalSala.IdUsuario); 
 
         }
 
@@ -256,7 +256,7 @@ namespace Persistencia
                 throw new ArgumentException("Rol de PersonalBiblioteca no reconocido.");
             }
 
-            return new PersonalBibliotecaDato(personalBiblioteca.NSS, personalBiblioteca.Usuario, rol);
+            return new PersonalBibliotecaDato(personalBiblioteca.IdUsuario, personalBiblioteca.Contraseña, rol);
         }
 
         internal static UsuarioDato UsuarioAUsuarioDato(Usuario usuario)

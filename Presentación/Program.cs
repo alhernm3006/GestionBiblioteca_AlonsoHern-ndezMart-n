@@ -18,6 +18,20 @@ namespace Presentación
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
+            Admin admin = new LógicaNegocio.Admin();
+
+            admin.añadirtrabajador(new ModeloDominio.PersonalAdquisicion("id", "contraseña"));
+            
+
+
+
+
+
+
+
+
+
+
             Application.Run(new FormInicio());
         }
     }

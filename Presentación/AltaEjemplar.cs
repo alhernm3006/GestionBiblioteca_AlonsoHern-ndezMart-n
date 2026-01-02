@@ -16,94 +16,175 @@ namespace Presentación
     public partial class AltaEjemplar : Form
     {
         private LógicaNegocio.PersonalAdquisicion personalLogueado;
-        public AltaEjemplar(LógicaNegocio.PersonalAdquisicion personal)
+        private string codigoEjemplar;
+        private string modo; // "Alta", "Baja", "Búsqueda"
+        private Ejemplar ejemplarActual;
+        public AltaEjemplar(String codigo, LógicaNegocio.PersonalAdquisicion personal, String modoOperacion)
         {
             InitializeComponent();
             this.personalLogueado = personal;
-            //CargarDatosIniciales();
+            this.codigoEjemplar = codigo;
+            this.modo = modoOperacion;
+
+            // Configurar el título de la ventana según el modo
+            this.Text = "Gestión de Ejemplar - " + this.modo;
+
+            CargarDatosIniciales();
         }
 
-        /*private void CargarDatosIniciales()
+
+        private void CargarDatosIniciales()
         {
             try
             {
-                // 1. Mostrar el personal que está realizando el alta (solo lectura en la interfaz)
-                // Asumimos que PersonalAdquisicion hereda de Usuario/PersonalBiblioteca y tiene un ToString o propiedad NSS
-                if (personalLogueado != null)
-                {
-                    textBox1_personal.Text = personalLogueado.ToString();
-                    textBox1_personal.Enabled = false; // El usuario no debe poder cambiar esto manualmente
-                }
+                textBox_codigo.Text = this.codigoEjemplar;
+                textBox_codigo.Enabled = false; // El código siempre es fijo tras introducirlo en el paso anterior
 
-                // 2. Cargar la lista de Documentos (ISBNs) disponibles en el ComboBox
+                textBox1_personal.Text = personalLogueado.Nombre;
+                textBox1_personal.Enabled = false; // Campo informativo
+
+                // 2. Cargar la lista de Documentos (ISBNs) en el ComboBox
                 List<Documento> listaDocumentos = personalLogueado.obtenerDocumentos();
+                comboBox_documentos.DataSource = listaDocumentos;
+                comboBox_documentos.DisplayMember = "ISBN";
+                comboBox_documentos.ValueMember = "ISBN";
 
-                if (listaDocumentos.Count > 0)
+                // 3. Lógica específica según el MODO
+                if (this.modo == "Alta")
                 {
-                    comboBox_documentos.DataSource = listaDocumentos;
-                    comboBox_documentos.DisplayMember = "ISBN"; // Mostramos el ISBN en la lista
-                    // Opcional: Si quieres mostrar Título e ISBN, podrías modificar el DisplayMember o el ToString de Documento
-                    comboBox_documentos.ValueMember = "ISBN";
+                    // En Alta, permitimos editar el documento y el botón Aceptar guarda
+                    comboBox_documentos.Enabled = true;
+                    radioButton_prestado.Enabled = false; // Al dar de alta, por defecto no está prestado (o es editable)
+                    radioButton_prestado.Checked = false;
+                    button_aceptar.Text = "Dar de Alta";
                 }
-                else
+                else if (this.modo == "Búsqueda" || this.modo == "Baja")
                 {
-                    MessageBox.Show("No hay documentos registrados en el sistema. Debe dar de alta un documento antes de crear ejemplares.", "Aviso", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                    button_aceptar.Enabled = false;
+                    // En Búsqueda o Baja, primero debemos ENCONTRAR el ejemplar usando el código.
+                    // Como la clave primaria es compuesta (ISBN + Código) y solo tenemos el Código,
+                    // debemos buscar en los documentos para ver cuál contiene este ejemplar.
+
+                    bool encontrado = BuscarYCargarEjemplar(listaDocumentos);
+
+                    if (!encontrado)
+                    {
+                        MessageBox.Show("No se encontró ningún ejemplar con el código: " + this.codigoEjemplar, "No encontrado", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+                        // Opcional: Cerrar el formulario si no se encuentra
+                        this.Close();
+                        return;
+                    }
+
+                    // Bloquear controles visuales ya que es solo visualización (o confirmación de baja)
+                    comboBox_documentos.Enabled = false;
+                    radioButton_prestado.Enabled = false;
+
+                    if (this.modo == "Búsqueda")
+                    {
+                        button_aceptar.Visible = false; // No hay acción de "Aceptar" en búsqueda, solo ver
+                        button_cancelar.Text = "Cerrar";
+                    }
+                    else // Baja
+                    {
+                        button_aceptar.Text = "Eliminar";
+                        button_aceptar.Visible = true;
+                    }
                 }
             }
             catch (Exception ex)
             {
                 MessageBox.Show("Error al cargar los datos iniciales: " + ex.Message);
-            }}*/
-    
+            }
+        }
 
-        /*private void btnAceptar_Click(object sender, EventArgs e)
+        // Método auxiliar para buscar el ejemplar iterando documentos
+        private bool BuscarYCargarEjemplar(List<Documento> docs)
         {
-            // 1. Validaciones básicas
-            if (string.IsNullOrWhiteSpace(textBox_codigo.Text))
+            foreach (Documento doc in docs)
             {
-                MessageBox.Show("Por favor, introduzca un código para el ejemplar.", "Campo requerido", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                return;
-            }
+                // Usamos el método getEjemplar de la lógica de negocio
+                Ejemplar ej = personalLogueado.getEjemplar(doc.ISBN, this.codigoEjemplar);
 
-            if (comboBox_documentos.SelectedItem == null)
-            {
-                MessageBox.Show("Por favor, seleccione un documento asociado.", "Campo requerido", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                return;
-            }
-
-            try
-            {
-                // 2. Recopilar datos
-                string codigo = textBox_codigo.Text;
-                Documento documentoSeleccionado = (Documento)comboBox_documentos.SelectedItem;
-
-
-              
-                // 3. Crear el objeto Ejemplar
-                // Según tu archivo Ejemplar.cs, el constructor es: Ejemplar(Documento, codigo, PersonalAdquisicion)
-                Ejemplar nuevoEjemplar = new Ejemplar(documentoSeleccionado, codigo, personalLogueado);
-
-                // 4. Llamar a la capa de Lógica de Negocio para guardar
-                // El método altaEjemplar devuelve true si éxito, false si falla (ej. duplicado)
-                bool exito = personalLogueado.altaEjemplar(nuevoEjemplar);
-
-                if (exito)
+                if (ej != null)
                 {
-                    MessageBox.Show("Ejemplar dado de alta correctamente.", "Éxito", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                    this.DialogResult = DialogResult.OK;
-                    this.Close();
-                }
-                else
-                {
-                    // Según el PDF: "Si se introduce el código de un ejemplar que ya existe, debe mostrar un mensaje"
-                    MessageBox.Show("No se pudo dar de alta el ejemplar. Es posible que el código ya exista para este documento o haya un error en la base de datos.", "Error de Alta", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    this.ejemplarActual = ej;
+
+                    // Asignar los valores a la interfaz
+                    comboBox_documentos.SelectedValue = ej.Documento.ISBN;
+
+                    // Mostrar si está prestado
+                    // Asumiendo que EstadoEjemplar es un Enum o string. Ajustar según tu ModeloDominio.
+                    // Aquí comparo con string o enum según tus archivos subidos:
+                    radioButton_prestado.Checked = (ej.Estado.ToString().ToLower() == "prestado");
+
+                    // Si el objeto Ejemplar guarda el personal que lo creó, podrías mostrarlo:
+                    // textBox1_personal.Text = ej.Personal.Nombre; 
+
+                    return true; // Encontrado
                 }
             }
-            catch (Exception ex)
+            return false; // No encontrado en ningún documento
+        }
+
+
+
+
+
+        private void button_aceptar_Click(object sender, EventArgs e)
+        {
+           
             {
-                MessageBox.Show("Ocurrió un error inesperado: " + ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-            }
-        }*/
+                if (comboBox_documentos.SelectedItem == null)
+                {
+                    MessageBox.Show("Por favor, seleccione un documento asociado.", "Campo requerido", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    return;
+                }
+
+                try
+                {
+                    // 2. Recopilar datos
+                    // Asegúrate de que comboBox tiene objetos Documento. Si usaste DataSource, haz el cast:
+                    Documento documentoSeleccionado = (Documento)comboBox_documentos.SelectedItem;
+
+                    // 3. Crear el objeto PersonalAdquisicion del DOMINIO (Solución del error)
+                    // Como no tenemos los datos reales del usuario logueado (NSS, dirección, etc.) en este punto,
+                    // creamos un objeto 'dummy' o marcador para que el Transformer pueda leer un NSS sin romperse.
+                    // NOTA: Idealmente, deberías pasar el objeto Usuario real desde el Login hasta aquí.
+
+                    ModeloDominio.PersonalAdquisicion personalDominio = new ModeloDominio.PersonalAdquisicion(
+                       personalLogueado.Nombre ,// Este NSS se guardará en la BD. Cámbialo si tienes uno real.
+                        personalLogueado.Contraseña
+                    );
+
+                   
+
+
+                    // 4. Crear el Ejemplar pasando el personal válido
+                    Ejemplar nuevoEjemplar = new Ejemplar(documentoSeleccionado, this.codigoEjemplar, personalDominio);
+
+                    // 5. Guardar usando la lógica de negocio
+                    bool exito = personalLogueado.altaEjemplar(nuevoEjemplar);
+
+                    if (exito)
+                    {
+                        MessageBox.Show("Ejemplar dado de alta correctamente.", "Éxito", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                        this.DialogResult = DialogResult.OK;
+                        this.Close();
+                    }
+                    else
+                    {
+                        MessageBox.Show("Error: Ya existe un ejemplar con este código para el documento seleccionado.", "Error de Alta", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    }
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show("Ocurrió un error inesperado: " + ex.Message + "\n" + ex.StackTrace, "Error Crítico", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+            }}
+            
+
+        private void button_cancelar_Click(object sender, EventArgs e)
+        {
+            this.Close();
+        }
     }
 }

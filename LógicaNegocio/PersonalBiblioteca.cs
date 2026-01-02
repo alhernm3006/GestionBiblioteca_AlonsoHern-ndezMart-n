@@ -17,6 +17,10 @@ namespace LógicaNegocio
             protected Usuario_CRUD usuarioCRUD = new Usuario_CRUD();
             protected Prestamo_CRUD prestamoCRUD = new Prestamo_CRUD();
             protected Ejemplar_CRUD ejemplarCRUD = new Ejemplar_CRUD();
+            protected String nombre;
+            protected String contraseña;
+       
+           
 
             public PersonalBiblioteca()
             {
@@ -25,7 +29,11 @@ namespace LógicaNegocio
 
             public bool iniciarSesion(string usuario, string contraseña)
             {
-                // Lógica simulada
+                this.nombre = usuario;
+                this.contraseña= contraseña;
+               
+               
+
                 return !string.IsNullOrEmpty(usuario) && !string.IsNullOrEmpty(contraseña);
             }
 
@@ -100,5 +108,9 @@ namespace LógicaNegocio
                 }
                 return fueraPlazo;
             }
-        }
+
+        public String Nombre {  get { return nombre; } }
+        public String Contraseña { get { return contraseña; } }
+
+    }
     }
