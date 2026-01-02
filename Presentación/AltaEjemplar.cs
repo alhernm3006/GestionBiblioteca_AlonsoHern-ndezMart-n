@@ -12,7 +12,7 @@ using System.Windows.Forms;
 
 namespace Presentación
 {
-    
+
     public partial class AltaEjemplar : Form
     {
         private LógicaNegocio.PersonalAdquisicion personalLogueado;
@@ -20,10 +20,10 @@ namespace Presentación
         {
             InitializeComponent();
             this.personalLogueado = personal;
-            CargarDatosIniciales();
+            //CargarDatosIniciales();
         }
 
-        private void CargarDatosIniciales()
+        /*private void CargarDatosIniciales()
         {
             try
             {
@@ -54,10 +54,10 @@ namespace Presentación
             catch (Exception ex)
             {
                 MessageBox.Show("Error al cargar los datos iniciales: " + ex.Message);
-            }
-        }
+            }}*/
+    
 
-        private void btnAceptar_Click(object sender, EventArgs e)
+        /*private void btnAceptar_Click(object sender, EventArgs e)
         {
             // 1. Validaciones básicas
             if (string.IsNullOrWhiteSpace(textBox_codigo.Text))
@@ -104,6 +104,6 @@ namespace Presentación
             {
                 MessageBox.Show("Ocurrió un error inesperado: " + ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
-        }
+        }*/
     }
 }

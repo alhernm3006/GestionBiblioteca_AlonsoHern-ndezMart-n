@@ -32,13 +32,15 @@ namespace Presentación
 
         private void usuariosToolStripMenuItem_DropDownItemClicked(object sender, ToolStripItemClickedEventArgs e)
         {
-            FrmSolicitarDato solicitud = null;
+            //FrmSolicitarDato solicitud = null;
+            //Listado listar = null;
             switch (e.ClickedItem.Text)
             {
-                //case ("Búsqueda"): solicitud = new FrmSolicitarDato("Introducir DNI", "DNI:", personal); break;
-                default: solicitud = new FrmSolicitarDato("Introducir DNI", "DNI:", e.ClickedItem.Text, personal); break;
+                case ("Listado"): Listado listar = null; listar = new Listado(personal); listar.Show(); break;
+                case ("Búsqueda por DNI"): BusquedaUsuario2 b2 = null;b2 = new BusquedaUsuario2(personal); b2.Show(); break;
+                default: FrmSolicitarDato solicitud = null; solicitud = new FrmSolicitarDato("Introducir DNI", "DNI:", e.ClickedItem.Text, personal); solicitud.Show(); break;
             }
-            solicitud.Show();
+            //solicitud.Show();
         }
 
         private void documentosToolStripMenuItem_DropDownItemClicked(object sender, ToolStripItemClickedEventArgs e)

@@ -42,6 +42,8 @@
             this.búsquedaToolStripMenuItem2 = new System.Windows.Forms.ToolStripMenuItem();
             this.préstamosToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.configuraciónToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.lisradoToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.busquedaToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.menuStrip1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -65,7 +67,9 @@
             this.usuariosToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.altaToolStripMenuItem,
             this.bajaToolStripMenuItem,
-            this.búsquedaToolStripMenuItem});
+            this.búsquedaToolStripMenuItem,
+            this.busquedaToolStripMenuItem,
+            this.lisradoToolStripMenuItem});
             this.usuariosToolStripMenuItem.Name = "usuariosToolStripMenuItem";
             this.usuariosToolStripMenuItem.Size = new System.Drawing.Size(79, 24);
             this.usuariosToolStripMenuItem.Text = "Usuarios";
@@ -74,19 +78,19 @@
             // altaToolStripMenuItem
             // 
             this.altaToolStripMenuItem.Name = "altaToolStripMenuItem";
-            this.altaToolStripMenuItem.Size = new System.Drawing.Size(157, 26);
+            this.altaToolStripMenuItem.Size = new System.Drawing.Size(224, 26);
             this.altaToolStripMenuItem.Text = "Alta";
             // 
             // bajaToolStripMenuItem
             // 
             this.bajaToolStripMenuItem.Name = "bajaToolStripMenuItem";
-            this.bajaToolStripMenuItem.Size = new System.Drawing.Size(157, 26);
+            this.bajaToolStripMenuItem.Size = new System.Drawing.Size(224, 26);
             this.bajaToolStripMenuItem.Text = "Baja";
             // 
             // búsquedaToolStripMenuItem
             // 
             this.búsquedaToolStripMenuItem.Name = "búsquedaToolStripMenuItem";
-            this.búsquedaToolStripMenuItem.Size = new System.Drawing.Size(157, 26);
+            this.búsquedaToolStripMenuItem.Size = new System.Drawing.Size(224, 26);
             this.búsquedaToolStripMenuItem.Text = "Búsqueda";
             // 
             // documentosToolStripMenuItem
@@ -102,13 +106,13 @@
             // altaToolStripMenuItem1
             // 
             this.altaToolStripMenuItem1.Name = "altaToolStripMenuItem1";
-            this.altaToolStripMenuItem1.Size = new System.Drawing.Size(224, 26);
+            this.altaToolStripMenuItem1.Size = new System.Drawing.Size(157, 26);
             this.altaToolStripMenuItem1.Text = "Alta";
             // 
             // búsquedaToolStripMenuItem1
             // 
             this.búsquedaToolStripMenuItem1.Name = "búsquedaToolStripMenuItem1";
-            this.búsquedaToolStripMenuItem1.Size = new System.Drawing.Size(224, 26);
+            this.búsquedaToolStripMenuItem1.Size = new System.Drawing.Size(157, 26);
             this.búsquedaToolStripMenuItem1.Text = "Búsqueda";
             // 
             // ejemplaresToolStripMenuItem
@@ -125,19 +129,19 @@
             // altaToolStripMenuItem2
             // 
             this.altaToolStripMenuItem2.Name = "altaToolStripMenuItem2";
-            this.altaToolStripMenuItem2.Size = new System.Drawing.Size(224, 26);
+            this.altaToolStripMenuItem2.Size = new System.Drawing.Size(157, 26);
             this.altaToolStripMenuItem2.Text = "Alta";
             // 
             // bajaToolStripMenuItem2
             // 
             this.bajaToolStripMenuItem2.Name = "bajaToolStripMenuItem2";
-            this.bajaToolStripMenuItem2.Size = new System.Drawing.Size(224, 26);
+            this.bajaToolStripMenuItem2.Size = new System.Drawing.Size(157, 26);
             this.bajaToolStripMenuItem2.Text = "Baja";
             // 
             // búsquedaToolStripMenuItem2
             // 
             this.búsquedaToolStripMenuItem2.Name = "búsquedaToolStripMenuItem2";
-            this.búsquedaToolStripMenuItem2.Size = new System.Drawing.Size(224, 26);
+            this.búsquedaToolStripMenuItem2.Size = new System.Drawing.Size(157, 26);
             this.búsquedaToolStripMenuItem2.Text = "Búsqueda";
             // 
             // préstamosToolStripMenuItem
@@ -151,6 +155,18 @@
             this.configuraciónToolStripMenuItem.Name = "configuraciónToolStripMenuItem";
             this.configuraciónToolStripMenuItem.Size = new System.Drawing.Size(116, 24);
             this.configuraciónToolStripMenuItem.Text = "Configuración";
+            // 
+            // lisradoToolStripMenuItem
+            // 
+            this.lisradoToolStripMenuItem.Name = "lisradoToolStripMenuItem";
+            this.lisradoToolStripMenuItem.Size = new System.Drawing.Size(224, 26);
+            this.lisradoToolStripMenuItem.Text = "Listado";
+            // 
+            // busquedaToolStripMenuItem
+            // 
+            this.busquedaToolStripMenuItem.Name = "busquedaToolStripMenuItem";
+            this.busquedaToolStripMenuItem.Size = new System.Drawing.Size(224, 26);
+            this.busquedaToolStripMenuItem.Text = "Búsqueda por DNI";
             // 
             // FrmPrincipal
             // 
@@ -184,5 +200,7 @@
         private System.Windows.Forms.ToolStripMenuItem altaToolStripMenuItem2;
         private System.Windows.Forms.ToolStripMenuItem bajaToolStripMenuItem2;
         private System.Windows.Forms.ToolStripMenuItem búsquedaToolStripMenuItem2;
+        private System.Windows.Forms.ToolStripMenuItem lisradoToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem busquedaToolStripMenuItem;
     }
 }
