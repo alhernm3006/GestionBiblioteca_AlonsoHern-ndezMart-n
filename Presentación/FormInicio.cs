@@ -1,6 +1,7 @@
 ﻿
 using LógicaNegocio;
 using ModeloDominio;
+using Persistencia;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -53,6 +54,17 @@ namespace Presentación
             // Validar credenciales
             if (personal.iniciarSesion(idUsuario, password))
             {
+                Personal_CRUD p = new Personal_CRUD();
+                ModeloDominio.PersonalBiblioteca pers;
+                if (personal is LógicaNegocio.PersonalAdquisicion)
+                {
+                    pers = new ModeloDominio.PersonalAdquisicion(idUsuario, password);
+                }
+                else {
+                     pers = new ModeloDominio.PersonalSala(idUsuario, password);
+                }
+
+                    p.Insertar(pers);
                 // Pasamos el objeto 'personal' al menú para controlar permisos
                 FrmPrincipal menu = new FrmPrincipal(personal);
                 this.Hide();
