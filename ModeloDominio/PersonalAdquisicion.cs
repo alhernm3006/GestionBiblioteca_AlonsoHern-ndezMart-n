@@ -8,6 +8,6 @@ namespace ModeloDominio
 {
     public class PersonalAdquisicion : PersonalBiblioteca
     {
-        public PersonalAdquisicion(String nss, String usuario): base(nss, usuario){}
+        public PersonalAdquisicion(string idUsuario, string contraseña) : base(idUsuario, contraseña) {}
     }
 }

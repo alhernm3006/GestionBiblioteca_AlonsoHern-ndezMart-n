@@ -13,13 +13,13 @@ using System.Windows.Forms;
 namespace Presentación
 {
 
-    public partial class AltaEjemplar : Form
+    public partial class FormEjemplar : Form
     {
         private LógicaNegocio.PersonalAdquisicion personalLogueado;
         private string codigoEjemplar;
         private string modo; // "Alta", "Baja", "Búsqueda"
         private Ejemplar ejemplarActual;
-        public AltaEjemplar(String codigo, LógicaNegocio.PersonalAdquisicion personal, String modoOperacion)
+        public FormEjemplar(String codigo, LógicaNegocio.PersonalAdquisicion personal, String modoOperacion)
         {
             InitializeComponent();
             this.personalLogueado = personal;
@@ -27,7 +27,7 @@ namespace Presentación
             this.modo = modoOperacion;
 
             // Configurar el título de la ventana según el modo
-            this.Text = "Gestión de Ejemplar - " + this.modo;
+            this.Text = this.modo + "de Ejemplar";
 
             CargarDatosIniciales();
         }
@@ -41,7 +41,7 @@ namespace Presentación
                 textBox_codigo.Enabled = false; // El código siempre es fijo tras introducirlo en el paso anterior
 
                 textBox1_personal.Text = personalLogueado.Nombre;
-                textBox1_personal.Enabled = false; // Campo informativo
+                textBox1_personal.ReadOnly = true; 
 
                 // 2. Cargar la lista de Documentos (ISBNs) en el ComboBox
                 List<Documento> listaDocumentos = personalLogueado.obtenerDocumentos();
@@ -52,10 +52,7 @@ namespace Presentación
                 // 3. Lógica específica según el MODO
                 if (this.modo == "Alta")
                 {
-                    // En Alta, permitimos editar el documento y el botón Aceptar guarda
-                    comboBox_documentos.Enabled = true;
-                    radioButton_prestado.Enabled = false; // Al dar de alta, por defecto no está prestado (o es editable)
-                    radioButton_prestado.Checked = false;
+                    radioButton_prestado.Visible = false; // Al dar de alta, por defecto no está prestado (o es editable)
                     button_aceptar.Text = "Dar de Alta";
                 }
                 else if (this.modo == "Búsqueda" || this.modo == "Baja")

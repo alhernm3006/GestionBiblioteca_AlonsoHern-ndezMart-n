@@ -17,19 +17,11 @@ namespace Presentación
     {
         private LógicaNegocio.PersonalBiblioteca personal;
         private List<Usuario> listaUsuarios;
-        private Usuario_CRUD usuarioCRUD;
         public Listado(LógicaNegocio.PersonalBiblioteca p)
         {
-           
             InitializeComponent();
             this.personal = p;
             listaUsuarios = new List<Usuario>();
-            this.Load += new EventHandler(Listado_Load);
-            this.button_dni.Click += new EventHandler(button_dni_Click);
-            this.button_nombre.Click += new EventHandler(button_nombre_Click);
-            this.button3.Click += new EventHandler(button3_Click); // button3 es el botón Cerrar
-            this.listBox_dni.SelectedIndexChanged += new EventHandler(listBox_dni_SelectedIndexChanged);
-            this.listBox_nombre.SelectedIndexChanged += new EventHandler(listBox_nombre_SelectedIndexChanged);
         }
 
         private void button3_Click(object sender, EventArgs e)
@@ -97,8 +89,7 @@ namespace Presentación
                     listaUsuarios.Add(u);
                 }
             }
-
-            // 4. Actualizamos la interfaz visual
+            
             ActualizarListasVisuales();
         }
 

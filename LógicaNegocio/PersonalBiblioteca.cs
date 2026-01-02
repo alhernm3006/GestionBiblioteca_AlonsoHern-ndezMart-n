@@ -6,36 +6,38 @@ using System.Text;
 using System.Threading.Tasks;
 using Persistencia;
 using ModeloDominio;
+using System.CodeDom;
 
 namespace LógicaNegocio
 {
     public class PersonalBiblioteca
     {
-        
-        
-            // Los CRUDs deben ser PUBLIC para usarse aquí
+            private Personal_CRUD personalCRUD = new Personal_CRUD();
             protected Usuario_CRUD usuarioCRUD = new Usuario_CRUD();
             protected Prestamo_CRUD prestamoCRUD = new Prestamo_CRUD();
             protected Ejemplar_CRUD ejemplarCRUD = new Ejemplar_CRUD();
-            protected String nombre;
-            protected String contraseña;
+            private String nombre;
+            private String contraseña;
        
            
 
-            public PersonalBiblioteca()
-            {
-               
-            }
+            public PersonalBiblioteca() {}
 
-            public bool iniciarSesion(string usuario, string contraseña)
+            public bool iniciarSesion(string idUsuario, string contraseña, String rol)
             {
-                this.nombre = usuario;
-                this.contraseña= contraseña;
-               
-               
-
-                return !string.IsNullOrEmpty(usuario) && !string.IsNullOrEmpty(contraseña);
-            }
+                this.nombre = idUsuario;
+                this.contraseña = contraseña;
+                ModeloDominio.PersonalBiblioteca p = personalCRUD.Buscar(idUsuario);
+                if (p != null)
+                {
+                    switch (rol)
+                    {
+                        case "Sala": return p is ModeloDominio.PersonalSala;
+                        case "Adquisición": return p is ModeloDominio.PersonalAdquisicion;
+                    }
+                }
+                return false;
+              }
 
             public void cerrarSesion() { }
 

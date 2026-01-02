@@ -16,22 +16,12 @@ namespace Presentación
         [STAThread]
         static void Main()
         {
+            Admin admin = new LógicaNegocio.Admin();
+            admin.añadirtrabajador(new ModeloDominio.PersonalAdquisicion("usr1", "1234"));
+            admin.añadirtrabajador(new ModeloDominio.PersonalSala("usr2", "1234"));
+
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Admin admin = new LógicaNegocio.Admin();
-
-            admin.añadirtrabajador(new ModeloDominio.PersonalAdquisicion("id", "contraseña"));
-            
-
-
-
-
-
-
-
-
-
-
             Application.Run(new FormInicio());
         }
     }

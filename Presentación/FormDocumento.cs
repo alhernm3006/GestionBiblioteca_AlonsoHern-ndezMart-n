@@ -12,15 +12,15 @@ using System.Windows.Forms;
 
 namespace Presentación
 {
-    public partial class AltaDocumentos : Form
+    public partial class FormDocumento : Form
     {
         private LógicaNegocio.PersonalBiblioteca personal;
         private string operacion;
         private Documento documento;
-        public AltaDocumentos(string isbn, string operacion, LógicaNegocio.PersonalBiblioteca personal)
+        public FormDocumento(string isbn, string operacion, LógicaNegocio.PersonalBiblioteca personal)
         {
             InitializeComponent();
-            this.Text = operacion + " de usuario";
+            this.Text = operacion + " de documento";
             textBox_ISBN.Text = isbn;
             this.personal = personal;
             label_formato.Visible = false;
@@ -35,7 +35,7 @@ namespace Presentación
             }
         }
 
-        public AltaDocumentos(string isbn, string operacion,Documento documento, LógicaNegocio.PersonalBiblioteca personal)
+        public FormDocumento(string isbn, string operacion,Documento documento, LógicaNegocio.PersonalBiblioteca personal)
         {
             InitializeComponent();
 

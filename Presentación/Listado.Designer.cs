@@ -37,9 +37,9 @@
             // 
             // button_dni
             // 
-            this.button_dni.Location = new System.Drawing.Point(239, 70);
+            this.button_dni.Location = new System.Drawing.Point(143, 61);
             this.button_dni.Name = "button_dni";
-            this.button_dni.Size = new System.Drawing.Size(75, 23);
+            this.button_dni.Size = new System.Drawing.Size(82, 30);
             this.button_dni.TabIndex = 0;
             this.button_dni.Text = "DNI";
             this.button_dni.UseVisualStyleBackColor = true;
@@ -47,9 +47,9 @@
             // 
             // button_nombre
             // 
-            this.button_nombre.Location = new System.Drawing.Point(486, 70);
+            this.button_nombre.Location = new System.Drawing.Point(388, 61);
             this.button_nombre.Name = "button_nombre";
-            this.button_nombre.Size = new System.Drawing.Size(75, 23);
+            this.button_nombre.Size = new System.Drawing.Size(82, 30);
             this.button_nombre.TabIndex = 1;
             this.button_nombre.Text = "Nombre";
             this.button_nombre.UseVisualStyleBackColor = true;
@@ -57,7 +57,7 @@
             // 
             // button3
             // 
-            this.button3.Location = new System.Drawing.Point(369, 366);
+            this.button3.Location = new System.Drawing.Point(270, 361);
             this.button3.Name = "button3";
             this.button3.Size = new System.Drawing.Size(75, 23);
             this.button3.TabIndex = 2;
@@ -69,9 +69,9 @@
             // 
             this.listBox_dni.FormattingEnabled = true;
             this.listBox_dni.ItemHeight = 16;
-            this.listBox_dni.Location = new System.Drawing.Point(222, 122);
+            this.listBox_dni.Location = new System.Drawing.Point(107, 117);
             this.listBox_dni.Name = "listBox_dni";
-            this.listBox_dni.Size = new System.Drawing.Size(120, 196);
+            this.listBox_dni.Size = new System.Drawing.Size(153, 228);
             this.listBox_dni.TabIndex = 3;
             this.listBox_dni.SelectedIndexChanged += new System.EventHandler(this.listBox_dni_SelectedIndexChanged);
             // 
@@ -79,24 +79,25 @@
             // 
             this.listBox_nombre.FormattingEnabled = true;
             this.listBox_nombre.ItemHeight = 16;
-            this.listBox_nombre.Location = new System.Drawing.Point(474, 122);
+            this.listBox_nombre.Location = new System.Drawing.Point(352, 117);
             this.listBox_nombre.Name = "listBox_nombre";
-            this.listBox_nombre.Size = new System.Drawing.Size(120, 196);
+            this.listBox_nombre.Size = new System.Drawing.Size(154, 228);
             this.listBox_nombre.TabIndex = 4;
             this.listBox_nombre.SelectedIndexChanged += new System.EventHandler(this.listBox_nombre_SelectedIndexChanged);
             // 
             // Listado
             // 
+            this.AcceptButton = this.button3;
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(800, 450);
+            this.ClientSize = new System.Drawing.Size(650, 450);
             this.Controls.Add(this.listBox_nombre);
             this.Controls.Add(this.listBox_dni);
             this.Controls.Add(this.button3);
             this.Controls.Add(this.button_nombre);
             this.Controls.Add(this.button_dni);
             this.Name = "Listado";
-            this.Text = "Listado";
+            this.Text = "Listado de usuarios";
             this.Load += new System.EventHandler(this.Listado_Load);
             this.ResumeLayout(false);
 

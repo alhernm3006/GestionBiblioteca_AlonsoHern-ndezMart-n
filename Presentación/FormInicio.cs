@@ -17,6 +17,7 @@ namespace Presentación
     {
         private string idUsuario;
         private string password;
+        private string rol;
         public FormInicio()
         {
             
@@ -39,10 +40,12 @@ namespace Presentación
             if (radioButton_personalSala.Checked)
             {
                 personal = new LógicaNegocio.PersonalSala();
+                this.rol = "Sala";
             }
             else if (radioButton_personalAdquisiciones.Checked)
             {
                 personal = new LógicaNegocio.PersonalAdquisicion();
+                this.rol = "Adquisición";
             }
             else
             {
@@ -51,17 +54,17 @@ namespace Presentación
             }
 
             // Validar credenciales
-            if (personal.iniciarSesion(idUsuario, password))
+            if (personal.iniciarSesion(idUsuario, password, rol))
             {
-                // Pasamos el objeto 'personal' al menú para controlar permisos
                 FrmPrincipal menu = new FrmPrincipal(personal);
                 this.Hide();
-                menu.ShowDialog(); // La ejecución se detiene aquí hasta que se cierre el menú
-                this.Close();      // Cierra la app al salir del menú
+                menu.ShowDialog(); 
+                this.Close();
             }
             else
             {
-                MessageBox.Show("Error en el inicio de sesión.");
+                MessageBox.Show("Credenciales incorrectas", "Personal no autorizado", MessageBoxButtons.OK, MessageBoxIcon.Error);
+
             }
         }
     }

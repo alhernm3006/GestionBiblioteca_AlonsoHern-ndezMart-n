@@ -1,6 +1,6 @@
 ﻿namespace Presentación
 {
-    partial class AltaEjemplar
+    partial class FormEjemplar
     {
         /// <summary>
         /// Required designer variable.
@@ -42,25 +42,25 @@
             // label_codigo
             // 
             this.label_codigo.AutoSize = true;
-            this.label_codigo.Location = new System.Drawing.Point(279, 118);
+            this.label_codigo.Location = new System.Drawing.Point(250, 75);
             this.label_codigo.Name = "label_codigo";
-            this.label_codigo.Size = new System.Drawing.Size(51, 16);
+            this.label_codigo.Size = new System.Drawing.Size(54, 16);
             this.label_codigo.TabIndex = 0;
-            this.label_codigo.Text = "Código";
+            this.label_codigo.Text = "Código:";
             // 
             // label_documento
             // 
             this.label_documento.AutoSize = true;
-            this.label_documento.Location = new System.Drawing.Point(278, 194);
+            this.label_documento.Location = new System.Drawing.Point(250, 146);
             this.label_documento.Name = "label_documento";
-            this.label_documento.Size = new System.Drawing.Size(107, 16);
+            this.label_documento.Size = new System.Drawing.Size(113, 16);
             this.label_documento.TabIndex = 1;
-            this.label_documento.Text = "Dcumento(ISBN)";
+            this.label_documento.Text = "Dcumento (ISBN):";
             // 
             // label_personañ
             // 
             this.label_personañ.AutoSize = true;
-            this.label_personañ.Location = new System.Drawing.Point(282, 282);
+            this.label_personañ.Location = new System.Drawing.Point(250, 223);
             this.label_personañ.Name = "label_personañ";
             this.label_personañ.Size = new System.Drawing.Size(61, 16);
             this.label_personañ.TabIndex = 2;
@@ -68,9 +68,9 @@
             // 
             // button_aceptar
             // 
-            this.button_aceptar.Location = new System.Drawing.Point(267, 382);
+            this.button_aceptar.Location = new System.Drawing.Point(264, 382);
             this.button_aceptar.Name = "button_aceptar";
-            this.button_aceptar.Size = new System.Drawing.Size(75, 23);
+            this.button_aceptar.Size = new System.Drawing.Size(99, 23);
             this.button_aceptar.TabIndex = 3;
             this.button_aceptar.Text = "Aceptar";
             this.button_aceptar.UseVisualStyleBackColor = true;
@@ -80,7 +80,7 @@
             // 
             this.button_cancelar.Location = new System.Drawing.Point(438, 382);
             this.button_cancelar.Name = "button_cancelar";
-            this.button_cancelar.Size = new System.Drawing.Size(75, 23);
+            this.button_cancelar.Size = new System.Drawing.Size(99, 23);
             this.button_cancelar.TabIndex = 4;
             this.button_cancelar.Text = "Cancelar";
             this.button_cancelar.UseVisualStyleBackColor = true;
@@ -89,7 +89,7 @@
             // radioButton_prestado
             // 
             this.radioButton_prestado.AutoSize = true;
-            this.radioButton_prestado.Location = new System.Drawing.Point(373, 328);
+            this.radioButton_prestado.Location = new System.Drawing.Point(253, 288);
             this.radioButton_prestado.Name = "radioButton_prestado";
             this.radioButton_prestado.Size = new System.Drawing.Size(83, 20);
             this.radioButton_prestado.TabIndex = 5;
@@ -99,7 +99,7 @@
             // 
             // textBox_codigo
             // 
-            this.textBox_codigo.Location = new System.Drawing.Point(477, 118);
+            this.textBox_codigo.Location = new System.Drawing.Point(438, 75);
             this.textBox_codigo.Name = "textBox_codigo";
             this.textBox_codigo.Size = new System.Drawing.Size(100, 22);
             this.textBox_codigo.TabIndex = 6;
@@ -107,19 +107,19 @@
             // comboBox_documentos
             // 
             this.comboBox_documentos.FormattingEnabled = true;
-            this.comboBox_documentos.Location = new System.Drawing.Point(477, 194);
+            this.comboBox_documentos.Location = new System.Drawing.Point(438, 143);
             this.comboBox_documentos.Name = "comboBox_documentos";
             this.comboBox_documentos.Size = new System.Drawing.Size(121, 24);
             this.comboBox_documentos.TabIndex = 7;
             // 
             // textBox1_personal
             // 
-            this.textBox1_personal.Location = new System.Drawing.Point(477, 282);
+            this.textBox1_personal.Location = new System.Drawing.Point(438, 217);
             this.textBox1_personal.Name = "textBox1_personal";
             this.textBox1_personal.Size = new System.Drawing.Size(100, 22);
             this.textBox1_personal.TabIndex = 8;
             // 
-            // AltaEjemplar
+            // FormEjemplar
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
@@ -133,7 +133,7 @@
             this.Controls.Add(this.label_personañ);
             this.Controls.Add(this.label_documento);
             this.Controls.Add(this.label_codigo);
-            this.Name = "AltaEjemplar";
+            this.Name = "FormEjemplar";
             this.Text = "AltaEjemplar";
             this.ResumeLayout(false);
             this.PerformLayout();

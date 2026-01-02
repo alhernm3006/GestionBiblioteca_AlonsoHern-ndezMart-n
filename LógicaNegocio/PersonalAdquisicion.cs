@@ -15,12 +15,7 @@ namespace LógicaNegocio
         private Documento_CRUD documentoCRUD = new Documento_CRUD();
         private Ejemplar_CRUD ejemplarCRUD = new Ejemplar_CRUD();
 
-        public PersonalAdquisicion() 
-        {
-        
-        }
-
-      
+        public PersonalAdquisicion() {}
 
         // --- Gestión de Documentos ---
 

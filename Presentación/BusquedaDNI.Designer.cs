@@ -1,6 +1,6 @@
 ﻿namespace Presentación
 {
-    partial class BusquedaUsuario2
+    partial class BusquedaDNI
     {
         /// <summary>
         /// Required designer variable.
@@ -77,7 +77,7 @@
             this.Controls.Add(this.label_name);
             this.Controls.Add(this.label_dni);
             this.Name = "BusquedaUsuario2";
-            this.Text = "BusquedaUsuario2";
+            this.Text = "Búsqueda por DNI";
             this.ResumeLayout(false);
             this.PerformLayout();
 

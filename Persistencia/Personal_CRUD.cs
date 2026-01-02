@@ -17,11 +17,11 @@ namespace Persistencia
             BD.TablaPersonal.Add(Transformer.PersonalBilbiotecaAPersonalBilbiotecaDato(personal));
         }
 
-        public PersonalBiblioteca Buscar(string nss)
+        public PersonalBiblioteca Buscar(string idUsuario)
         {
-            if (BD.TablaPersonal.Contains(nss))
+            if (BD.TablaPersonal.Contains(idUsuario))
             {
-                PersonalBibliotecaDato dato = (PersonalBibliotecaDato)BD.TablaPersonal[nss];
+                PersonalBibliotecaDato dato = (PersonalBibliotecaDato)BD.TablaPersonal[idUsuario];
                 return Transformer.PersonalBilbiotecaDatoAPersonalBilbioteca(dato);
             }
             return null;

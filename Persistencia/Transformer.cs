@@ -232,11 +232,11 @@ namespace Persistencia
             switch (dato.Rol.ToLower())
             {
                 case "adquisicion":
-                    return new PersonalAdquisicion(dato.Id, dato.Usuario);
+                    return new PersonalAdquisicion(dato.Id, dato.Contraseña);
                 case "sala":
-                    return new PersonalSala(dato.Id, dato.Usuario); // El constructor de PersonalSala toma 'nombre' que es el 'usuario' en la base
+                    return new PersonalSala(dato.Id, dato.Contraseña);
                 default:
-                    throw new ArgumentException("Rol de PersonalBibliotecaDato no reconocido.");
+                    return null;
             }
         }
 

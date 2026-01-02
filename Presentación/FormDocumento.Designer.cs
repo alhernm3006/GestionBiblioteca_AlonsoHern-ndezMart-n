@@ -1,6 +1,6 @@
 ﻿namespace Presentación
 {
-    partial class AltaDocumentos
+    partial class FormDocumento
     {
         /// <summary>
         /// Required designer variable.
@@ -32,7 +32,6 @@
             this.label_titulo = new System.Windows.Forms.Label();
             this.label_autor = new System.Windows.Forms.Label();
             this.label_editorial = new System.Windows.Forms.Label();
-            this.button_añadirEjemplar = new System.Windows.Forms.Button();
             this.button_darAlta = new System.Windows.Forms.Button();
             this.button_cancelar = new System.Windows.Forms.Button();
             this.radioButton_Audiolibro = new System.Windows.Forms.RadioButton();
@@ -52,7 +51,7 @@
             // label_ISBN
             // 
             this.label_ISBN.AutoSize = true;
-            this.label_ISBN.Location = new System.Drawing.Point(154, 73);
+            this.label_ISBN.Location = new System.Drawing.Point(154, 65);
             this.label_ISBN.Name = "label_ISBN";
             this.label_ISBN.Size = new System.Drawing.Size(41, 16);
             this.label_ISBN.TabIndex = 0;
@@ -61,7 +60,7 @@
             // label_titulo
             // 
             this.label_titulo.AutoSize = true;
-            this.label_titulo.Location = new System.Drawing.Point(154, 125);
+            this.label_titulo.Location = new System.Drawing.Point(154, 117);
             this.label_titulo.Name = "label_titulo";
             this.label_titulo.Size = new System.Drawing.Size(43, 16);
             this.label_titulo.TabIndex = 1;
@@ -70,7 +69,7 @@
             // label_autor
             // 
             this.label_autor.AutoSize = true;
-            this.label_autor.Location = new System.Drawing.Point(154, 176);
+            this.label_autor.Location = new System.Drawing.Point(154, 168);
             this.label_autor.Name = "label_autor";
             this.label_autor.Size = new System.Drawing.Size(41, 16);
             this.label_autor.TabIndex = 2;
@@ -79,27 +78,17 @@
             // label_editorial
             // 
             this.label_editorial.AutoSize = true;
-            this.label_editorial.Location = new System.Drawing.Point(154, 227);
+            this.label_editorial.Location = new System.Drawing.Point(154, 219);
             this.label_editorial.Name = "label_editorial";
             this.label_editorial.Size = new System.Drawing.Size(59, 16);
             this.label_editorial.TabIndex = 3;
             this.label_editorial.Text = "Editorial:";
             // 
-            // button_añadirEjemplar
-            // 
-            this.button_añadirEjemplar.Location = new System.Drawing.Point(125, 413);
-            this.button_añadirEjemplar.Name = "button_añadirEjemplar";
-            this.button_añadirEjemplar.Size = new System.Drawing.Size(150, 23);
-            this.button_añadirEjemplar.TabIndex = 4;
-            this.button_añadirEjemplar.Text = "Añadir ejemplares";
-            this.button_añadirEjemplar.UseVisualStyleBackColor = true;
-            this.button_añadirEjemplar.Visible = false;
-            // 
             // button_darAlta
             // 
-            this.button_darAlta.Location = new System.Drawing.Point(405, 413);
+            this.button_darAlta.Location = new System.Drawing.Point(296, 413);
             this.button_darAlta.Name = "button_darAlta";
-            this.button_darAlta.Size = new System.Drawing.Size(75, 23);
+            this.button_darAlta.Size = new System.Drawing.Size(74, 23);
             this.button_darAlta.TabIndex = 5;
             this.button_darAlta.Text = "Dar alta";
             this.button_darAlta.UseVisualStyleBackColor = true;
@@ -107,9 +96,9 @@
             // 
             // button_cancelar
             // 
-            this.button_cancelar.Location = new System.Drawing.Point(623, 413);
+            this.button_cancelar.Location = new System.Drawing.Point(428, 413);
             this.button_cancelar.Name = "button_cancelar";
-            this.button_cancelar.Size = new System.Drawing.Size(75, 23);
+            this.button_cancelar.Size = new System.Drawing.Size(80, 23);
             this.button_cancelar.TabIndex = 6;
             this.button_cancelar.Text = "Cancelar";
             this.button_cancelar.UseVisualStyleBackColor = true;
@@ -130,7 +119,7 @@
             // radioButton_libro
             // 
             this.radioButton_libro.AutoSize = true;
-            this.radioButton_libro.Location = new System.Drawing.Point(16, 23);
+            this.radioButton_libro.Location = new System.Drawing.Point(16, 22);
             this.radioButton_libro.Name = "radioButton_libro";
             this.radioButton_libro.Size = new System.Drawing.Size(58, 20);
             this.radioButton_libro.TabIndex = 8;
@@ -146,7 +135,7 @@
             this.groupBox1.Controls.Add(this.label_duracion);
             this.groupBox1.Controls.Add(this.radioButton_Audiolibro);
             this.groupBox1.Controls.Add(this.label_formato);
-            this.groupBox1.Location = new System.Drawing.Point(296, 287);
+            this.groupBox1.Location = new System.Drawing.Point(157, 289);
             this.groupBox1.Name = "groupBox1";
             this.groupBox1.Size = new System.Drawing.Size(436, 81);
             this.groupBox1.TabIndex = 9;
@@ -187,28 +176,28 @@
             // 
             // textBox_ISBN
             // 
-            this.textBox_ISBN.Location = new System.Drawing.Point(296, 73);
+            this.textBox_ISBN.Location = new System.Drawing.Point(296, 65);
             this.textBox_ISBN.Name = "textBox_ISBN";
             this.textBox_ISBN.Size = new System.Drawing.Size(150, 22);
             this.textBox_ISBN.TabIndex = 10;
             // 
             // textBox_titulo
             // 
-            this.textBox_titulo.Location = new System.Drawing.Point(296, 125);
+            this.textBox_titulo.Location = new System.Drawing.Point(296, 117);
             this.textBox_titulo.Name = "textBox_titulo";
             this.textBox_titulo.Size = new System.Drawing.Size(436, 22);
             this.textBox_titulo.TabIndex = 11;
             // 
             // textBox_autor
             // 
-            this.textBox_autor.Location = new System.Drawing.Point(296, 176);
+            this.textBox_autor.Location = new System.Drawing.Point(296, 168);
             this.textBox_autor.Name = "textBox_autor";
             this.textBox_autor.Size = new System.Drawing.Size(436, 22);
             this.textBox_autor.TabIndex = 12;
             // 
             // textBox_editorial
             // 
-            this.textBox_editorial.Location = new System.Drawing.Point(296, 227);
+            this.textBox_editorial.Location = new System.Drawing.Point(296, 219);
             this.textBox_editorial.Name = "textBox_editorial";
             this.textBox_editorial.Size = new System.Drawing.Size(436, 22);
             this.textBox_editorial.TabIndex = 13;
@@ -225,7 +214,6 @@
             this.Controls.Add(this.groupBox1);
             this.Controls.Add(this.button_cancelar);
             this.Controls.Add(this.button_darAlta);
-            this.Controls.Add(this.button_añadirEjemplar);
             this.Controls.Add(this.label_editorial);
             this.Controls.Add(this.label_autor);
             this.Controls.Add(this.label_titulo);
@@ -245,7 +233,6 @@
         private System.Windows.Forms.Label label_titulo;
         private System.Windows.Forms.Label label_autor;
         private System.Windows.Forms.Label label_editorial;
-        private System.Windows.Forms.Button button_añadirEjemplar;
         private System.Windows.Forms.Button button_darAlta;
         private System.Windows.Forms.Button button_cancelar;
         private System.Windows.Forms.RadioButton radioButton_Audiolibro;

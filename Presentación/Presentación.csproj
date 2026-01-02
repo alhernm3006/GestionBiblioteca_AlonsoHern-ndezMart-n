@@ -47,23 +47,23 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="AltaDocumentos.cs">
+    <Compile Include="FormDocumento.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="AltaDocumentos.Designer.cs">
-      <DependentUpon>AltaDocumentos.cs</DependentUpon>
+    <Compile Include="FormDocumento.Designer.cs">
+      <DependentUpon>FormDocumento.cs</DependentUpon>
     </Compile>
-    <Compile Include="AltaEjemplar.cs">
+    <Compile Include="FormEjemplar.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="AltaEjemplar.Designer.cs">
-      <DependentUpon>AltaEjemplar.cs</DependentUpon>
+    <Compile Include="FormEjemplar.Designer.cs">
+      <DependentUpon>FormEjemplar.cs</DependentUpon>
     </Compile>
-    <Compile Include="BusquedaUsuario2.cs">
+    <Compile Include="BusquedaDNI.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="BusquedaUsuario2.Designer.cs">
-      <DependentUpon>BusquedaUsuario2.cs</DependentUpon>
+    <Compile Include="BusquedaDNI.Designer.cs">
+      <DependentUpon>BusquedaDNI.cs</DependentUpon>
     </Compile>
     <Compile Include="FormInicio.cs">
       <SubType>Form</SubType>
@@ -97,14 +97,14 @@
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <EmbeddedResource Include="AltaDocumentos.resx">
-      <DependentUpon>AltaDocumentos.cs</DependentUpon>
+    <EmbeddedResource Include="FormDocumento.resx">
+      <DependentUpon>FormDocumento.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="AltaEjemplar.resx">
-      <DependentUpon>AltaEjemplar.cs</DependentUpon>
+    <EmbeddedResource Include="FormEjemplar.resx">
+      <DependentUpon>FormEjemplar.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="BusquedaUsuario2.resx">
-      <DependentUpon>BusquedaUsuario2.cs</DependentUpon>
+    <EmbeddedResource Include="BusquedaDNI.resx">
+      <DependentUpon>BusquedaDNI.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="FormInicio.resx">
       <DependentUpon>FormInicio.cs</DependentUpon>

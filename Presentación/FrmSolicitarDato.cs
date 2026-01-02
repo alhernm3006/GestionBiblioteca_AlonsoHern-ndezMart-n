@@ -153,7 +153,7 @@ namespace Presentación
                     // --- CÓDIGO AÑADIDO: Si no existe, procedemos al Alta ---
                     this.Hide();
                     // Abrimos el formulario de detalle pasando el DNI, la operación y la referencia al personal
-                    new AltaDocumentos(textBox_DNI.Text, this.op, this.personal).Show();
+                    new FormDocumento(textBox_DNI.Text, this.op, this.personal).Show();
                     this.Close();
                 }
 
@@ -167,7 +167,7 @@ namespace Presentación
                     // Lógica existente para cuando SI existe en Baja: mostrar detalles para borrar
                     this.Hide();
                     // Nota: aquí usabas el constructor de 4 parámetros, asegúrate de que exista
-                    new AltaDocumentos(textBox_DNI.Text, this.op, p.buscarPorISBN((textBox_DNI.Text)), this.personal).Show();
+                    new FormDocumento(textBox_DNI.Text, this.op, p.buscarPorISBN((textBox_DNI.Text)), this.personal).Show();
                     this.Close();
                 }
                 else
@@ -211,7 +211,7 @@ namespace Presentación
                 {
                     // SI LO ENCUENTRA: Abrimos el formulario de detalle
                     this.Hide();
-                    new AltaDocumentos(textBox_DNI.Text, this.op, d, this.personal).Show();
+                    new FormDocumento(textBox_DNI.Text, this.op, d, this.personal).Show();
                     this.Close();
                 }
             }
@@ -231,7 +231,7 @@ namespace Presentación
                 // --- CORRECCIÓN DEL ERROR ---
                 // Antes tenías: new AltaEjemplar(textBox_DNI.Text, p); 
                 // Ahora DEBES poner:
-                new AltaEjemplar(textBox_DNI.Text, p, "Alta").Show();
+                new FormEjemplar(textBox_DNI.Text, p, "Alta").Show();
 
                 this.Close();
             }
@@ -273,7 +273,7 @@ namespace Presentación
                         // EJEMPLAR ENCONTRADO: Abrimos la ventana en modo "Búsqueda"
                         this.Hide();
                         // AQUÍ PASAMOS 3 ARGUMENTOS
-                        new AltaEjemplar(codigoBuscado, p, "Búsqueda").Show();
+                        new FormEjemplar(codigoBuscado, p, "Búsqueda").Show();
                         this.Close();
                     }
                 }

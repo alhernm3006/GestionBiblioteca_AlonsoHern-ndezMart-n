@@ -11,11 +11,11 @@ using System.Windows.Forms;
 
 namespace Presentación
 {
-    public partial class BusquedaUsuario2 : Form
+    public partial class BusquedaDNI : Form
     {
 
         private LógicaNegocio.PersonalBiblioteca personal;
-        public BusquedaUsuario2( LógicaNegocio.PersonalBiblioteca p)
+        public BusquedaDNI( LógicaNegocio.PersonalBiblioteca p)
         {
             InitializeComponent();
             this.personal = p;
