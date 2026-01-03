@@ -104,6 +104,7 @@ namespace LógicaNegocio
         {
             try
             {
+                ej.Estado = EstadoEjemplar.disponible;
                 ejemplarCRUD.Insertar(ej);
                 return true;
             }
@@ -126,11 +127,11 @@ namespace LógicaNegocio
             }
         }
 
-        public List<Ejemplar> obtenerEjemplares(string isbn)
+       /* public List<Ejemplar> obtenerEjemplares(string isbn)
         {
             // Requiere método auxiliar en Ejemplar_CRUD (ver abajo)
             return ejemplarCRUD.ListarPorDocumento(isbn);
-        }
+        }*/
 
         public bool ejemplaresDisponibles(string isbn)
         {

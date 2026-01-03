@@ -47,6 +47,12 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Búsqueda.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Búsqueda.Designer.cs">
+      <DependentUpon>Búsqueda.cs</DependentUpon>
+    </Compile>
     <Compile Include="FormDocumento.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -113,6 +119,12 @@
     <Compile Include="ListadoEjemplares.Designer.cs">
       <DependentUpon>ListadoEjemplares.cs</DependentUpon>
     </Compile>
+    <Compile Include="ListadoPrestamo.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ListadoPrestamo.Designer.cs">
+      <DependentUpon>ListadoPrestamo.cs</DependentUpon>
+    </Compile>
     <Compile Include="ListadoUsuario.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -121,6 +133,9 @@
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <EmbeddedResource Include="Búsqueda.resx">
+      <DependentUpon>Búsqueda.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="FormDocumento.resx">
       <DependentUpon>FormDocumento.cs</DependentUpon>
     </EmbeddedResource>
@@ -153,6 +168,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="ListadoEjemplares.resx">
       <DependentUpon>ListadoEjemplares.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ListadoPrestamo.resx">
+      <DependentUpon>ListadoPrestamo.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="ListadoUsuario.resx">
       <DependentUpon>ListadoUsuario.cs</DependentUpon>

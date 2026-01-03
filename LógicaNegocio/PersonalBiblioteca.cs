@@ -41,9 +41,21 @@ namespace LógicaNegocio
 
             public void cerrarSesion() { }
 
-            // --- Gestión de Usuarios ---
+        // --- Gestión de Usuarios ---
+        public List<Documento> obtenerDocumentos()
+        {
+            // Utilizamos el CRUD protegido que ya existe en esta clase
+            Documento_CRUD documentoCRUD = new Documento_CRUD();
+            return documentoCRUD.ListarTodos();
+        }
 
-            public bool altaUsuario(Usuario u)
+        public List<Ejemplar> obtenerEjemplares(string isbn)
+        {
+            // Utilizamos el CRUD protegido
+            Ejemplar_CRUD ejemplarCRUD = new Ejemplar_CRUD();
+            return ejemplarCRUD.ListarPorDocumento(isbn);
+        }
+        public bool altaUsuario(Usuario u)
             {
                 try
                 {

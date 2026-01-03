@@ -17,14 +17,7 @@ namespace Presentación
         private LógicaNegocio.PersonalBiblioteca personal;
         private string op;
         private string etiqueta;
-        /* public FrmSolicitarDato(string titulo, string etiqueta, LógicaNegocio.PersonalBiblioteca personal)
-         {
-             InitializeComponent();
-             this.Text = titulo;        // Ej: "Introducir DNI"
-             this.lblEtiqueta.Text = etiqueta; // Ej: "DNI:"
-             this.personal = personal;
 
-         }*/
         public FrmSolicitarDato(string titulo, string etiqueta, string op, LógicaNegocio.PersonalBiblioteca personal)
         {
             InitializeComponent();
@@ -235,53 +228,72 @@ namespace Presentación
 
                 this.Close();
             }
-           
-                else if (this.op.Equals("Búsqueda") && (this.etiqueta == "Codigo:"))
+
+            else if (this.op.Equals("Búsqueda") && (this.etiqueta == "Codigo:"))
+            {
+                LógicaNegocio.PersonalAdquisicion p = (LógicaNegocio.PersonalAdquisicion)personal;
+                string codigoBuscado = textBox_DNI.Text; // Reutilizamos el textBox
+                bool encontrado = false;
+
+                // Buscar si el ejemplar existe en CUALQUIER documento
+                foreach (ModeloDominio.Documento doc in p.obtenerDocumentos())
                 {
-                    LógicaNegocio.PersonalAdquisicion p = (LógicaNegocio.PersonalAdquisicion)personal;
-                    string codigoBuscado = textBox_DNI.Text; // Reutilizamos el textBox
-                    bool encontrado = false;
-
-                    // Buscar si el ejemplar existe en CUALQUIER documento
-                    foreach (ModeloDominio.Documento doc in p.obtenerDocumentos())
+                    if (p.getEjemplar(doc.ISBN, codigoBuscado) != null)
                     {
-                        if (p.getEjemplar(doc.ISBN, codigoBuscado) != null)
-                        {
-                            encontrado = true;
-                            break;
-                        }
-                    }
-
-                    if (!encontrado)
-                    {
-                        DialogResult resultado = MessageBox.Show(
-                            "No se ha encontrado ningún ejemplar con ese código. ¿Desea buscar otro?",
-                            "Búsqueda sin resultados",
-                            MessageBoxButtons.YesNo,
-                            MessageBoxIcon.Question
-                        );
-
-                        if (resultado == DialogResult.Yes)
-                        {
-                            this.Hide();
-                            new FrmSolicitarDato("Introducir codigo", "Codigo:", this.op, personal).Show();
-                        }
-                        this.Close();
-                    }
-                    else
-                    {
-                        // EJEMPLAR ENCONTRADO: Abrimos la ventana en modo "Búsqueda"
-                        this.Hide();
-                        // AQUÍ PASAMOS 3 ARGUMENTOS
-                        new FormEjemplar(codigoBuscado, p, "Búsqueda").Show();
-                        this.Close();
+                        encontrado = true;
+                        break;
                     }
                 }
+
+                if (!encontrado)
+                {
+                    DialogResult resultado = MessageBox.Show(
+                        "No se ha encontrado ningún ejemplar con ese código. ¿Desea buscar otro?",
+                        "Búsqueda sin resultados",
+                        MessageBoxButtons.YesNo,
+                        MessageBoxIcon.Question
+                    );
+
+                    if (resultado == DialogResult.Yes)
+                    {
+                        this.Hide();
+                        new FrmSolicitarDato("Introducir codigo", "Codigo:", this.op, personal).Show();
+                    }
+                    this.Close();
+                }
+                else
+                {
+                    // EJEMPLAR ENCONTRADO: Abrimos la ventana en modo "Búsqueda"
+                    this.Hide();
+                    // AQUÍ PASAMOS 3 ARGUMENTOS
+                    new FormEjemplar(codigoBuscado, p, "Búsqueda").Show();
+                    this.Close();
+                }
             }
+            if ((this.op.Equals("Búsqueda")) && (this.etiqueta == "Prestamo:"))
+            {
+                LógicaNegocio.PersonalSala p = (LógicaNegocio.PersonalSala)personal;
+
+                if (p.obtenerPrestamos().Count == 0)
+                {
+                    MessageBox.Show("No hay prestamos registrados en el sistema. Debe dar de alta un prestamo antes de crear ejemplares.", "Aviso", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    this.Close();
+                    return;
+                }
+                else
+                {
+
+                    this.Hide();
+                    // --- CORRECCIÓN DEL ERROR ---
+                    // Antes tenías: new AltaEjemplar(textBox_DNI.Text, p); 
+                    // Ahora DEBES poner:
+                    new FormPrestamo(p,this.textBox_DNI.Text).Show();
+
+                    this.Close();
+                }
+            }
+        }
     
-
-
-
 
 
         private void button2_Click(object sender, EventArgs e)

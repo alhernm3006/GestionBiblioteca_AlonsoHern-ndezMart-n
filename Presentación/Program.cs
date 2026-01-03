@@ -2,6 +2,7 @@
 using ModeloDominio;
 using System;
 using System.Collections.Generic;
+using System.ComponentModel.Design.Serialization;
 using System.Linq;
 using System.Threading.Tasks;
 using System.Windows.Forms;
@@ -17,12 +18,24 @@ namespace Presentación
         static void Main()
         {
             Admin admin = new LógicaNegocio.Admin();
-            admin.añadirtrabajador(new ModeloDominio.PersonalAdquisicion("usr1", "1234"));
-            admin.añadirtrabajador(new ModeloDominio.PersonalSala("usr2", "1234"));
+            ModeloDominio.PersonalAdquisicion adquisicion = new ModeloDominio.PersonalAdquisicion("usr1", "1234");
+            admin.añadirtrabajador(adquisicion);
+            ModeloDominio.PersonalSala sala = new ModeloDominio.PersonalSala("usr2", "1234");
+            admin.añadirtrabajador(sala);
+            Documento d1 = new LibroPapel("d", "1", "r", 5, "3");
+            admin.altaDocumento(d1);
+            Documento d2 = new LibroPapel("4", "5", "j", 5, "3");
+            admin.altaDocumento(d2);
+            
+            admin.altaEjemplar(new Ejemplar(d1,"3",adquisicion));
+            admin.altaEjemplar(new Ejemplar(d1, "5", adquisicion));
+            admin.altaEjemplar(new Ejemplar(d2, "3", adquisicion));
+
 
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
             Application.Run(new FormInicio());
+           
         }
     }
 }

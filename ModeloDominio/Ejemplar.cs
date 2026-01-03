@@ -21,7 +21,7 @@ namespace ModeloDominio
         {
             this.documento = documento;
             this.codigo = codigo;
-            this.estado = EstadoEjemplar.archivado;
+            this.estado = EstadoEjemplar.disponible;
             this.trabajador = trabajador;
         }
 

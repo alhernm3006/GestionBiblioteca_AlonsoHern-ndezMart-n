@@ -52,7 +52,23 @@ namespace LógicaNegocio
                 }
             }
 
-            public void devolverEjemplar(string isbn, string codigo)
+        public Prestamo buscarPrestamo(String codigo)
+        {
+            return prestamoCRUD.Buscar(codigo);
+        }
+        public List<Ejemplar> obtenerEjemplares(string isbn)
+        {
+            // Requiere método auxiliar en Ejemplar_CRUD (ver abajo)
+            return ejemplarCRUD.ListarPorDocumento(isbn);
+        }
+
+        public bool ejemplaresDisponibles(string isbn)
+        {
+            List<Ejemplar> lista = ejemplarCRUD.ListarPorDocumento(isbn);
+            // Usamos LINQ para ver si alguno está disponible
+            return lista.Any(e => e.Estado == EstadoEjemplar.disponible);
+        }
+        public void devolverEjemplar(string isbn, string codigo)
             {
                 // 1. Buscar el ejemplar para validar que existe
                 Ejemplar ej = ejemplarCRUD.Buscar(isbn, codigo);

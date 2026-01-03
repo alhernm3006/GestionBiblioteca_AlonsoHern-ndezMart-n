@@ -9,6 +9,8 @@ namespace Persistencia
 {
     public class Ejemplar_CRUD
     {
+
+
         public void Insertar(Ejemplar ejemplar)
         {
             ClaveEjemplar clave = new ClaveEjemplar(ejemplar.Documento.ISBN, ejemplar.Codigo);
@@ -87,6 +89,8 @@ namespace Persistencia
                 throw new Exception("No se puede actualizar el estado: El ejemplar no existe.");
             }
         }
+
+        
 
     }
 }

@@ -48,7 +48,7 @@ namespace Persistencia
         public static EjemplarDato EjemplarAEjemplarDato(Ejemplar id)
 
         {
-
+            
             return new EjemplarDato(new ClaveEjemplar(id.Documento.ISBN,id.Codigo),id.Estado.ToString(),id.PersonalAdquisicion.IdUsuario); 
 
         }

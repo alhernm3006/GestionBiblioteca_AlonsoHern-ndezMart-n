@@ -50,6 +50,7 @@
             this.button_aceptar.TabIndex = 0;
             this.button_aceptar.Text = "Aceptar";
             this.button_aceptar.UseVisualStyleBackColor = true;
+            this.button_aceptar.Click += new System.EventHandler(this.button_aceptar_Click);
             // 
             // button_cancelar
             // 
@@ -59,6 +60,7 @@
             this.button_cancelar.TabIndex = 1;
             this.button_cancelar.Text = "Cancelar";
             this.button_cancelar.UseVisualStyleBackColor = true;
+            this.button_cancelar.Click += new System.EventHandler(this.button_cancelar_Click);
             // 
             // button_añadirEjemplar
             // 
@@ -68,6 +70,7 @@
             this.button_añadirEjemplar.TabIndex = 2;
             this.button_añadirEjemplar.Text = "Añadir ejemplar";
             this.button_añadirEjemplar.UseVisualStyleBackColor = true;
+            this.button_añadirEjemplar.Click += new System.EventHandler(this.button_añadirEjemplar_Click);
             // 
             // label_id
             // 
@@ -108,6 +111,7 @@
             // 
             this.textBox_fecha.Location = new System.Drawing.Point(220, 97);
             this.textBox_fecha.Name = "textBox_fecha";
+            this.textBox_fecha.ReadOnly = true;
             this.textBox_fecha.Size = new System.Drawing.Size(100, 22);
             this.textBox_fecha.TabIndex = 7;
             // 

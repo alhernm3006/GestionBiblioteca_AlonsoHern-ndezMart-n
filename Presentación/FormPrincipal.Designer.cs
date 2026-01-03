@@ -35,21 +35,21 @@
             this.búsquedaToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.busquedaToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.lisradoToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.recorridoToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.documentosToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.altaToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
             this.búsquedaToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
+            this.listadoToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.ejemplaresToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.altaToolStripMenuItem2 = new System.Windows.Forms.ToolStripMenuItem();
             this.búsquedaToolStripMenuItem2 = new System.Windows.Forms.ToolStripMenuItem();
-            this.préstamosToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.configuraciónToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.recorridoToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.listadoToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.recorridoUnoAUnoToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.listadoToolStripMenuItem2 = new System.Windows.Forms.ToolStripMenuItem();
+            this.préstamosToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.altaToolStripMenuItem3 = new System.Windows.Forms.ToolStripMenuItem();
             this.búsquedaToolStripMenuItem3 = new System.Windows.Forms.ToolStripMenuItem();
             this.listadoToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
-            this.listadoToolStripMenuItem2 = new System.Windows.Forms.ToolStripMenuItem();
+            this.configuraciónToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.menuStrip1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -112,6 +112,12 @@
             this.lisradoToolStripMenuItem.Size = new System.Drawing.Size(227, 26);
             this.lisradoToolStripMenuItem.Text = "Listado";
             // 
+            // recorridoToolStripMenuItem
+            // 
+            this.recorridoToolStripMenuItem.Name = "recorridoToolStripMenuItem";
+            this.recorridoToolStripMenuItem.Size = new System.Drawing.Size(227, 26);
+            this.recorridoToolStripMenuItem.Text = "Recorrido uno a uno";
+            // 
             // documentosToolStripMenuItem
             // 
             this.documentosToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
@@ -126,14 +132,20 @@
             // altaToolStripMenuItem1
             // 
             this.altaToolStripMenuItem1.Name = "altaToolStripMenuItem1";
-            this.altaToolStripMenuItem1.Size = new System.Drawing.Size(224, 26);
+            this.altaToolStripMenuItem1.Size = new System.Drawing.Size(157, 26);
             this.altaToolStripMenuItem1.Text = "Alta";
             // 
             // búsquedaToolStripMenuItem1
             // 
             this.búsquedaToolStripMenuItem1.Name = "búsquedaToolStripMenuItem1";
-            this.búsquedaToolStripMenuItem1.Size = new System.Drawing.Size(224, 26);
+            this.búsquedaToolStripMenuItem1.Size = new System.Drawing.Size(157, 26);
             this.búsquedaToolStripMenuItem1.Text = "Búsqueda";
+            // 
+            // listadoToolStripMenuItem
+            // 
+            this.listadoToolStripMenuItem.Name = "listadoToolStripMenuItem";
+            this.listadoToolStripMenuItem.Size = new System.Drawing.Size(157, 26);
+            this.listadoToolStripMenuItem.Text = "Listado";
             // 
             // ejemplaresToolStripMenuItem
             // 
@@ -150,14 +162,26 @@
             // altaToolStripMenuItem2
             // 
             this.altaToolStripMenuItem2.Name = "altaToolStripMenuItem2";
-            this.altaToolStripMenuItem2.Size = new System.Drawing.Size(224, 26);
+            this.altaToolStripMenuItem2.Size = new System.Drawing.Size(227, 26);
             this.altaToolStripMenuItem2.Text = "Alta";
             // 
             // búsquedaToolStripMenuItem2
             // 
             this.búsquedaToolStripMenuItem2.Name = "búsquedaToolStripMenuItem2";
-            this.búsquedaToolStripMenuItem2.Size = new System.Drawing.Size(224, 26);
+            this.búsquedaToolStripMenuItem2.Size = new System.Drawing.Size(227, 26);
             this.búsquedaToolStripMenuItem2.Text = "Búsqueda";
+            // 
+            // recorridoUnoAUnoToolStripMenuItem
+            // 
+            this.recorridoUnoAUnoToolStripMenuItem.Name = "recorridoUnoAUnoToolStripMenuItem";
+            this.recorridoUnoAUnoToolStripMenuItem.Size = new System.Drawing.Size(227, 26);
+            this.recorridoUnoAUnoToolStripMenuItem.Text = "Recorrido uno a uno";
+            // 
+            // listadoToolStripMenuItem2
+            // 
+            this.listadoToolStripMenuItem2.Name = "listadoToolStripMenuItem2";
+            this.listadoToolStripMenuItem2.Size = new System.Drawing.Size(227, 26);
+            this.listadoToolStripMenuItem2.Text = "Listado";
             // 
             // préstamosToolStripMenuItem
             // 
@@ -168,30 +192,7 @@
             this.préstamosToolStripMenuItem.Name = "préstamosToolStripMenuItem";
             this.préstamosToolStripMenuItem.Size = new System.Drawing.Size(91, 24);
             this.préstamosToolStripMenuItem.Text = "Préstamos";
-            // 
-            // configuraciónToolStripMenuItem
-            // 
-            this.configuraciónToolStripMenuItem.Name = "configuraciónToolStripMenuItem";
-            this.configuraciónToolStripMenuItem.Size = new System.Drawing.Size(116, 24);
-            this.configuraciónToolStripMenuItem.Text = "Configuración";
-            // 
-            // recorridoToolStripMenuItem
-            // 
-            this.recorridoToolStripMenuItem.Name = "recorridoToolStripMenuItem";
-            this.recorridoToolStripMenuItem.Size = new System.Drawing.Size(227, 26);
-            this.recorridoToolStripMenuItem.Text = "Recorrido uno a uno";
-            // 
-            // listadoToolStripMenuItem
-            // 
-            this.listadoToolStripMenuItem.Name = "listadoToolStripMenuItem";
-            this.listadoToolStripMenuItem.Size = new System.Drawing.Size(224, 26);
-            this.listadoToolStripMenuItem.Text = "Listado";
-            // 
-            // recorridoUnoAUnoToolStripMenuItem
-            // 
-            this.recorridoUnoAUnoToolStripMenuItem.Name = "recorridoUnoAUnoToolStripMenuItem";
-            this.recorridoUnoAUnoToolStripMenuItem.Size = new System.Drawing.Size(227, 26);
-            this.recorridoUnoAUnoToolStripMenuItem.Text = "Recorrido uno a uno";
+            this.préstamosToolStripMenuItem.DropDownItemClicked += new System.Windows.Forms.ToolStripItemClickedEventHandler(this.préstamosToolStripMenuItem_DropDownItemClicked);
             // 
             // altaToolStripMenuItem3
             // 
@@ -211,11 +212,11 @@
             this.listadoToolStripMenuItem1.Size = new System.Drawing.Size(224, 26);
             this.listadoToolStripMenuItem1.Text = "Listado";
             // 
-            // listadoToolStripMenuItem2
+            // configuraciónToolStripMenuItem
             // 
-            this.listadoToolStripMenuItem2.Name = "listadoToolStripMenuItem2";
-            this.listadoToolStripMenuItem2.Size = new System.Drawing.Size(227, 26);
-            this.listadoToolStripMenuItem2.Text = "Listado";
+            this.configuraciónToolStripMenuItem.Name = "configuraciónToolStripMenuItem";
+            this.configuraciónToolStripMenuItem.Size = new System.Drawing.Size(116, 24);
+            this.configuraciónToolStripMenuItem.Text = "Configuración";
             // 
             // FrmPrincipal
             // 

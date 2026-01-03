@@ -63,5 +63,16 @@ namespace Presentación
                 default: new FrmSolicitarDato("Introducir codigo", "Codigo:", e.ClickedItem.Text, personal).Show(); break;
             }
         }
+
+        private void préstamosToolStripMenuItem_DropDownItemClicked(object sender, ToolStripItemClickedEventArgs e)
+        {
+            switch (e.ClickedItem.Text)
+            {
+                //case ("Búsqueda"): solicitud = new FrmSolicitarDato("Introducir DNI", "DNI:", personal); break;
+                case ("Listado"): new ListadoPrestamo((PersonalSala)this.personal).Show(); break;
+                case ("Búsqueda"): new FrmSolicitarDato("Introducir ID prestamo", "Prestamo:", e.ClickedItem.Text, personal).Show(); break;
+                default: new FormPrestamo((PersonalSala)this.personal).Show(); break;
+            }
+        }
     } 
 }
