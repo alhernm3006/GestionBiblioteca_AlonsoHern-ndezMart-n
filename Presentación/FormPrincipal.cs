@@ -35,7 +35,7 @@ namespace Presentación
         {
             switch (e.ClickedItem.Text)
             {
-                case ("Listado"): new Listado(personal, "Usuario").Show(); break;
+                case ("Listado"): new ListadoUsuario(personal, "Usuario").Show(); break;
                 case ("Búsqueda por DNI"): new BusquedaDNI(personal).Show(); break;
                 default: new FrmSolicitarDato("Introducir DNI", "DNI:", e.ClickedItem.Text, personal).Show(); break;
             }
@@ -45,8 +45,9 @@ namespace Presentación
         {
             switch (e.ClickedItem.Text)
             {
+
                 //case ("Búsqueda"): solicitud = new FrmSolicitarDato("Introducir DNI", "DNI:", personal); break;
-                case ("Listado"): new Listado(personal, "Documento").Show(); break;
+                case ("Listado"): new ListadoDocumento((PersonalAdquisicion)this.personal).Show(); break;
                 default: new FrmSolicitarDato("Introducir ISBN", "ISBN:", e.ClickedItem.Text, personal).Show(); break;
             }
         }
@@ -58,6 +59,7 @@ namespace Presentación
             switch (e.ClickedItem.Text)
             {
                 //case ("Búsqueda"): solicitud = new FrmSolicitarDato("Introducir DNI", "DNI:", personal); break;
+                case ("Listado"): new ListadoEjemplares((PersonalAdquisicion)this.personal).Show(); break;
                 default: new FrmSolicitarDato("Introducir codigo", "Codigo:", e.ClickedItem.Text, personal).Show(); break;
             }
         }

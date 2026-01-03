@@ -191,5 +191,30 @@ namespace LógicaNegocio
             // Si se encontró algún préstamo, devolvemos la fecha, si no (ej. no hay ejemplares o todos perdidos), MinValue.
             return encontrado ? fechaMasProxima : DateTime.MinValue;
         }
+
+        public string obtenerNombreUsuarioPrestamo(string isbn, string codigo)
+        {
+            // 1. Obtenemos todos los préstamos
+            // (Al heredar de PersonalBiblioteca, tienes acceso a prestamoCRUD)
+            List<Prestamo> prestamos = prestamoCRUD.ListarTodos();
+
+            foreach (var p in prestamos)
+            {
+                // 2. Buscamos solo en los préstamos activos (en proceso)
+                if (p.Estado == EstadoPrestamo.enProceso)
+                {
+                    // 3. Revisamos si este préstamo tiene el ejemplar que buscamos
+                    foreach (var ej in p.Ejemplares)
+                    {
+                        if (ej.Documento.ISBN == isbn && ej.Codigo == codigo)
+                        {
+                            // ¡Encontrado! Devolvemos el nombre del usuario
+                            return p.Usuario.Nombre;
+                        }
+                    }
+                }
+            }
+            return "Disponible"; // O cadena vacía "" si prefieres
+        }
     }
 }

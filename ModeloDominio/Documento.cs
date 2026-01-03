@@ -66,5 +66,9 @@ namespace ModeloDominio
                 this.estado = value;
             }
         }
+        public override string ToString()
+        {
+            return this.titulo; // Esto hará que en el grid se vea el Título
+        }
     }
 }

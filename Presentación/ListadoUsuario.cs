@@ -13,13 +13,13 @@ using System.Windows.Forms;
 
 namespace Presentación
 {
-    public partial class Listado : Form
+    public partial class ListadoUsuario : Form
     {
         private LógicaNegocio.PersonalBiblioteca personal;
         private string tipo;
         private List<Usuario> listaUsuarios;
         private List<Documento> listaDocumentos;
-        public Listado(LógicaNegocio.PersonalBiblioteca p, string tipo)
+        public ListadoUsuario(LógicaNegocio.PersonalBiblioteca p, string tipo)
         {
             InitializeComponent();
             this.personal = p;

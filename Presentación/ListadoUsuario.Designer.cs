@@ -1,6 +1,6 @@
 ﻿namespace Presentación
 {
-    partial class Listado
+    partial class ListadoUsuario
     {
         /// <summary>
         /// Required designer variable.
