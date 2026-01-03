@@ -13,11 +13,11 @@ using System.Windows.Forms;
 
 namespace Presentación
 {
-    public partial class FrmDetalleUsuario : Form
+    public partial class FormUsuario : Form
     {
         private LógicaNegocio.PersonalBiblioteca personal;
         private string operacion;
-        public FrmDetalleUsuario(string dni, string operacion, LógicaNegocio.PersonalBiblioteca personal)
+        public FormUsuario(string dni, string operacion, LógicaNegocio.PersonalBiblioteca personal)
         {
             InitializeComponent();
             this.Text = operacion+" de usuario";
@@ -29,7 +29,7 @@ namespace Presentación
                 textBox_DNI.ReadOnly = true;
             }
         }
-        public FrmDetalleUsuario(string dni, string operacion, string nombre, LógicaNegocio.PersonalBiblioteca personal)
+        public FormUsuario(string dni, string operacion, string nombre, LógicaNegocio.PersonalBiblioteca personal)
         {
             InitializeComponent();
             this.Text = operacion + " de usuario";

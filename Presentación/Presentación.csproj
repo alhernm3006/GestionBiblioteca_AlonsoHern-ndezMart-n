@@ -71,11 +71,11 @@
     <Compile Include="FormInicio.Designer.cs">
       <DependentUpon>FormInicio.cs</DependentUpon>
     </Compile>
-    <Compile Include="FrmDetalleUsuario.cs">
+    <Compile Include="FormUsuario.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="FrmDetalleUsuario.Designer.cs">
-      <DependentUpon>FrmDetalleUsuario.cs</DependentUpon>
+    <Compile Include="FormUsuario.Designer.cs">
+      <DependentUpon>FormUsuario.cs</DependentUpon>
     </Compile>
     <Compile Include="FrmSolicitarDato.cs">
       <SubType>Form</SubType>
@@ -109,8 +109,8 @@
     <EmbeddedResource Include="FormInicio.resx">
       <DependentUpon>FormInicio.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="FrmDetalleUsuario.resx">
-      <DependentUpon>FrmDetalleUsuario.cs</DependentUpon>
+    <EmbeddedResource Include="FormUsuario.resx">
+      <DependentUpon>FormUsuario.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="FrmSolicitarDato.resx">
       <DependentUpon>FrmSolicitarDato.cs</DependentUpon>

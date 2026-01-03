@@ -37,9 +37,9 @@
             // 
             // button_dni
             // 
-            this.button_dni.Location = new System.Drawing.Point(143, 61);
+            this.button_dni.Location = new System.Drawing.Point(107, 61);
             this.button_dni.Name = "button_dni";
-            this.button_dni.Size = new System.Drawing.Size(82, 30);
+            this.button_dni.Size = new System.Drawing.Size(153, 30);
             this.button_dni.TabIndex = 0;
             this.button_dni.Text = "DNI";
             this.button_dni.UseVisualStyleBackColor = true;
@@ -47,9 +47,9 @@
             // 
             // button_nombre
             // 
-            this.button_nombre.Location = new System.Drawing.Point(388, 61);
+            this.button_nombre.Location = new System.Drawing.Point(352, 61);
             this.button_nombre.Name = "button_nombre";
-            this.button_nombre.Size = new System.Drawing.Size(82, 30);
+            this.button_nombre.Size = new System.Drawing.Size(154, 30);
             this.button_nombre.TabIndex = 1;
             this.button_nombre.Text = "Nombre";
             this.button_nombre.UseVisualStyleBackColor = true;

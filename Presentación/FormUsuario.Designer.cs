@@ -1,6 +1,6 @@
 ﻿namespace Presentación
 {
-    partial class FrmDetalleUsuario
+    partial class FormUsuario
     {
         /// <summary>
         /// Required designer variable.

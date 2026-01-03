@@ -16,12 +16,25 @@ namespace Presentación
     public partial class Listado : Form
     {
         private LógicaNegocio.PersonalBiblioteca personal;
+        private string tipo;
         private List<Usuario> listaUsuarios;
-        public Listado(LógicaNegocio.PersonalBiblioteca p)
+        private List<Documento> listaDocumentos;
+        public Listado(LógicaNegocio.PersonalBiblioteca p, string tipo)
         {
             InitializeComponent();
             this.personal = p;
-            listaUsuarios = new List<Usuario>();
+            this.tipo = tipo;
+            if (tipo.Equals("Usuario"))
+            {
+                listaUsuarios = new List<Usuario>();
+                this.Text = "Listado de usuarios";
+            }else if (tipo.Equals("Documento"))
+            {
+                button_dni.Text = "ISBN";
+                button_nombre.Text = "Título";
+                listaDocumentos = new List<Documento>();
+                this.Text = "Listado de documentos";
+            }
         }
 
         private void button3_Click(object sender, EventArgs e)
@@ -47,14 +60,28 @@ namespace Presentación
 
         private void button_nombre_Click(object sender, EventArgs e)
         {
-            listaUsuarios.Sort((u1, u2) => string.Compare(u1.Nombre, u2.Nombre));
+            if (tipo.Equals("Usuario"))
+            {
+                listaUsuarios.Sort((u1, u2) => string.Compare(u1.Nombre, u2.Nombre));
+            }
+            else if (tipo.Equals("Documento"))
+            {
+                listaDocumentos.Sort((d1, d2) => string.Compare(d1.Titulo, d2.Titulo));
+            }
             ActualizarListasVisuales();
 
         }
 
         private void button_dni_Click(object sender, EventArgs e)
         {
-            listaUsuarios.Sort((u1, u2) => string.Compare(u1.DNI, u2.DNI));
+            if (tipo.Equals("Usuario"))
+            {
+                listaUsuarios.Sort((u1, u2) => string.Compare(u1.DNI, u2.DNI));
+            }
+            else if (tipo.Equals("Documento"))
+            {
+                listaDocumentos.Sort((d1, d2) => string.Compare(d1.ISBN, d2.ISBN));
+            }
             ActualizarListasVisuales();
         }
 
@@ -64,30 +91,35 @@ namespace Presentación
             listBox_dni.Items.Clear();
             listBox_nombre.Items.Clear();
 
-            // Rellenamos ambos ListBox en el mismo orden
-            foreach (Usuario u in listaUsuarios)
+            if (tipo.Equals("Usuario"))
             {
-                listBox_dni.Items.Add(u.DNI);
-                listBox_nombre.Items.Add(u.Nombre);
+                foreach (Usuario u in listaUsuarios)
+                {
+                    listBox_dni.Items.Add(u.DNI);
+                    listBox_nombre.Items.Add(u.Nombre);
+                }
+            }
+            else if (tipo.Equals("Documento"))
+            {
+                foreach (Documento d in listaDocumentos)
+                {
+                    listBox_dni.Items.Add(d.ISBN);
+                    listBox_nombre.Items.Add(d.Titulo);
+                }
             }
         }
 
         private void CargarDatos()
         {
-            // 1. Obtenemos todos los usuarios de la base de datos simulada
-            List<Usuario> todosLosUsuarios = personal.obtenerUsuarios();
-
-            // 2. Limpiamos la lista local
-            listaUsuarios.Clear();
-
-            // 3. Filtramos: Solo mostramos los que NO estén inactivos
-            // Usamos el Enum EstadoActivoInactivo definido en tu Modelo de Dominio
-            foreach (Usuario u in todosLosUsuarios)
+            if (tipo.Equals("Usuario"))
             {
-                if (u.Estado != EstadoActivoInactivo.inactivo)
-                {
-                    listaUsuarios.Add(u);
-                }
+                List<Usuario> todos = personal.obtenerUsuarios();
+                listaUsuarios = todos.Where(u => u.Estado != EstadoActivoInactivo.inactivo).ToList();
+            }
+            else if (tipo.Equals("Documento"))
+            {
+                LógicaNegocio.PersonalAdquisicion p = (LógicaNegocio.PersonalAdquisicion) this.personal;
+                listaDocumentos = p.obtenerDocumentos();
             }
             
             ActualizarListasVisuales();

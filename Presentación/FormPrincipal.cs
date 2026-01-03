@@ -35,34 +35,31 @@ namespace Presentación
         {
             switch (e.ClickedItem.Text)
             {
-                case ("Listado"): Listado listar = null; listar = new Listado(personal); listar.Show(); break;
-                case ("Búsqueda por DNI"): BusquedaDNI b2 = null;b2 = new BusquedaDNI(personal); b2.Show(); break;
-                default: FrmSolicitarDato solicitud = null; solicitud = new FrmSolicitarDato("Introducir DNI", "DNI:", e.ClickedItem.Text, personal); solicitud.Show(); break;
+                case ("Listado"): new Listado(personal, "Usuario").Show(); break;
+                case ("Búsqueda por DNI"): new BusquedaDNI(personal).Show(); break;
+                default: new FrmSolicitarDato("Introducir DNI", "DNI:", e.ClickedItem.Text, personal).Show(); break;
             }
         }
 
         private void documentosToolStripMenuItem_DropDownItemClicked(object sender, ToolStripItemClickedEventArgs e)
         {
-            FrmSolicitarDato solicitud = null;
             switch (e.ClickedItem.Text)
             {
                 //case ("Búsqueda"): solicitud = new FrmSolicitarDato("Introducir DNI", "DNI:", personal); break;
-                default: solicitud = new FrmSolicitarDato("Introducir ISBN", "ISBN:", e.ClickedItem.Text, personal); break;
+                case ("Listado"): new Listado(personal, "Documento").Show(); break;
+                default: new FrmSolicitarDato("Introducir ISBN", "ISBN:", e.ClickedItem.Text, personal).Show(); break;
             }
-            solicitud.Show();
         }
 
        
 
         private void ejemplaresToolStripMenuItem_DropDownItemClicked(object sender, ToolStripItemClickedEventArgs e)
         {
-            FrmSolicitarDato solicitud = null;
             switch (e.ClickedItem.Text)
             {
                 //case ("Búsqueda"): solicitud = new FrmSolicitarDato("Introducir DNI", "DNI:", personal); break;
-                default: solicitud = new FrmSolicitarDato("Introducir codigo", "Codigo:", e.ClickedItem.Text, personal); break;
+                default: new FrmSolicitarDato("Introducir codigo", "Codigo:", e.ClickedItem.Text, personal).Show(); break;
             }
-            solicitud.Show();
         }
     } 
 }

@@ -64,7 +64,7 @@ namespace Presentación
                 {
                     this.Hide();
                     // Abrimos el formulario de detalle pasando el DNI, la operación y la referencia al personal
-                    new FrmDetalleUsuario(textBox_DNI.Text, this.op, this.personal).Show();
+                    new FormUsuario(textBox_DNI.Text, this.op, this.personal).Show();
                     this.Close();
                 }
             }
@@ -74,7 +74,7 @@ namespace Presentación
                 {
                     this.Hide();
                     // Nota: aquí usabas el constructor de 4 parámetros, asegúrate de que exista
-                    new FrmDetalleUsuario(textBox_DNI.Text, this.op, personal.getUsuario(textBox_DNI.Text).Nombre, this.personal).Show();
+                    new FormUsuario(textBox_DNI.Text, this.op, personal.getUsuario(textBox_DNI.Text).Nombre, this.personal).Show();
                     this.Close();
                 }
                 else
@@ -124,7 +124,7 @@ namespace Presentación
                     // Si SÍ existe, abrimos la ventana de detalles con los datos del usuario
                     this.Hide();
                     // Usamos el constructor que acepta DNI, Operación, Nombre y Personal
-                    new FrmDetalleUsuario(
+                    new FormUsuario(
                         textBox_DNI.Text,
                         this.op,
                        personal.getUsuario(textBox_DNI.Text).Nombre,
