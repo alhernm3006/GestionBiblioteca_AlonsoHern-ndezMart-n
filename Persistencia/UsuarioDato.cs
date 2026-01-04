@@ -29,7 +29,5 @@ namespace Persistencia
             get { return estado; } 
             set { estado = value; } 
         }
-
-    
     }
 }

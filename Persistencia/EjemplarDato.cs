@@ -11,14 +11,14 @@ namespace Persistencia
         private string isbn;
         private string codigo;
         private string estado;
-        private string nss;
+        private string idPersonal;
 
-        public EjemplarDato(ClaveEjemplar clave, string estado, string nss) : base(clave)
+        public EjemplarDato(ClaveEjemplar clave, string estado, string id) : base(clave)
         {
             this.isbn = clave.ISBN;
             this.codigo = clave.Codigo;
             this.estado = estado;
-            this.nss = nss;
+            this.idPersonal = id;
         }
 
         public string Isbn
@@ -39,10 +39,10 @@ namespace Persistencia
             set { estado = value; }
         }
 
-        public string Nss
+        public string IdPersonal
         {
-            get { return nss; }
-            set { nss = value; }
+            get { return idPersonal; }
+            set { idPersonal = value; }
         }
     }
 }

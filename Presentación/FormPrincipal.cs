@@ -22,7 +22,6 @@ namespace Presentación
             if (this.personal is PersonalAdquisicion)
             {
                 préstamosToolStripMenuItem.Visible = false;
-                
             }
             else if (this.personal is PersonalSala)
             {
@@ -46,8 +45,6 @@ namespace Presentación
         {
             switch (e.ClickedItem.Text)
             {
-
-                //case ("Búsqueda"): solicitud = new FrmSolicitarDato("Introducir DNI", "DNI:", personal); break;
                 case ("Listado"): new ListadoDocumento((PersonalAdquisicion)this.personal).Show(); break;
                 default: new FrmSolicitarDato("Introducir ISBN", "ISBN:", e.ClickedItem.Text, personal).Show(); break;
             }
@@ -59,7 +56,6 @@ namespace Presentación
         {
             switch (e.ClickedItem.Text)
             {
-                //case ("Búsqueda"): solicitud = new FrmSolicitarDato("Introducir DNI", "DNI:", personal); break;
                 case ("Listado"): new ListadoEjemplares((PersonalAdquisicion)this.personal).Show(); break;
                 default: new FrmSolicitarDato("Introducir codigo", "Codigo:", e.ClickedItem.Text, personal).Show(); break;
             }
@@ -69,7 +65,6 @@ namespace Presentación
         {
             switch (e.ClickedItem.Text)
             {
-                //case ("Búsqueda"): solicitud = new FrmSolicitarDato("Introducir DNI", "DNI:", personal); break;
                 case ("Listado"): new ListadoPrestamo((PersonalSala)this.personal).Show(); break;
                 case ("Búsqueda"): new FrmSolicitarDato("Introducir ID prestamo", "Prestamo:", e.ClickedItem.Text, personal).Show(); break;
                 default: new FormPrestamo((PersonalSala)this.personal).Show(); break;

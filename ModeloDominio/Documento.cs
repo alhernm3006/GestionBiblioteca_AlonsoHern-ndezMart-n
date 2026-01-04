@@ -25,25 +25,29 @@ namespace ModeloDominio
             this.estado = EstadoActivoInactivo.inactivo;
         }
 
-        public string ISBN {
+        public string ISBN
+        {
             get
             {
                 return isbn;
             }
         }
-        public string Titulo {
+        public string Titulo
+        {
             get
             {
                 return titulo;
             }
         }
-        public string Autor {
+        public string Autor
+        {
             get
             {
                 return autor;
             }
         }
-        public int Año {
+        public int Año
+        {
             get
             {
                 return año;
@@ -56,7 +60,8 @@ namespace ModeloDominio
                 return editorial;
             }
         }
-        public EstadoActivoInactivo Estado {
+        public EstadoActivoInactivo Estado
+        {
             get
             {
                 return estado;
@@ -68,7 +73,7 @@ namespace ModeloDominio
         }
         public override string ToString()
         {
-            return this.titulo; // Esto hará que en el grid se vea el Título
+            return "Título: " + titulo + " Autor: " + autor + " ISBN: " + isbn + " Año: " + año + " Editorial: " + editorial + " Estado: " + estado;
         }
     }
 }

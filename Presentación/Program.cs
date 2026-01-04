@@ -18,9 +18,9 @@ namespace Presentación
         static void Main()
         {
             Admin admin = new LógicaNegocio.Admin();
-            ModeloDominio.PersonalAdquisicion adquisicion = new ModeloDominio.PersonalAdquisicion("usr1", "1234");
+            ModeloDominio.PersonalAdquisicion adquisicion = new ModeloDominio.PersonalAdquisicion("usr1", "Pepe Pepín", "1234");
             admin.añadirtrabajador(adquisicion);
-            ModeloDominio.PersonalSala sala = new ModeloDominio.PersonalSala("usr2", "1234");
+            ModeloDominio.PersonalSala sala = new ModeloDominio.PersonalSala("usr2", "Jose Juan", "1234");
             admin.añadirtrabajador(sala);
             Documento d1 = new LibroPapel("d", "1", "r", 5, "3");
             admin.altaDocumento(d1);

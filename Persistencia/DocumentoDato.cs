@@ -15,14 +15,14 @@ namespace Persistencia
         private string editorial;
         private string estado;
 
-        public DocumentoDato(string ISBN, string titulo, string autor, int año, string editorial) : base(ISBN)
+        public DocumentoDato(string ISBN, string titulo, string autor, int año, string editorial, string estado) : base(ISBN)
         {
             this.isbn = ISBN;
             this.titulo = titulo;
             this.autor = autor;
             this.año = año;
             this.editorial = editorial;
-            this.estado = "inactivo";
+            this.estado = estado;
         }
 
         public string Isbn

@@ -11,20 +11,17 @@ namespace Persistencia
     {
         public Documento Buscar(string isbn)
         {
-            if (BD.TablaDocumentos.Contains(isbn) )
+            if (BD.TablaDocumentos.Contains(isbn))
             {
-                DocumentoDato dato = (DocumentoDato) BD.TablaDocumentos[isbn];
+                DocumentoDato dato = (DocumentoDato)BD.TablaDocumentos[isbn];
 
-                if (dato.Estado == "inactivo")
+                if (dato.Estado != "inactivo")
                 {
-                    return null;
+                    return Transformer.DocumentoDatoADocumento(dato);
                 }
-
-                return Transformer.DocumentoDatoADocumento(dato);
             }
             return null;
         }
-
 
         public List<Documento> BuscarPorTitulo(string textoTitulo)
         {
@@ -32,7 +29,7 @@ namespace Persistencia
 
             foreach (var item in BD.TablaDocumentos)
             {
-                DocumentoDato docDato = (DocumentoDato) item;
+                DocumentoDato docDato = (DocumentoDato)item;
 
                 if (docDato.Titulo.ToLower().Contains(textoTitulo.ToLower()))
                 {
@@ -41,36 +38,30 @@ namespace Persistencia
                     resultados.Add(doc);
                 }
             }
-
             return resultados;
         }
 
-
-        public void Eliminar(string isbn)
+        public bool Eliminar(string isbn)
         {
-            if (!BD.TablaDocumentos.Contains(isbn))
+            if (BD.TablaDocumentos.Contains(isbn))
             {
-                throw new Exception("El documento no existe.");
-            }
-            else
-            {
-                DocumentoDato dato = (DocumentoDato) BD.TablaDocumentos[isbn];
+                DocumentoDato dato = (DocumentoDato)BD.TablaDocumentos[isbn];
                 dato.Estado = "inactivo";
+                return true;
             }
+            return false;
         }
+
         public List<Documento> ListarTodos()
         {
             List<Documento> lista = new List<Documento>();
 
             foreach (var item in BD.TablaDocumentos)
             {
-                DocumentoDato dato = (DocumentoDato) item;
+                DocumentoDato dato = (DocumentoDato)item;
                 lista.Add(Transformer.DocumentoDatoADocumento(dato));
             }
-
             return lista;
         }
-
-        
     }
 }

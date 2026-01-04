@@ -11,7 +11,6 @@ namespace Persistencia
         private DateTime fechaDevolucion;
         private DateTime fechaDevolucionPrevista;
 
-        //terminar
         public Prestamo_EjemplarDato(ClavePrestamoEjemplar clave, DateTime fDev, DateTime fDevPrev) : base(clave)
         {
             {

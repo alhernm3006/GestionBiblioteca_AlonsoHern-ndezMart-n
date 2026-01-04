@@ -9,20 +9,16 @@ namespace Persistencia
 {
     public class Ejemplar_CRUD
     {
-
-
-        public void Insertar(Ejemplar ejemplar)
+        public bool Insertar(Ejemplar ejemplar)
         {
             ClaveEjemplar clave = new ClaveEjemplar(ejemplar.Documento.ISBN, ejemplar.Codigo);
 
-            if (BD.TablaEjemplares.Contains(clave))
-            {
-                throw new Exception("Ya existe este ejemplar.");
-            }
-            else
+            if (!BD.TablaEjemplares.Contains(clave))
             {
                 BD.TablaEjemplares.Add(Transformer.EjemplarAEjemplarDato(ejemplar));
+                return true;
             }
+            return false;
         }
 
         public Ejemplar Buscar(string isbn, string codigo)
@@ -36,29 +32,23 @@ namespace Persistencia
             return null;
         }
 
-        public void Eliminar(string isbn, string codigo)
+        public bool Eliminar(string isbn, string codigo)
         {
             ClaveEjemplar clave = new ClaveEjemplar(isbn, codigo);
 
             if (BD.TablaEjemplares.Contains(clave))
             {
                 EjemplarDato dato = (EjemplarDato)BD.TablaEjemplares[clave];
-                if (dato.Estado == "prestado")
-                {
-                    throw new Exception("No se puede eliminar un ejemplar que está prestado actualmente.");
-                }
-                else
+                if (dato.Estado != "prestado")
                 {
                     dato.Estado = "archivado";
                 }
+                return true;
             }
-            else
-            {
-                throw new Exception("El ejemplar no existe.");
-            }
+            return false;
         }
 
-        public List<Ejemplar> ListarPorDocumento(string isbn)
+        public List<Ejemplar> ListarEjemplares(string isbn)
         {
             List<Ejemplar> resultados = new List<Ejemplar>();
 
@@ -71,11 +61,10 @@ namespace Persistencia
                     resultados.Add(Transformer.EjemplarDatoAEjemplar(eDato));
                 }
             }
-
             return resultados;
         }
 
-        public void ActualizarEstado(string isbn, string codigo, EstadoEjemplar nuevoEstado)
+        public bool ActualizarEstado(string isbn, string codigo, EstadoEjemplar nuevoEstado)
         {
             ClaveEjemplar clave = new ClaveEjemplar(isbn, codigo);
 
@@ -83,14 +72,9 @@ namespace Persistencia
             {
                 EjemplarDato eDato = (EjemplarDato)BD.TablaEjemplares[clave];
                 eDato.Estado = nuevoEstado.ToString();
+                return true;
             }
-            else
-            {
-                throw new Exception("No se puede actualizar el estado: El ejemplar no existe.");
-            }
+            return false;
         }
-
-        
-
     }
 }

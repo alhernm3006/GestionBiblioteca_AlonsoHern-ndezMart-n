@@ -12,23 +12,21 @@ namespace Persistencia
         private DateTime fechaFin;
         private string estado;
         private string dniUsuario;
-        private string nssTrabajador;
+        private string idPersonal;
 
-        public PrestamoDato(string ID, DateTime fechaInicio, DateTime fechaFin,
-                    string estado, string dni,
-                    string nss) : base(ID)
+        public PrestamoDato(string ID, DateTime fechaInicio, DateTime fechaFin, string estado, string dni, string idPersonal) : base(ID)
         {
             this.fechaInicio = fechaInicio;
             this.fechaFin = fechaFin;
             this.estado = estado;
             this.dniUsuario = dni;
-            this.nssTrabajador = nss;
+            this.idPersonal = idPersonal;
         }
 
         public DateTime FechaInicio
         {
             get { return fechaInicio; }
-            set { fechaInicio = value;}
+            set { fechaInicio = value; }
         }
 
         public DateTime FechaFin
@@ -49,10 +47,10 @@ namespace Persistencia
             set { dniUsuario = value; }
         }
 
-        public string NssTrabajador
+        public string IdPersonal
         {
-            get { return nssTrabajador; }
-            set { nssTrabajador = value; }
+            get { return idPersonal; }
+            set { idPersonal = value; }
         }
     }
 }

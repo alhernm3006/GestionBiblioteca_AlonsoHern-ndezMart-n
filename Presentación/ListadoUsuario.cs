@@ -87,7 +87,6 @@ namespace Presentación
 
         private void ActualizarListasVisuales()
         {
-            // Limpiamos los ListBox antes de volver a llenarlos
             listBox_dni.Items.Clear();
             listBox_nombre.Items.Clear();
 
@@ -113,15 +112,14 @@ namespace Presentación
         {
             if (tipo.Equals("Usuario"))
             {
-                List<Usuario> todos = personal.obtenerUsuarios();
+                List<Usuario> todos = personal.getUsuarios();
                 listaUsuarios = todos.Where(u => u.Estado != EstadoActivoInactivo.inactivo).ToList();
             }
             else if (tipo.Equals("Documento"))
             {
                 LógicaNegocio.PersonalAdquisicion p = (LógicaNegocio.PersonalAdquisicion) this.personal;
-                listaDocumentos = p.obtenerDocumentos();
+                listaDocumentos = p.getDocumentos();
             }
-            
             ActualizarListasVisuales();
         }
 

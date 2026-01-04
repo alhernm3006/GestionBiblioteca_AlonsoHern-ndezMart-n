@@ -9,13 +9,15 @@ namespace Persistencia
 {
     public class Libro_CRUD
     {
-        public void Insertar(LibroPapel libro)
+        public bool Insertar(LibroPapel libro)
         {
-            if (BD.TablaDocumentos.Contains(libro.ISBN))
-                throw new Exception("Ya existe un documento con ese ISBN.");
-
-            BD.TablaDocumentos.Add(Transformer.DocumentoADocumentoDato(libro));
-            BD.TablaLibrosPapel.Add(Transformer.LibroPapelALibroPapelDato(libro));
+            if (!BD.TablaDocumentos.Contains(libro.ISBN))
+            {
+                BD.TablaDocumentos.Add(Transformer.DocumentoADocumentoDato(libro));
+                BD.TablaLibrosPapel.Add(Transformer.LibroPapelALibroPapelDato(libro));
+                return true;
+            }
+            return false;
         }
 
         public LibroPapel Buscar(string isbn)
@@ -26,15 +28,6 @@ namespace Persistencia
                 return Transformer.LibroPapelDatoALibroPapel(datoEspecifico);
             }
             return null;
-        }
-
-        public void Eliminar(string isbn)
-        {
-            if (BD.TablaLibrosPapel.Contains(isbn))
-            {
-                BD.TablaLibrosPapel.Remove(isbn);
-                BD.TablaDocumentos.Remove(isbn);
-            }
         }
     }
 }

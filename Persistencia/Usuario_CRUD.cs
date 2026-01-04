@@ -9,15 +9,15 @@ namespace Persistencia
 {
     public class Usuario_CRUD
     {
-        public void Insertar(Usuario usuario)
+        public bool Insertar(Usuario usuario)
         {
-            if (BD.TablaUsuarios.Contains(usuario.DNI))
+            if (!BD.TablaUsuarios.Contains(usuario.DNI))
             {
-                throw new Exception("El usuario ya existe en la BD.");
+                UsuarioDato uDato = Transformer.UsuarioAUsuarioDato(usuario);
+                BD.TablaUsuarios.Add(uDato);
+                return true;
             }
-         
-            UsuarioDato uDato = Transformer.UsuarioAUsuarioDato(usuario);
-            BD.TablaUsuarios.Add(uDato);
+            return false;
         }
 
         public Usuario Buscar(string dni)
@@ -26,37 +26,34 @@ namespace Persistencia
             {
                 UsuarioDato uDato = (UsuarioDato)BD.TablaUsuarios[dni];
 
-                // AGREGAR ESTA COMPROBACIÓN:
-                // Si el usuario está inactivo, devolvemos null como si no existiera
-                if (uDato.Estado == "inactivo")
+                if (uDato.Estado != "inactivo")
                 {
-                    return null;
+                    return Transformer.UsuarioDatoAUsuario(uDato);
                 }
-                return Transformer.UsuarioDatoAUsuario(uDato);
             }
             return null;
         }
 
-        public void Eliminar(string dni)
+        public bool Eliminar(string dni)
         {
             if (BD.TablaUsuarios.Contains(dni))
             {
                 UsuarioDato uDato = (UsuarioDato)BD.TablaUsuarios[dni];
                 uDato.Estado = "inactivo";
+                return true;
             }
+            return false;
         }
-        public List<Usuario> ListarTodos()
+
+        public List<Usuario> Listar()
         {
             List<Usuario> resultados = new List<Usuario>();
 
-            // Iteramos sobre la tabla interna BD (accesible solo aquí en Persistencia)
             foreach (var item in BD.TablaUsuarios)
             {
-                // Convertimos el dato de persistencia a objeto de dominio
                 UsuarioDato uDato = (UsuarioDato)item;
                 resultados.Add(Transformer.UsuarioDatoAUsuario(uDato));
             }
-
             return resultados;
         }
     }

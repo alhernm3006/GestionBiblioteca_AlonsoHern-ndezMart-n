@@ -9,12 +9,14 @@ namespace Persistencia
 {
     public class Personal_CRUD
     {
-        public void Insertar(PersonalBiblioteca personal)
+        public bool Insertar(PersonalBiblioteca personal)
         {
-            if (BD.TablaPersonal.Contains(personal.IdUsuario))
-                throw new Exception("El personal ya existe.");
-
-            BD.TablaPersonal.Add(Transformer.PersonalBilbiotecaAPersonalBilbiotecaDato(personal));
+            if (!BD.TablaPersonal.Contains(personal.IdUsuario))
+            {
+                BD.TablaPersonal.Add(Transformer.PersonalBilbiotecaAPersonalBilbiotecaDato(personal));
+                return true;
+            }
+            return false;
         }
 
         public PersonalBiblioteca Buscar(string idUsuario)
@@ -27,17 +29,14 @@ namespace Persistencia
             return null;
         }
 
-      
-        public void Eliminar(string nss)
+        public bool Eliminar(string nss)
         {
             if (BD.TablaPersonal.Contains(nss))
             {
                 BD.TablaPersonal.Remove(nss);
+                return true;
             }
-            else
-            {
-                throw new Exception("El personal con ese NSS no existe.");
-            }
+            return false;
         }
     }
 }

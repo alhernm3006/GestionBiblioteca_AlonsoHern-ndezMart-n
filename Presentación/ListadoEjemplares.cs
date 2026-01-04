@@ -19,58 +19,40 @@ namespace Presentación
         {
             InitializeComponent();
             this.personal = personal;
+            this.Text = "Listado de Ejemplares";
         }
 
         private void ListadoEjemplares_Load(object sender, EventArgs e)
         {
             List<DatosEjemplar> listaParaMostrar = new List<DatosEjemplar>();
+            List<Documento> misDocumentos = personal.getDocumentos();
 
-            // 1. Obtenemos documentos
-            List<Documento> misDocumentos = personal.obtenerDocumentos();
-
-            // 2. Recorremos y extraemos datos
             foreach (Documento doc in misDocumentos)
             {
                 if (doc.Estado == EstadoActivoInactivo.activo)
                 {
-                    List<Ejemplar> ejemplaresLibro = personal.obtenerEjemplares(doc.ISBN);
+                    List<Ejemplar> ejemplaresLibro = personal.getEjemplares(doc.ISBN);
 
                     foreach (Ejemplar ej in ejemplaresLibro)
                     {
-                        // CREAMOS EL OBJETO DE VISTA
                         DatosEjemplar fila = new DatosEjemplar();
-
-                        // Rellenamos datos simples
-                       
-                        fila.Titulo = doc.Titulo; // ¡Ahora el título saldrá perfecto!
-
-
-                        // Buscamos el USUARIO usando el método nuevo
+                        fila.Titulo = doc.Titulo;
                         fila.Codigo = ej.Codigo;
                         fila.Estado = ej.Estado.ToString();
-
-                        fila.Usuario = personal.Nombre;
-                        
-                        
-                        
-
+                        fila.Usuario = personal.IdPersonal;
                         listaParaMostrar.Add(fila);
                     }
                 }
             }
-
-            // 3. ¡Importante! Cargamos la lista NUEVA (listaParaMostrar)
             CargarDatos(listaParaMostrar);
-
-            this.Text = "Listado de Ejemplares";
         }
 
         public class DatosEjemplar
         {
            
-            public string Titulo { get; set; }  // Aquí mostraremos el nombre del libro
+            public string Titulo { get; set; }
           
-            public string Usuario { get; set; } // Aquí mostraremos el nombre del usuario
+            public string Usuario { get; set; }
 
             public string Codigo { get; set; }
             public string Estado { get; set; }

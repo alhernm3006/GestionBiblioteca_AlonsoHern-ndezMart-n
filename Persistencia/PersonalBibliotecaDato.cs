@@ -7,31 +7,32 @@ using System.Threading.Tasks;
 
 namespace Persistencia
 {
-    internal class PersonalBibliotecaDato: Entity<String>
+    internal class PersonalBibliotecaDato : Entity<String>
     {
-        private String usuario;
+        private String idPersonal;
+        private String nombre;
         private String contraseña;
         private String rol;
 
-        public PersonalBibliotecaDato ( String usuario,String contraseña, String rol): base(usuario)
+        public PersonalBibliotecaDato(String id, String nombre, String contraseña, String rol) : base(id)
         {
             this.contraseña = contraseña;
-            this.usuario = usuario;
+            this.idPersonal = id;
             this.rol = rol;
         }
 
-        public String Usuario
+        public String IdPersonal
         {
-            get { return usuario; }
-            set { usuario = value; }
+            get { return idPersonal; }
         }
-
+        public String Nombre
+        {
+            get { return nombre; }
+        }
         public String Rol
         {
             get { return rol; }
-            set { rol = value; }
         }
-
         public String Contraseña
         {
             get { return contraseña; }

@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace ModeloDominio
 {
-    public class AudioLibro: Documento
+    public class AudioLibro : Documento
     {
         private string formato;
         private float duracion;
@@ -15,14 +15,17 @@ namespace ModeloDominio
             this.formato = formato;
             this.duracion = duracion;
         }
-        public string Formato {
-            get{return this.formato;}      
+        public string Formato
+        {
+            get { return this.formato; }
         }
-        public float Duracion {
-            get{return this.duracion;  }      
+        public float Duracion
+        {
+            get { return this.duracion; }
         }
-        public string toString() {
-            return ("ISBN: " + this.ISBN + "\n" + "TITULO: " + this.Titulo + "\n" + "AUTOR: " + this.Autor + "\n" + "AÑO: " + this.Año + "\n" + "EDITORIAL: " + this.Editorial + "\n" + "ESTADO: " + this.Estado + "\n"+"FORMATO: "+this.formato+"\n"+"DURACION: "+this.duracion+"\n");
+        public string toString()
+        {
+            return ("ISBN: " + this.ISBN + "\n" + "TITULO: " + this.Titulo + "\n" + "AUTOR: " + this.Autor + "\n" + "AÑO: " + this.Año + "\n" + "EDITORIAL: " + this.Editorial + "\n" + "ESTADO: " + this.Estado + "\n" + "FORMATO: " + this.formato + "\n" + "DURACION: " + this.duracion + "\n");
         }
     }
 }

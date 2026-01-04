@@ -16,21 +16,20 @@ namespace Presentación
 {
     public partial class FormInicio : Form
     {
-        private string idUsuario;
+        private string idPersonal;
         private string password;
         private string rol;
         public FormInicio()
         {
-            
             InitializeComponent();
         }
 
         private void button_entrar_Click(object sender, EventArgs e)
         {
-            idUsuario = textBox_nombre.Text;
+            idPersonal = textBox_nombre.Text;
             password = textBox_contraseña.Text;
 
-            if (string.IsNullOrEmpty(idUsuario) || string.IsNullOrEmpty(password))
+            if (string.IsNullOrEmpty(idPersonal) || string.IsNullOrEmpty(password))
             {
                 MessageBox.Show("Por favor, introduce nombre y contraseña.");
                 return;
@@ -54,8 +53,7 @@ namespace Presentación
                 return;
             }
 
-            // Validar credenciales
-            if (personal.iniciarSesion(idUsuario, password, rol))
+            if (personal.iniciarSesion(idPersonal, password, rol))
             {
                 FrmPrincipal menu = new FrmPrincipal(personal);
                 this.Hide();
@@ -65,7 +63,6 @@ namespace Presentación
             else
             {
                 MessageBox.Show("Credenciales incorrectas", "Personal no autorizado", MessageBoxButtons.OK, MessageBoxIcon.Error);
-
             }
         }
     }

@@ -15,12 +15,10 @@ namespace Presentación
         public ListadoBase()
         {
             InitializeComponent();
-
         }
 
         public void CargarDatos<T>(List<T> datos)
         {
-            
             bindingSource1.DataSource = datos;
             dataGridView1.DataSource = bindingSource1;
         }

@@ -12,119 +12,103 @@ namespace LógicaNegocio
 {
     public class PersonalBiblioteca
     {
-            private Personal_CRUD personalCRUD = new Personal_CRUD();
-            protected Usuario_CRUD usuarioCRUD = new Usuario_CRUD();
-            protected Prestamo_CRUD prestamoCRUD = new Prestamo_CRUD();
-            protected Ejemplar_CRUD ejemplarCRUD = new Ejemplar_CRUD();
-            private String nombre;
-            private String contraseña;
-       
-           
+        private Personal_CRUD personalCRUD = new Personal_CRUD();
+        private Usuario_CRUD usuarioCRUD = new Usuario_CRUD();
+        protected Prestamo_CRUD prestamoCRUD = new Prestamo_CRUD();
+        protected Ejemplar_CRUD ejemplarCRUD = new Ejemplar_CRUD();
+        private Documento_CRUD documentoCRUD = new Documento_CRUD();
 
-            public PersonalBiblioteca() {}
+        private String idPersonal;
+        private String contraseña;
 
-            public bool iniciarSesion(string idUsuario, string contraseña, String rol)
-            {
-                this.nombre = idUsuario;
-                this.contraseña = contraseña;
-                ModeloDominio.PersonalBiblioteca p = personalCRUD.Buscar(idUsuario);
-                if (p != null)
-                {
-                    switch (rol)
-                    {
-                        case "Sala": return p is ModeloDominio.PersonalSala;
-                        case "Adquisición": return p is ModeloDominio.PersonalAdquisicion;
-                    }
-                }
-                return false;
-              }
+        public PersonalBiblioteca() { }
+        public String IdPersonal { get { return idPersonal; } }
+        public String Contraseña { get { return contraseña; } }
 
-            public void cerrarSesion() { }
-
-        // --- Gestión de Usuarios ---
-        public List<Documento> obtenerDocumentos()
+        public bool iniciarSesion(string idPersonal, string contraseña, String rol)
         {
-            // Utilizamos el CRUD protegido que ya existe en esta clase
-            Documento_CRUD documentoCRUD = new Documento_CRUD();
+            this.idPersonal = idPersonal;
+            this.contraseña = contraseña;
+            ModeloDominio.PersonalBiblioteca p = personalCRUD.Buscar(idPersonal);
+            if (p != null)
+            {
+                switch (rol)
+                {
+                    case "Sala": return p is ModeloDominio.PersonalSala;
+                    case "Adquisición": return p is ModeloDominio.PersonalAdquisicion;
+                }
+            }
+            return false;
+        }
+
+        public void cerrarSesion() { }
+
+
+        public bool altaUsuario(Usuario u)
+        {
+            u.Estado = EstadoActivoInactivo.activo;
+            return usuarioCRUD.Insertar(u);
+        }
+
+        public bool bajaUsuario(string dni)
+        {
+            return usuarioCRUD.Eliminar(dni);
+        }
+
+        public Usuario getUsuario(string dni)
+        {
+            return usuarioCRUD.Buscar(dni);
+        }
+
+        public List<Usuario> getUsuarios()
+        {
+            return usuarioCRUD.Listar();
+        }
+
+        public List<Documento> getDocumentos()
+        {
             return documentoCRUD.ListarTodos();
         }
 
-        public List<Ejemplar> obtenerEjemplares(string isbn)
+        public List<Ejemplar> getEjemplares(string isbn)
         {
-            // Utilizamos el CRUD protegido
-            Ejemplar_CRUD ejemplarCRUD = new Ejemplar_CRUD();
-            return ejemplarCRUD.ListarPorDocumento(isbn);
+            return ejemplarCRUD.ListarEjemplares(isbn);
         }
-        public bool altaUsuario(Usuario u)
+
+        public List<Ejemplar> getEjemplaresPrestados(string dni)
+        {
+            List<Prestamo> prestamosUsuario = prestamoCRUD.PrestamosUsuario(dni);
+
+            List<Ejemplar> ejemplares = new List<Ejemplar>();
+
+            foreach (Prestamo p in prestamosUsuario)
             {
-                try
+                if (p.Estado == EstadoPrestamo.enProceso)
                 {
-                    u.Estado = EstadoActivoInactivo.activo;
-                    usuarioCRUD.Insertar(u);
-                    return true;
+                    ejemplares.AddRange(p.Ejemplares);
                 }
-                catch (Exception) { return false; }
             }
+            return ejemplares;
+        }
 
-            public bool bajaUsuario(string dni)
+        public List<Ejemplar> getEjemplaresFueraPlazo(string dni)
+        {
+            List<Prestamo> prestamosUsuario = prestamoCRUD.PrestamosUsuario(dni);
+            List<Ejemplar> fueraPlazo = new List<Ejemplar>();
+
+            foreach (Prestamo p in prestamosUsuario)
             {
-                try
+                if (p.Estado == EstadoPrestamo.enProceso && DateTime.Now > p.FechaFin)
                 {
-                   
-                    usuarioCRUD.Eliminar(dni);
-                    return true;
+                    fueraPlazo.AddRange(p.Ejemplares);
                 }
-                catch (Exception) { return false; }
             }
+            return fueraPlazo;
+        }
 
-            public Usuario getUsuario(string dni)
-            {
-                return usuarioCRUD.Buscar(dni);
-            }
-
-            public List<Usuario> obtenerUsuarios()
-            {
-                // REQUISITO: Usuario_CRUD necesita un método public List<Usuario> ListarTodos()
-                return usuarioCRUD.ListarTodos();
-            }
-
-            // --- Consultas ---
-
-            public List<Ejemplar> obtenerEjemplaresPrestados(string dni)
-            {
-                // REQUISITO: Prestamo_CRUD necesita public List<Prestamo> ListarPorUsuario(string dni)
-                // Se asume que el objeto Prestamo devuelto viene con su lista de Ejemplares llena.
-                List<Prestamo> prestamosUsuario = prestamoCRUD.ListarPorUsuario(dni);
-
-                List<Ejemplar> ejemplares = new List<Ejemplar>();
-
-                foreach (Prestamo p in prestamosUsuario)
-                {
-                    if (p.Estado == EstadoPrestamo.enProceso)
-                    {
-                        ejemplares.AddRange(p.Ejemplares);
-                    }
-                }
-                return ejemplares;
-            }
-
-            public List<Ejemplar> obtenerEjemplaresFueraPlazo(string dni)
-            {
-                List<Prestamo> prestamosUsuario = prestamoCRUD.ListarPorUsuario(dni);
-                List<Ejemplar> fueraPlazo = new List<Ejemplar>();
-
-                foreach (Prestamo p in prestamosUsuario)
-                {
-                    if (p.Estado == EstadoPrestamo.enProceso && DateTime.Now > p.FechaFin)
-                    {
-                        fueraPlazo.AddRange(p.Ejemplares);
-                    }
-                }
-                return fueraPlazo;
-            }
-
-        public String Nombre {  get { return nombre; } }
-        public String Contraseña { get { return contraseña; } }
-
+        public ModeloDominio.PersonalBiblioteca getPersonal(String idPersonal)
+        {
+            return personalCRUD.Buscar(idPersonal);
+        }
     }
-    }
+}

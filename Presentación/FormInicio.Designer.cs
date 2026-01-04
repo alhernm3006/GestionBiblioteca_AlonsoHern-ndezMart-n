@@ -44,9 +44,9 @@
             this.label_nombre.AutoSize = true;
             this.label_nombre.Location = new System.Drawing.Point(188, 90);
             this.label_nombre.Name = "label_nombre";
-            this.label_nombre.Size = new System.Drawing.Size(56, 16);
+            this.label_nombre.Size = new System.Drawing.Size(72, 16);
             this.label_nombre.TabIndex = 0;
-            this.label_nombre.Text = "Nombre";
+            this.label_nombre.Text = "IdPersonal";
             // 
             // label_contraseña
             // 

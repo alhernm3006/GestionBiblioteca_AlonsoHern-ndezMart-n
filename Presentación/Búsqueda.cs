@@ -14,7 +14,6 @@ namespace Presentación
 {
     public partial class Búsqueda : Form
     {
-
         private LógicaNegocio.PersonalSala personal;
         public Ejemplar EjemplarSeleccionado { get; private set; }
         public Búsqueda(LógicaNegocio.PersonalSala personal)
@@ -27,8 +26,7 @@ namespace Presentación
         private void button_aceptar_Click(object sender, EventArgs e)
         {
             if (comboBox1.SelectedItem != null)
-            {
-                // Recuperamos el objeto Ejemplar real
+            { 
                 this.EjemplarSeleccionado = (Ejemplar)comboBox1.SelectedValue;
                 this.DialogResult = DialogResult.OK;
                 this.Close();
@@ -43,51 +41,36 @@ namespace Presentación
 
         private void CargarTodosLosEjemplares()
         {
-            try
+            List<Documento> documentos = personal.getDocumentos();
+            List<object> lista = new List<object>();
+
+            foreach (Documento doc in documentos)
             {
-                // 1. Obtenemos todos los documentos
-                List<Documento> documentos = personal.obtenerDocumentos();
+                List<Ejemplar> ejemplaresDoc = personal.getEjemplares(doc.ISBN);
 
-                // 2. Creamos una lista para acumular TODOS los ejemplares de la biblioteca
-                List<object> listaVisual = new List<object>();
-
-                foreach (Documento doc in documentos)
+                foreach (var ex in ejemplaresDoc)
                 {
-                    // Obtenemos ejemplares de este documento
-                    List<Ejemplar> ejemplaresDoc = personal.obtenerEjemplares(doc.ISBN);
-
-                    // 3. Los añadimos a la lista visual transformándolos para el ComboBox
-                    // SIN FILTRAR por estado (se muestran todos: disponibles, prestados, etc.)
-                    
-                    foreach (var ex in ejemplaresDoc)
+                    if (ex.Estado == EstadoEjemplar.disponible)
                     {
-                        if (ex.Estado==EstadoEjemplar.disponible) {
-                            listaVisual.Add(new
-                            {
-                                ObjetoReal = ex,
-                                // Mostramos el Estado para que el usuario sepa si puede prestarlo o no
-                                TextoMostrar = $"Cód: {ex.Codigo} - {doc.Titulo} ({ex.Estado})"
-                            });
-                        }
+                        lista.Add(new
+                        {
+                            ObjetoReal = ex,
+                            TextoMostrar = "Cód: " + ex.Codigo + " - " + doc.Titulo + " (" + ex.Estado + ")"
+                        });
                     }
                 }
-
-                // 4. Enlazamos la lista acumulada al ComboBox
-                comboBox1.DataSource = listaVisual;
-                comboBox1.DisplayMember = "TextoMostrar";
-                comboBox1.ValueMember = "ObjetoReal";
-
-                label_ejemplares.Text = $"Total ejemplares: {listaVisual.Count}";
-
-                if (listaVisual.Count == 0)
-                {
-                    MessageBox.Show("No existen ejemplares en el sistema.");
-                    button_aceptar.Enabled = false;
-                }
             }
-            catch (Exception ex)
+
+            comboBox1.DataSource = lista;
+            comboBox1.DisplayMember = "TextoMostrar";
+            comboBox1.ValueMember = "ObjetoReal";
+
+            label_ejemplares.Text = "Total ejemplares: " + lista.Count;
+
+            if (lista.Count == 0)
             {
-                MessageBox.Show("Error al cargar ejemplares: " + ex.Message);
+                MessageBox.Show("No existen ejemplares en el sistema.");
+                button_aceptar.Enabled = false;
             }
         }
 

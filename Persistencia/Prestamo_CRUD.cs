@@ -9,30 +9,23 @@ namespace Persistencia
 {
     public class Prestamo_CRUD
     {
-        public void Insertar(Prestamo prestamo)
+        public bool Insertar(Prestamo prestamo)
         {
-            if (BD.TablaPrestamos.Contains(prestamo.ID))
-                throw new Exception("El préstamo ya existe.");
-
-            // 1. Guardar el Préstamo principal
-            BD.TablaPrestamos.Add(Transformer.PrestamoAPrestamoDato(prestamo));
-
-            // 2. Guardar las relaciones Préstamo-Ejemplar
-            // Nota: Se asume que prestamo.Ejemplares tiene la lista de libros prestados
-            foreach (Ejemplar ej in prestamo.Ejemplares)
+            if (!BD.TablaPrestamos.Contains(prestamo.ID))
             {
-                ClaveEjemplar cEjemplar = new ClaveEjemplar(ej.Documento.ISBN, ej.Codigo);
-                ClavePrestamoEjemplar cPrestamo = new ClavePrestamoEjemplar(prestamo.ID, cEjemplar);
+                BD.TablaPrestamos.Add(Transformer.PrestamoAPrestamoDato(prestamo));
 
-                // Crear el dato de la relación (fechas se toman del préstamo)
-                Prestamo_EjemplarDato relacion = new Prestamo_EjemplarDato(
-                    cPrestamo,
-                    prestamo.FechaFin, // Fecha prevista
-                    prestamo.FechaFin  // Fecha devolución real (inicialmente igual o nula según lógica)
-                );
+                foreach (Ejemplar ej in prestamo.Ejemplares)
+                {
+                    ClaveEjemplar cEjemplar = new ClaveEjemplar(ej.Documento.ISBN, ej.Codigo);
+                    ClavePrestamoEjemplar cPrestamo = new ClavePrestamoEjemplar(prestamo.ID, cEjemplar);
 
-                BD.TablaPrestamosEjemplares.Add(relacion);
+                    Prestamo_EjemplarDato relacion = new Prestamo_EjemplarDato(cPrestamo, prestamo.FechaFin, prestamo.FechaFin);
+                    BD.TablaPrestamosEjemplares.Add(relacion);
+                }
+                return true;
             }
+            return false;
         }
 
         public Prestamo Buscar(string idPrestamo)
@@ -42,34 +35,9 @@ namespace Persistencia
                 PrestamoDato dato = (PrestamoDato)BD.TablaPrestamos[idPrestamo];
                 Prestamo prestamo = Transformer.PrestamoDatoAPrestamo(dato);
 
-                // --- CORRECCIÓN: Rellenar la lista de ejemplares ---
-
-                // Necesitamos Ejemplar_CRUD para recuperar el objeto Ejemplar completo
-                Ejemplar_CRUD ejemplarCRUD = new Ejemplar_CRUD();
-
-                // Recorremos la tabla intermedia (Prestamos-Ejemplares)
-                foreach (var item in BD.TablaPrestamosEjemplares)
-                {
-                    Prestamo_EjemplarDato linea = (Prestamo_EjemplarDato)item;
-
-                    // Si la línea coincide con el ID del préstamo actual
-                    if (linea.Id.Id == idPrestamo)
-                    {
-                        // Extraemos las claves del ejemplar
-                        string isbn = linea.Id.Ejemplar.ISBN;
-                        string codigo = linea.Id.Ejemplar.Codigo;
-
-                        // Buscamos el objeto Ejemplar real
-                        Ejemplar ej = ejemplarCRUD.Buscar(isbn, codigo);
-
-                        // Si existe, lo añadimos a la lista del préstamo
-                        if (ej != null)
-                        {
-                            prestamo.Ejemplares.Add(ej);
-                        }
-                    }
-                }
-                // ---------------------------------------------------
+                // AQUÍ deberías rellenar la lista prestamo.Ejemplares buscando en 
+                // BD.TablaPrestamosEjemplares aquellos que coincidan con el idPrestamo.
+                // Como Tabla es una colección genérica, tendrías que iterar (poco eficiente pero funcional)
 
                 return prestamo;
             }
@@ -113,14 +81,13 @@ namespace Persistencia
             List<Prestamo> lista = new List<Prestamo>();
             foreach (var item in BD.TablaPrestamos)
             {
-                // Reutilizamos Buscar para que traiga los ejemplares ya cargados
                 PrestamoDato pDato = (PrestamoDato)item;
                 lista.Add(this.Buscar(pDato.Id));
             }
             return lista;
         }
 
-        public List<Prestamo> ListarPorUsuario(string dni)
+        public List<Prestamo> PrestamosUsuario(string dni)
         {
             List<Prestamo> lista = new List<Prestamo>();
             foreach (var item in BD.TablaPrestamos)

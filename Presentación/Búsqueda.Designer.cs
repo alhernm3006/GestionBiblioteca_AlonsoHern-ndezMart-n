@@ -57,7 +57,7 @@
             // label_ejemplares
             // 
             this.label_ejemplares.AutoSize = true;
-            this.label_ejemplares.Location = new System.Drawing.Point(246, 120);
+            this.label_ejemplares.Location = new System.Drawing.Point(102, 123);
             this.label_ejemplares.Name = "label_ejemplares";
             this.label_ejemplares.Size = new System.Drawing.Size(149, 16);
             this.label_ejemplares.TabIndex = 2;
@@ -66,9 +66,9 @@
             // comboBox1
             // 
             this.comboBox1.FormattingEnabled = true;
-            this.comboBox1.Location = new System.Drawing.Point(453, 120);
+            this.comboBox1.Location = new System.Drawing.Point(340, 120);
             this.comboBox1.Name = "comboBox1";
-            this.comboBox1.Size = new System.Drawing.Size(320, 24);
+            this.comboBox1.Size = new System.Drawing.Size(424, 24);
             this.comboBox1.TabIndex = 3;
             // 
             // Búsqueda

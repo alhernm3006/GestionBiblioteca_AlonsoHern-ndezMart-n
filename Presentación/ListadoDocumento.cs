@@ -21,11 +21,9 @@ namespace Presentación
 
         private void ListadoDocumento_Load(object sender, EventArgs e)
         {
-            listaDocumentos = personal.obtenerDocumentos();
+            listaDocumentos = personal.getDocumentos();
             CargarDatos(listaDocumentos);
-
-            // 4. AJUSTES VISUALES ESPECÍFICOS DE ESTE HIJO
-            this.Text = "Listado de Documentos"; // Título de la ventana
+            this.Text = "Listado de Documentos";
         }
     }
 }
