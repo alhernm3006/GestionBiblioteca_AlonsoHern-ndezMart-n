@@ -11,13 +11,13 @@ using System.Windows.Forms;
 
 namespace Presentación
 {
-    public partial class Recorrido : Form
+    public partial class RecorridoUsuario : Form
     {
         private LógicaNegocio.PersonalBiblioteca personal;
         // Creamos el BindingSource que gestionará la navegación
         private BindingSource miBindingSource = new BindingSource();
 
-        public Recorrido(LógicaNegocio.PersonalBiblioteca p)
+        public RecorridoUsuario(LógicaNegocio.PersonalBiblioteca p)
         {
             InitializeComponent();
             this.personal = p;
