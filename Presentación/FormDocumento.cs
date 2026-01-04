@@ -97,7 +97,7 @@ namespace Presentación
 
         private void button_darAlta_Click(object sender, EventArgs e)
         {
-            if (this.operacion.Equals("Alata"))
+            if (this.operacion.Equals("Alta"))
             {
                 if (string.IsNullOrWhiteSpace(textBox_ISBN.Text) ||
                  string.IsNullOrWhiteSpace(textBox_titulo.Text) ||
@@ -155,25 +155,16 @@ namespace Presentación
                     string formato = textBox_formato.Text;
                     nuevoDoc = new AudioLibro(isbn, titulo, autor, anio, editorial, formato, duracion);
                 }
+
                 if (p.altaDocumento(nuevoDoc))
                 {
                     DialogResult resultado = MessageBox.Show("Documento añadido correctamente.", "Éxito", MessageBoxButtons.OK, MessageBoxIcon.Information);
                     if (resultado == DialogResult.OK) this.Close();
                 }
             }
-            else if (this.operacion.Equals("Baja"))
-            {
-                DialogResult resultado = MessageBox.Show("¿Está seguro que desea dar de baja el documento?", "Aviso", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
-                if (resultado.Equals(DialogResult.Yes))
-                {
-                    LógicaNegocio.PersonalAdquisicion p = (LógicaNegocio.PersonalAdquisicion)this.personal;
-                    p.bajaDocumento(textBox_ISBN.Text);
-                    DialogResult r2 = MessageBox.Show("Documento eliminado", "Aviso", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
-                    if (resultado.Equals(DialogResult.OK)) this.Close();
-                    this.Close();
-                }
+            
             }
-        }
+        
         
 
         private void radioButton_Audiolibro_CheckedChanged(object sender, EventArgs e)

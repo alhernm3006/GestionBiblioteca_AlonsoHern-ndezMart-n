@@ -43,14 +43,13 @@
             this.ejemplaresToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.altaToolStripMenuItem2 = new System.Windows.Forms.ToolStripMenuItem();
             this.búsquedaToolStripMenuItem2 = new System.Windows.Forms.ToolStripMenuItem();
-            this.recorridoUnoAUnoToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.listadoToolStripMenuItem2 = new System.Windows.Forms.ToolStripMenuItem();
             this.préstamosToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.altaToolStripMenuItem3 = new System.Windows.Forms.ToolStripMenuItem();
             this.búsquedaToolStripMenuItem3 = new System.Windows.Forms.ToolStripMenuItem();
             this.listadoToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
             this.configuraciónToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.bajaToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
+            this.listadoToolStripMenuItem2 = new System.Windows.Forms.ToolStripMenuItem();
+            this.recorridoUnoAUnoToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.menuStrip1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -123,9 +122,9 @@
             // 
             this.documentosToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.altaToolStripMenuItem1,
-            this.bajaToolStripMenuItem1,
             this.búsquedaToolStripMenuItem1,
-            this.listadoToolStripMenuItem});
+            this.listadoToolStripMenuItem,
+            this.recorridoUnoAUnoToolStripMenuItem});
             this.documentosToolStripMenuItem.Name = "documentosToolStripMenuItem";
             this.documentosToolStripMenuItem.Size = new System.Drawing.Size(107, 24);
             this.documentosToolStripMenuItem.Text = "Documentos";
@@ -154,7 +153,6 @@
             this.ejemplaresToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.altaToolStripMenuItem2,
             this.búsquedaToolStripMenuItem2,
-            this.recorridoUnoAUnoToolStripMenuItem,
             this.listadoToolStripMenuItem2});
             this.ejemplaresToolStripMenuItem.Name = "ejemplaresToolStripMenuItem";
             this.ejemplaresToolStripMenuItem.Size = new System.Drawing.Size(96, 24);
@@ -164,26 +162,14 @@
             // altaToolStripMenuItem2
             // 
             this.altaToolStripMenuItem2.Name = "altaToolStripMenuItem2";
-            this.altaToolStripMenuItem2.Size = new System.Drawing.Size(227, 26);
+            this.altaToolStripMenuItem2.Size = new System.Drawing.Size(224, 26);
             this.altaToolStripMenuItem2.Text = "Alta";
             // 
             // búsquedaToolStripMenuItem2
             // 
             this.búsquedaToolStripMenuItem2.Name = "búsquedaToolStripMenuItem2";
-            this.búsquedaToolStripMenuItem2.Size = new System.Drawing.Size(227, 26);
+            this.búsquedaToolStripMenuItem2.Size = new System.Drawing.Size(224, 26);
             this.búsquedaToolStripMenuItem2.Text = "Búsqueda";
-            // 
-            // recorridoUnoAUnoToolStripMenuItem
-            // 
-            this.recorridoUnoAUnoToolStripMenuItem.Name = "recorridoUnoAUnoToolStripMenuItem";
-            this.recorridoUnoAUnoToolStripMenuItem.Size = new System.Drawing.Size(227, 26);
-            this.recorridoUnoAUnoToolStripMenuItem.Text = "Recorrido uno a uno";
-            // 
-            // listadoToolStripMenuItem2
-            // 
-            this.listadoToolStripMenuItem2.Name = "listadoToolStripMenuItem2";
-            this.listadoToolStripMenuItem2.Size = new System.Drawing.Size(227, 26);
-            this.listadoToolStripMenuItem2.Text = "Listado";
             // 
             // préstamosToolStripMenuItem
             // 
@@ -199,19 +185,19 @@
             // altaToolStripMenuItem3
             // 
             this.altaToolStripMenuItem3.Name = "altaToolStripMenuItem3";
-            this.altaToolStripMenuItem3.Size = new System.Drawing.Size(157, 26);
+            this.altaToolStripMenuItem3.Size = new System.Drawing.Size(224, 26);
             this.altaToolStripMenuItem3.Text = "Alta";
             // 
             // búsquedaToolStripMenuItem3
             // 
             this.búsquedaToolStripMenuItem3.Name = "búsquedaToolStripMenuItem3";
-            this.búsquedaToolStripMenuItem3.Size = new System.Drawing.Size(157, 26);
+            this.búsquedaToolStripMenuItem3.Size = new System.Drawing.Size(224, 26);
             this.búsquedaToolStripMenuItem3.Text = "Búsqueda";
             // 
             // listadoToolStripMenuItem1
             // 
             this.listadoToolStripMenuItem1.Name = "listadoToolStripMenuItem1";
-            this.listadoToolStripMenuItem1.Size = new System.Drawing.Size(157, 26);
+            this.listadoToolStripMenuItem1.Size = new System.Drawing.Size(224, 26);
             this.listadoToolStripMenuItem1.Text = "Listado";
             // 
             // configuraciónToolStripMenuItem
@@ -220,11 +206,17 @@
             this.configuraciónToolStripMenuItem.Size = new System.Drawing.Size(116, 24);
             this.configuraciónToolStripMenuItem.Text = "Configuración";
             // 
-            // bajaToolStripMenuItem1
+            // listadoToolStripMenuItem2
             // 
-            this.bajaToolStripMenuItem1.Name = "bajaToolStripMenuItem1";
-            this.bajaToolStripMenuItem1.Size = new System.Drawing.Size(224, 26);
-            this.bajaToolStripMenuItem1.Text = "Baja";
+            this.listadoToolStripMenuItem2.Name = "listadoToolStripMenuItem2";
+            this.listadoToolStripMenuItem2.Size = new System.Drawing.Size(224, 26);
+            this.listadoToolStripMenuItem2.Text = "Listado";
+            // 
+            // recorridoUnoAUnoToolStripMenuItem
+            // 
+            this.recorridoUnoAUnoToolStripMenuItem.Name = "recorridoUnoAUnoToolStripMenuItem";
+            this.recorridoUnoAUnoToolStripMenuItem.Size = new System.Drawing.Size(227, 26);
+            this.recorridoUnoAUnoToolStripMenuItem.Text = "Recorrido uno a uno";
             // 
             // FrmPrincipal
             // 
@@ -261,11 +253,10 @@
         private System.Windows.Forms.ToolStripMenuItem busquedaToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem recorridoToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem listadoToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem recorridoUnoAUnoToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem altaToolStripMenuItem3;
         private System.Windows.Forms.ToolStripMenuItem búsquedaToolStripMenuItem3;
         private System.Windows.Forms.ToolStripMenuItem listadoToolStripMenuItem1;
         private System.Windows.Forms.ToolStripMenuItem listadoToolStripMenuItem2;
-        private System.Windows.Forms.ToolStripMenuItem bajaToolStripMenuItem1;
+        private System.Windows.Forms.ToolStripMenuItem recorridoUnoAUnoToolStripMenuItem;
     }
 }

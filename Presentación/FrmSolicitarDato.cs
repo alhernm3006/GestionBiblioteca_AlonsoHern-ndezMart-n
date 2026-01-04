@@ -239,6 +239,13 @@ namespace Presentación
                 }
                 else
                 {
+
+                    if (p.buscarPrestamo(this.textBox_DNI.Text)==null)
+                    {
+                        MessageBox.Show("No hay prestamso con ese ISBN.", "Aviso", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                        this.Close();
+                        return;
+                    }
                     this.Hide();
                     new FormPrestamo(p,this.textBox_DNI.Text).Show();
                     this.Close();
