@@ -28,7 +28,7 @@ namespace Presentación
         {
             // 1. Obtener la lista completa de usuarios desde la capa de negocio
             // En PersonalBiblioteca.cs tienes el método obtenerUsuarios()
-            List<Usuario> listaUsuarios = personal.getUsuarios();
+            List<Usuario> listaUsuarios = personal.getUsuarios().Where(u => u.Estado == EstadoActivoInactivo.activo).ToList();
 
             // 2. Asignar la lista al BindingSource
             miBindingSource.DataSource = listaUsuarios;

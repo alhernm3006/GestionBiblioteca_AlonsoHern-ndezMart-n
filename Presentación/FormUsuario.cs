@@ -76,9 +76,10 @@ namespace Presentación
                 DialogResult resultado = MessageBox.Show("¿Está seguro que desea dar de baja al usuario?", "Aviso", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
                 if (resultado.Equals(DialogResult.Yes))
                 {
-                    personal.bajaUsuario(textBox_Nombre.Text);
+                    personal.bajaUsuario(textBox_DNI.Text);
                     DialogResult r2 = MessageBox.Show("Usuario eliminado", "Aviso", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
-                    if (resultado.Equals(DialogResult.OK)) this.Close();  
+                    if (r2.Equals(DialogResult.OK)) this.Close();
+                    this.Close();
                 }
             }
         }

@@ -27,7 +27,7 @@ namespace Presentación
         {
             if (personal != null)
             {
-                List<Usuario> listaUsuarios = personal.getUsuarios();
+                List<Usuario> listaUsuarios = personal.getUsuarios().Where(u => u.Estado == EstadoActivoInactivo.activo).ToList();
 
                 comboBox1.DataSource = listaUsuarios;
                 comboBox1.DisplayMember = "DNI";

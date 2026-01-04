@@ -170,6 +170,7 @@ namespace Presentación
                     p.bajaDocumento(textBox_ISBN.Text);
                     DialogResult r2 = MessageBox.Show("Documento eliminado", "Aviso", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
                     if (resultado.Equals(DialogResult.OK)) this.Close();
+                    this.Close();
                 }
             }
         }

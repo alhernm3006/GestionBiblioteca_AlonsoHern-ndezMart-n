@@ -38,7 +38,7 @@ namespace Presentación
             textBox1_personal.Text = personal.IdPersonal;
             textBox1_personal.ReadOnly = true;
 
-            List<Documento> listaDocumentos = personal.getDocumentos();
+            List<Documento> listaDocumentos = personal.getDocumentos().Where(u => u.Estado == EstadoActivoInactivo.activo).ToList();
             comboBox_documentos.DataSource = listaDocumentos;
             comboBox_documentos.DisplayMember = "ISBN";
             comboBox_documentos.ValueMember = "ISBN";

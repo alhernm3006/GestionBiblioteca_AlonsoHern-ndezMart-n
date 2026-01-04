@@ -35,10 +35,16 @@ namespace Persistencia
                 PrestamoDato dato = (PrestamoDato)BD.TablaPrestamos[idPrestamo];
                 Prestamo prestamo = Transformer.PrestamoDatoAPrestamo(dato);
 
-                // AQUÍ deberías rellenar la lista prestamo.Ejemplares buscando en 
-                // BD.TablaPrestamosEjemplares aquellos que coincidan con el idPrestamo.
-                // Como Tabla es una colección genérica, tendrías que iterar (poco eficiente pero funcional)
-
+                foreach (var item in BD.TablaPrestamosEjemplares)
+                {
+                    Prestamo_EjemplarDato peDato = (Prestamo_EjemplarDato)item;
+                    if (peDato.Id.Id == idPrestamo)
+                    {
+                        Ejemplar_CRUD eCRUD = new Ejemplar_CRUD();
+                        Ejemplar ej = eCRUD.Buscar(peDato.Id.Ejemplar.ISBN, peDato.Id.Ejemplar.Codigo);
+                        prestamo.Ejemplares.Add(ej);
+                    }
+                }
                 return prestamo;
             }
             return null;
