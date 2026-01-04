@@ -121,7 +121,7 @@ namespace Presentación
             {
                 LógicaNegocio.PersonalAdquisicion p = (LógicaNegocio.PersonalAdquisicion)personal;
 
-                if (p.buscarPorISBN(textBox_DNI.Text) != null)
+                if (p.buscarPorISBN(textBox_DNI.Text) != null && p.getEjemplares(textBox_DNI.Text).Count(ej => ej.Estado == EstadoEjemplar.prestado)==0)
                 {
                     this.Hide();
                     new FormDocumento(textBox_DNI.Text, this.op, p.buscarPorISBN((textBox_DNI.Text)), this.personal).Show();
@@ -129,13 +129,26 @@ namespace Presentación
                 }
                 else
                 {
-                    DialogResult resultado = MessageBox.Show("¿Quieres introducir otro?", "No existe un documento con ese ISBN", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
-                    if (resultado.Equals(DialogResult.Yes))
+                    if (p.buscarPorISBN(textBox_DNI.Text) == null)
                     {
-                        this.Hide();
-                        new FrmSolicitarDato("Introducir ISBN", "ISBN:", this.op, personal).Show();
+                        DialogResult resultado = MessageBox.Show("¿Quieres introducir otro?", "No existe un documento con ese ISBN", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+                        if (resultado.Equals(DialogResult.Yes))
+                        {
+                            this.Hide();
+                            new FrmSolicitarDato("Introducir ISBN", "ISBN:", this.op, personal).Show();
+                        }
+                        this.Close();
                     }
-                    this.Close();
+                    else
+                    {
+                        DialogResult resultado = MessageBox.Show("¿Quieres introducir otro?", "Documento con ejemplares en prestamo", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+                        if (resultado.Equals(DialogResult.Yes))
+                        {
+                            this.Hide();
+                            new FrmSolicitarDato("Introducir ISBN", "ISBN:", this.op, personal).Show();
+                        }
+                        this.Close();
+                    }
                 }
             }
             else if (this.op.Equals("Búsqueda") && (this.etiqueta == "ISBN:"))

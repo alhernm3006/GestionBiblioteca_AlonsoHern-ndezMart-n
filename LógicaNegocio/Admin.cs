@@ -14,47 +14,33 @@ namespace LógicaNegocio
         Ejemplar_CRUD ejemplarCRUD=new Ejemplar_CRUD();
         Libro_CRUD libroCRUD=new Libro_CRUD();
         AudioLibro_CRUD audioCRUD=new AudioLibro_CRUD();
-        public Admin() {
-
-           
-        }
+        Usuario_CRUD usuarioCRUD = new Usuario_CRUD();
+        public Admin() {}
 
         public void añadirtrabajador(ModeloDominio.PersonalBiblioteca g){ p.Insertar(g); }
         public bool altaDocumento(Documento doc)
         {
-            try
+            doc.Estado = EstadoActivoInactivo.activo;
+            if (doc is LibroPapel libro)
             {
-                doc.Estado = EstadoActivoInactivo.activo;
-                if (doc is LibroPapel libro)
-                {
-                    libroCRUD.Insertar(libro);
-                }
-                else if (doc is AudioLibro audio)
-                {
-                    audioCRUD.Insertar(audio);
-                }
-                else
-                {
-                    return false; // Tipo desconocido
-                }
-                return true;
+                return libroCRUD.Insertar(libro);
             }
-            catch (Exception)
+            else if (doc is AudioLibro audio)
             {
-                return false;
+                return audioCRUD.Insertar(audio);
             }
+            return false;
         }
         public bool altaEjemplar(Ejemplar ej)
         {
-            try
-            {
-                ejemplarCRUD.Insertar(ej);
-                return true;
-            }
-            catch (Exception)
-            {
-                return false;
-            }
+            ej.Estado = EstadoEjemplar.disponible;
+            return ejemplarCRUD.Insertar(ej);
+        }
+
+        public bool altaUsuario(Usuario u)
+        {
+            u.Estado = EstadoActivoInactivo.activo;
+            return usuarioCRUD.Insertar(u);
         }
     }
 }

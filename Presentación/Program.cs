@@ -31,6 +31,10 @@ namespace Presentación
             admin.altaEjemplar(new Ejemplar(d1, "5", adquisicion));
             admin.altaEjemplar(new Ejemplar(d2, "3", adquisicion));
 
+            admin.altaUsuario(new Usuario("111A", "Pepe"));
+            admin.altaUsuario(new Usuario("121B", "Pepito"));
+            admin.altaUsuario(new Usuario("345U", "Ramón"));
+            admin.altaUsuario(new Usuario("963Z", "Usuario"));
 
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);

@@ -45,9 +45,9 @@ namespace Presentación
 
             this.textBox_ISBN.Text = isbn;
             this.textBox_autor.Text = documento.Autor;
+            this.textBox_anio.Text = documento.Año.ToString();
             this.textBox_editorial.Text = documento.Editorial;
             this.textBox_titulo.Text = documento.Titulo;
-
 
             this.radioButton_libro.Enabled = false;
             this.radioButton_Audiolibro.Enabled = false;
@@ -55,6 +55,16 @@ namespace Presentación
             label_duracion.Visible = false;
             textBox_formato.Visible = false;
             textBox_duracion.Visible = false;
+
+            button_cancelar.Text = "Cerrar";
+            textBox_ISBN.ReadOnly = true;
+            textBox_autor.ReadOnly = true;
+            textBox_editorial.ReadOnly = true;
+            textBox_titulo.ReadOnly = true;
+            textBox_anio.ReadOnly = true;
+            textBox_formato.ReadOnly = true;
+            textBox_duracion.ReadOnly = true;
+
 
             if (this.documento is LibroPapel)
             {
@@ -76,83 +86,82 @@ namespace Presentación
             if (operacion.Equals("Búsqueda"))
             {
                 this.Text = "Consulta de Documento";
-                button_cancelar.Text = "Cerrar";
-
-                textBox_ISBN.ReadOnly = true;
-                textBox_autor.ReadOnly = true;
-                textBox_editorial.ReadOnly = true;
-                textBox_titulo.ReadOnly = true;
-                textBox_formato.ReadOnly = true;
-                textBox_duracion.ReadOnly = true;
                 button_darAlta.Hide();
+            }
+            else
+            {
+                this.Text = "Baja de Documento";
+                button_darAlta.Text = "Dar baja";
             }
         }
 
         private void button_darAlta_Click(object sender, EventArgs e)
         {
-            if (string.IsNullOrWhiteSpace(textBox_ISBN.Text) ||
-             string.IsNullOrWhiteSpace(textBox_titulo.Text) ||
-             string.IsNullOrWhiteSpace(textBox_autor.Text) ||
-             string.IsNullOrWhiteSpace(textBox_editorial.Text))
+            if (this.operacion.Equals("Alata"))
             {
-                MessageBox.Show("Por favor, rellene todos los campos obligatorios.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                return;
-            }
-
-            if (!radioButton_Audiolibro.Checked && !radioButton_libro.Checked)
-            {
-                MessageBox.Show("Por favor, seleccione el tipo de Documento.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                return;
-            }
-
-            string isbn = textBox_ISBN.Text;
-            LógicaNegocio.PersonalAdquisicion p = (LógicaNegocio.PersonalAdquisicion)this.personal;
-
-            if (p.buscarPorISBN(isbn) != null)
-            {
-                MessageBox.Show("Ya existe un documento registrado con este ISBN.", "ISBN Duplicado", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                return;
-            }
-
-            string titulo = textBox_titulo.Text;
-            string autor = textBox_autor.Text;
-            string editorial = textBox_editorial.Text;
-            int anio = DateTime.Now.Year;
-
-            Documento nuevoDoc = null;
-            if (radioButton_libro.Checked)
-            {
-                nuevoDoc = new LibroPapel(isbn, titulo, autor, anio, editorial);
-            }
-            else if (radioButton_Audiolibro.Checked)
-            {
-                if (string.IsNullOrWhiteSpace(textBox_formato.Text) || string.IsNullOrWhiteSpace(textBox_duracion.Text))
+                if (string.IsNullOrWhiteSpace(textBox_ISBN.Text) ||
+                 string.IsNullOrWhiteSpace(textBox_titulo.Text) ||
+                 string.IsNullOrWhiteSpace(textBox_autor.Text) ||
+                 string.IsNullOrWhiteSpace(textBox_editorial.Text) ||
+                 string.IsNullOrWhiteSpace(textBox_anio.Text)
+                 )
                 {
-                    MessageBox.Show("Por favor, rellene formato y duración.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    MessageBox.Show("Por favor, rellene todos los campos obligatorios.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                     return;
                 }
-                if (!float.TryParse(textBox_duracion.Text, out float duracion))
+
+                if (int.TryParse(textBox_anio.Text, out int anio) && anio > 0 && anio <= DateTime.Now.Year)
                 {
-                    MessageBox.Show("La duración debe ser un número válido.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    MessageBox.Show("Por favor, ingrese un año válido.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                     return;
                 }
-                string formato = textBox_formato.Text;
-                nuevoDoc = new AudioLibro(isbn, titulo, autor, anio, editorial, formato, duracion);
-            }
 
-            if (nuevoDoc != null)
-            {
+                if (!radioButton_Audiolibro.Checked && !radioButton_libro.Checked)
+                {
+                    MessageBox.Show("Por favor, seleccione el tipo de Documento.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    return;
+                }
+
+                string isbn = textBox_ISBN.Text;
+                LógicaNegocio.PersonalAdquisicion p = (LógicaNegocio.PersonalAdquisicion)this.personal;
+
+                if (p.buscarPorISBN(isbn) != null)
+                {
+                    MessageBox.Show("Ya existe un documento registrado con este ISBN.", "ISBN Duplicado", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    return;
+                }
+
+                string titulo = textBox_titulo.Text;
+                string autor = textBox_autor.Text;
+                string editorial = textBox_editorial.Text;
+
+                Documento nuevoDoc = null;
+                if (radioButton_libro.Checked)
+                {
+                    nuevoDoc = new LibroPapel(isbn, titulo, autor, anio, editorial);
+                }
+                else if (radioButton_Audiolibro.Checked)
+                {
+                    if (string.IsNullOrWhiteSpace(textBox_formato.Text) || string.IsNullOrWhiteSpace(textBox_duracion.Text))
+                    {
+                        MessageBox.Show("Por favor, rellene formato y duración.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        return;
+                    }
+                    if (!float.TryParse(textBox_duracion.Text, out float duracion))
+                    {
+                        MessageBox.Show("La duración debe ser un número válido.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        return;
+                    }
+                    string formato = textBox_formato.Text;
+                    nuevoDoc = new AudioLibro(isbn, titulo, autor, anio, editorial, formato, duracion);
+                }
                 if (p.altaDocumento(nuevoDoc))
                 {
                     DialogResult resultado = MessageBox.Show("Documento añadido correctamente.", "Éxito", MessageBoxButtons.OK, MessageBoxIcon.Information);
                     if (resultado == DialogResult.OK) this.Close();
                 }
-                else
-                {
-                    MessageBox.Show("No se pudo añadir el documento. Verifique que no exista previamente (incluso inactivo).", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                }
             }
-        }/*else if (this.operacion.Equals("Baja"))
+            else if (this.operacion.Equals("Baja"))
             {
                 DialogResult resultado = MessageBox.Show("¿Está seguro que desea dar de baja el documento?", "Aviso", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
                 if (resultado.Equals(DialogResult.Yes))
@@ -162,7 +171,8 @@ namespace Presentación
                     DialogResult r2 = MessageBox.Show("Documento eliminado", "Aviso", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
                     if (resultado.Equals(DialogResult.OK)) this.Close();
                 }
-            }*/
+            }
+        }
         
 
         private void radioButton_Audiolibro_CheckedChanged(object sender, EventArgs e)

@@ -70,6 +70,7 @@ namespace LógicaNegocio
 
         public bool altaEjemplar(Ejemplar ej)
         {
+            ej.Estado = EstadoEjemplar.disponible;
             return ejemplarCRUD.Insertar(ej);
         }
         public bool bajaEjemplar(string isbn, string codigo)

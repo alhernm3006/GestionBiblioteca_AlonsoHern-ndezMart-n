@@ -37,6 +37,7 @@ namespace Presentación
                     {
                         DatosEjemplar fila = new DatosEjemplar();
                         fila.Titulo = doc.Titulo;
+                        fila.Isbn = doc.ISBN;
                         fila.Codigo = ej.Codigo;
                         fila.Estado = ej.Estado.ToString();
                         fila.Usuario = personal.IdPersonal;
@@ -49,11 +50,9 @@ namespace Presentación
 
         public class DatosEjemplar
         {
-           
             public string Titulo { get; set; }
-          
             public string Usuario { get; set; }
-
+            public string Isbn { get; set; }
             public string Codigo { get; set; }
             public string Estado { get; set; }
         }
