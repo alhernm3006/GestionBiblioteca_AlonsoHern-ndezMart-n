@@ -18,6 +18,9 @@ namespace Presentación
         private string codigoEjemplar;
         private string modo;
         private Ejemplar ejemplarActual;
+
+        //PRE:  codigo y modoOperacion son válidos.
+        //POS:  Se inicializa el formulario y llama a CargarDatosIniciales()
         public FormEjemplar(String codigo, LógicaNegocio.PersonalAdquisicion personal, String modoOperacion)
         {
             InitializeComponent();
@@ -31,6 +34,10 @@ namespace Presentación
         }
 
 
+        //PRE: 
+        //POS:  Se carga la lista de documentos activos en el comboBox.
+        //      - Si es Alta: Se pone oculto el RadioButton 
+        //      -Si es Busqueda o Baja: Busca el ejemplar usando BuscarYCargarEjemplar(). Si no lo encuentra, cierra lanzando antes un mensaje de error.
         private void CargarDatosIniciales()
         {
             textBox_codigo.Text = this.codigoEjemplar;
@@ -71,6 +78,8 @@ namespace Presentación
             }
         }
 
+        //PRE:  docs es la lista de documentos activos
+        //POS:  Si encuentra el ejemplar, se cargan los datos y devuelve true, si no false
         private bool BuscarYCargarEjemplar(List<Documento> docs)
         {
             foreach (Documento doc in docs)
@@ -89,6 +98,9 @@ namespace Presentación
         }
 
 
+        //PRE:  
+        //POS:  Crea un nuevo objeto Ejemplar asociado al documento y personal. Se llama a personal.altaEjemplar()
+        //      Muestra exito o error si el código del ejemplar esta duplicado.
         private void button_aceptar_Click(object sender, EventArgs e)
         {
             if (comboBox_documentos.SelectedItem == null)
@@ -114,6 +126,8 @@ namespace Presentación
         }
 
 
+        //PRE:  El usuario pulsa el boton "cancelar".
+        //POS:  Se cierra el formulario.
         private void button_cancelar_Click(object sender, EventArgs e)
         {
             this.Close();

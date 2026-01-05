@@ -19,6 +19,10 @@ namespace Presentación
         private string tipo;
         private List<Usuario> listaUsuarios;
         private List<Documento> listaDocumentos;
+
+        //PRE:  tipo es "Usuario" o "Documento".
+        //p es un PersonalBiblioteca válido.
+        //POS:  Inicializa las dos listas vacías "DNI" y "Nombre"
         public ListadoUsuario(LógicaNegocio.PersonalBiblioteca p, string tipo)
         {
             InitializeComponent();
@@ -37,11 +41,15 @@ namespace Presentación
             }
         }
 
+        //PRE:  
+        //POS:  Se cierra el formulario.
         private void button3_Click(object sender, EventArgs e)
         {
             this.Close();
         }
 
+        //PRE:  Cambio de selección en la lista de DNIs 
+        //POS:  Sincroniza la selección en la lista de nombres
         private void listBox_dni_SelectedIndexChanged(object sender, EventArgs e)
         {
             if (listBox_dni.SelectedIndex != -1)
@@ -50,6 +58,8 @@ namespace Presentación
             }
         }
 
+        //PRE:  Cambio de selección en la lista de nombres
+        //POS:  Sincroniza la selección en la lista de DNIs
         private void listBox_nombre_SelectedIndexChanged(object sender, EventArgs e)
         {
             if (listBox_nombre.SelectedIndex != -1)
@@ -58,6 +68,8 @@ namespace Presentación
             }
         }
 
+        //PRE:  
+        //POS:  Ordena la lista interna alfabéticamente por nombre y actualiza las listas
         private void button_nombre_Click(object sender, EventArgs e)
         {
             if (tipo.Equals("Usuario"))
@@ -72,6 +84,8 @@ namespace Presentación
 
         }
 
+        //PRE:  
+        //POS:  Ordena la lista interna alfabéticamente por DNI y actualiza las listas
         private void button_dni_Click(object sender, EventArgs e)
         {
             if (tipo.Equals("Usuario"))
@@ -85,6 +99,8 @@ namespace Presentación
             ActualizarListasVisuales();
         }
 
+        //PRE:  Las listas contienen datos
+        //POS:  Limpia y repobla los controles ListBox de la interfaz con los datos de las listas
         private void ActualizarListasVisuales()
         {
             listBox_dni.Items.Clear();
@@ -108,6 +124,9 @@ namespace Presentación
             }
         }
 
+
+        //PRE: 
+        //POS:  Obtiene los Usuarios activos y llena las listas. Llama a ActualizarListasVisuales()
         private void CargarDatos()
         {
             if (tipo.Equals("Usuario"))
@@ -123,6 +142,9 @@ namespace Presentación
             ActualizarListasVisuales();
         }
 
+
+        //PRE:  
+        //POS:  Llama a CargarDatos()
         private void Listado_Load(object sender, EventArgs e)
         {
             CargarDatos();

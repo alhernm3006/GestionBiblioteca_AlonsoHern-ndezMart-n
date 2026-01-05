@@ -19,11 +19,17 @@ namespace Presentación
         private string idPersonal;
         private string password;
         private string rol;
+
+        //PRE: 
+        //POS:  Inicializa los componentes visuales del formulario de inicio de sesión.
         public FormInicio()
         {
             InitializeComponent();
         }
 
+        //PRE:  El usuario ha introducido texto en los campos de usuario y contraseña y ha seleccionado su rol.
+        //POS:  Si las credenciales y el rol son válidos, oculta el formulario actual, instancia, muestra el FrmPrincipal y cierra el formulario actual.
+        //      Si las credenciales son incorrectas o faltan datos, muestra un mensaje de error y mantiene el formulario abierto.
         private void button_entrar_Click(object sender, EventArgs e)
         {
             idPersonal = textBox_nombre.Text;

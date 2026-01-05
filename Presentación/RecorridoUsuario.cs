@@ -14,9 +14,10 @@ namespace Presentación
     public partial class RecorridoUsuario : Form
     {
         private LógicaNegocio.PersonalBiblioteca personal;
-        // Creamos el BindingSource que gestionará la navegación
         private BindingSource miBindingSource = new BindingSource();
 
+        //PRE:  p es PersonalBiblioteca válido
+        //POS:  Inicializa el formulario y llama a ConfigurarEnlaceDatos()
         public RecorridoUsuario(LógicaNegocio.PersonalBiblioteca p)
         {
             InitializeComponent();
@@ -24,26 +25,14 @@ namespace Presentación
             ConfigurarEnlaceDatos();
         }
 
+        //PRE:
+        //POS:  Obtiene los usuarios activos. Configura el BindingSource y el BindingNavigator.
         private void ConfigurarEnlaceDatos()
         {
-            // 1. Obtener la lista completa de usuarios desde la capa de negocio
-            // En PersonalBiblioteca.cs tienes el método obtenerUsuarios()
             List<Usuario> listaUsuarios = personal.getUsuarios().Where(u => u.Estado == EstadoActivoInactivo.activo).ToList();
-
-            // 2. Asignar la lista al BindingSource
             miBindingSource.DataSource = listaUsuarios;
-
-            // 3. Conectar el BindingNavigator visual con nuestro BindingSource lógico
-            // 'bindingNavigator1' viene definido en tu Recorrido.Designer.cs
             bindingNavigator1.BindingSource = miBindingSource;
-
-            // 4. Enlazar los TextBox a las propiedades del objeto Usuario
-            // Sintaxis: .Add("PropiedadDelControl", FuenteDeDatos, "PropiedadDelObjeto")
-
-            // textBox1 mostrará el DNI (según tu designer label1 es DNI)
             textBox1.DataBindings.Add("Text", miBindingSource, "DNI");
-
-            // textBox2 mostrará el Nombre (según tu designer label2 es Nombre)
             textBox2.DataBindings.Add("Text", miBindingSource, "Nombre");
         }
     }

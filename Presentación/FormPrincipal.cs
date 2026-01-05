@@ -15,6 +15,8 @@ namespace Presentación
     public partial class FrmPrincipal : Form
     {
         private PersonalBiblioteca personal;
+        //PRE:  p es una instancia valida de PersonalBiblioteca autenticada correctamente.
+        //POS:  Inicializa los componentes y configura la visibilidad de los elementos del menú "Préstamos", "Documentos", "Ejemplares" según si p es PersonalAdquisicion o PersonalSala.
         public FrmPrincipal(PersonalBiblioteca p)
         {
             InitializeComponent();
@@ -30,6 +32,8 @@ namespace Presentación
             }
         }
 
+        //PRE:  El usuario ha seleccionado una opción del menu Usuarios
+        //POS:  Se abre el formulario correspondiente: ListadoUsuario, BusquedaDNI, RecorridoUsuario o FrmSolicitarDato.
         private void usuariosToolStripMenuItem_DropDownItemClicked(object sender, ToolStripItemClickedEventArgs e)
         {
             switch (e.ClickedItem.Text)
@@ -41,6 +45,8 @@ namespace Presentación
             }
         }
 
+        //PRE:  El usuario ha seleccionado una opción del menú Documentos
+        //POS:  Se abre el formulario correspondiente: ListadoDocumento, RecorridoDocumentos o FrmSolicitarDato.
         private void documentosToolStripMenuItem_DropDownItemClicked(object sender, ToolStripItemClickedEventArgs e)
         {
             switch (e.ClickedItem.Text)
@@ -51,8 +57,9 @@ namespace Presentación
             }
         }
 
-       
 
+        //PRE:  El usuario ha seleccionado una opción del menú Ejemplares
+        //POS:  Se abre el formulario correspondiente: ListadoEjemplares o FrmSolicitarDato
         private void ejemplaresToolStripMenuItem_DropDownItemClicked(object sender, ToolStripItemClickedEventArgs e)
         {
             switch (e.ClickedItem.Text)
@@ -62,6 +69,8 @@ namespace Presentación
             }
         }
 
+        //PRE:  El usuario ha seleccionado una opción del menú Préstamos
+        //POS:  Se abre el formulario correspondiente: ListadoPrestamo, FrmSolicitarDato o FormPrestamo
         private void préstamosToolStripMenuItem_DropDownItemClicked(object sender, ToolStripItemClickedEventArgs e)
         {
             switch (e.ClickedItem.Text)

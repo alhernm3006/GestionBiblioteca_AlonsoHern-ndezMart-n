@@ -18,6 +18,9 @@ namespace Presentación
 
         private LógicaNegocio.PersonalBiblioteca personal;
         private BindingSource miBindingSource = new BindingSource();
+
+        //PRE:  personal es un PersonalAdquisicion válido
+        //POS:  Se inicializa el formulario y llama a ConfigurarEnlaceDatos()
         public RecorridoDocumentos(LógicaNegocio.PersonalAdquisicion personal )
         {
             InitializeComponent();
@@ -25,8 +28,9 @@ namespace Presentación
             ConfigurarEnlaceDatos();
         }
 
-     
 
+        //PRE: 
+        //POS:  Se obtienen los documentos activos. Configura el BindingSource y el BindingNavigator.
         private void ConfigurarEnlaceDatos()
         {
          

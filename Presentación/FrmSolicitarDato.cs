@@ -18,6 +18,8 @@ namespace Presentación
         private string op;
         private string etiqueta;
 
+        //PRE:  titulo, etiqueta y op son cadenas no nulas. personal es PersonalBiblioteca valido.
+        //POS:  Se inicializa el formulario asignandose los parametros a los atributos
         public FrmSolicitarDato(string titulo, string etiqueta, string op, LógicaNegocio.PersonalBiblioteca personal)
         {
             InitializeComponent();
@@ -28,6 +30,10 @@ namespace Presentación
             this.etiqueta = etiqueta;
         }
 
+        //PRE:  El usuario pulsa el botón Aceptar. El campo de texto contiene el dato solicitado
+        //POS:  Valida la existencia del dato en la capa de negocio.
+        //      -Alta: Si no existe, abre el formulario de alta correspondiente. Si existe, avisa y permite reintentar
+        //      -Baja o Busqueda: Si existe, abre el formulario de gestión con los datos cargados. Si no existe, avisa y permite reintentar.
         private void button_aceptar_Click(object sender, EventArgs e)
         {
             if (string.IsNullOrWhiteSpace(textBox_DNI.Text))
@@ -252,8 +258,10 @@ namespace Presentación
                 }
             }
         }
-    
 
+
+        //PRE:  El usuario pulsa el boton "cancelar".
+        //POS:  Se cierra el formulario actual.
         private void button2_Click(object sender, EventArgs e)
         {
             this.DialogResult = DialogResult.Cancel;

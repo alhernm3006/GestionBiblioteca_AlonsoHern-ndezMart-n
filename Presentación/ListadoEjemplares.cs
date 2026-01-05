@@ -15,6 +15,9 @@ namespace Presentación
         private List<Ejemplar> listaEjemplares;
         private List<Documento> documentos;
         private LógicaNegocio.PersonalAdquisicion personal;
+
+        //PRE:  personal es un PersonalAdquisicion valido.
+        //POS:  Se inicializa el formulario.
         public ListadoEjemplares(LógicaNegocio.PersonalAdquisicion personal)
         {
             InitializeComponent();
@@ -22,6 +25,9 @@ namespace Presentación
             this.Text = "Listado de Ejemplares";
         }
 
+
+        //PRE:  Se carga el listado de ejemplares
+        //POS:  Se obtienen todos los ejemplares. A partir de los datos de esos ejemplares se crean objetos de tipo DatosEjemplar y se almacenan en una lista. Se llama a CargarDatos() con esa lista.
         private void ListadoEjemplares_Load(object sender, EventArgs e)
         {
             List<DatosEjemplar> listaParaMostrar = new List<DatosEjemplar>();

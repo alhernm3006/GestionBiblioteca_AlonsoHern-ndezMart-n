@@ -12,11 +12,16 @@ namespace Presentación
 {
     public partial class ListadoBase : Form
     {
+
+        //PRE: 
+        //POS:  Inicializa el formulario base
         public ListadoBase()
         {
             InitializeComponent();
         }
 
+        //PRE:  datos es una lista genérica
+        //POS:  Vincula la lista al BindingSource y este al DataGridView para mostrar los datos en formato tabla.
         public void CargarDatos<T>(List<T> datos)
         {
             bindingSource1.DataSource = datos;

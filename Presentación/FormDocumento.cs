@@ -17,6 +17,9 @@ namespace Presentación
         private LógicaNegocio.PersonalBiblioteca personal;
         private string operacion;
         private Documento documento;
+
+        //PRE:  isbn y operacion son válidos. personal es un PersonalAdquisicion valido.
+        //POS:  Se inicializa el formulario ocultando campos específicos de AudioLibro y bloqueando el ISBN.
         public FormDocumento(string isbn, string operacion, LógicaNegocio.PersonalBiblioteca personal)
         {
             InitializeComponent();
@@ -35,6 +38,8 @@ namespace Presentación
             }
         }
 
+        //PRE:  documento es un objeto válido recuperado de la BD. operación es "Baja" o "Búsqueda".
+        //POS:  Carga los datos del documento en los controles. Habilita o deshabilita campos según el tipo. Se configuran los botones según si es "Búsqueda" o "Baja"
         public FormDocumento(string isbn, string operacion,Documento documento, LógicaNegocio.PersonalBiblioteca personal)
         {
             InitializeComponent();
@@ -95,6 +100,8 @@ namespace Presentación
             }
         }
 
+        //PRE: 
+        //POS: Se da de alta el Documento si se han añadido correctamente los datos en los controles.
         private void button_darAlta_Click(object sender, EventArgs e)
         {
             if (this.operacion.Equals("Alta"))
@@ -164,8 +171,10 @@ namespace Presentación
             }
             
             }
-        
-        
+
+
+        //PRE:  
+        //POS:  Muestra u oculta los controles de "Formato" y "Duración" según si se ha elegido "Libro" o "AudioLibro"
 
         private void radioButton_Audiolibro_CheckedChanged(object sender, EventArgs e)
         {
@@ -185,6 +194,8 @@ namespace Presentación
             }
         }
 
+        //PRE:  El usuario pulsa el boton "cancelar"
+        //POS:  Se cierra el formulario.
         private void button_cancelar_Click(object sender, EventArgs e)
         {
             this.Close();

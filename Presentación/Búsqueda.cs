@@ -16,6 +16,9 @@ namespace Presentación
     {
         private LógicaNegocio.PersonalSala personal;
         public Ejemplar EjemplarSeleccionado { get; private set; }
+
+        //PRE:  personal es un PersonalSala válido.
+        //POS:  Se inicializa el formulario.
         public Búsqueda(LógicaNegocio.PersonalSala personal)
         {
             InitializeComponent();
@@ -23,6 +26,8 @@ namespace Presentación
             this.personal =personal;
         }
 
+        //PRE: 
+        //POS:  Asigna el ejemplar seleccionado a EjemplarSeleccionado, establece DialogResult.OK y cierra. Se lanza un mensaje de error si no se ha seleccionado el ejemplar
         private void button_aceptar_Click(object sender, EventArgs e)
         {
             if (comboBox1.SelectedItem != null)
@@ -36,9 +41,12 @@ namespace Presentación
                 MessageBox.Show("Por favor, selecciona un ejemplar.");
             }
         }
-    
-        
 
+
+
+        //PRE:
+        //POS:  Se obtienen todos los ejemploares disponibles. A partir de esos ejemploares se almacenan en una lista la informacion mas importante de esos ejemplares.
+        //      Si no hay ejemplares disponibles se lanza un mensaje y se desactiva el boton aceptar.
         private void CargarTodosLosEjemplares()
         {
             List<Documento> documentos = personal.getDocumentos();
@@ -74,11 +82,16 @@ namespace Presentación
             }
         }
 
+        //PRE:  Se carga el formulario
+        //POS:  Se llama a CargarTodosLosEjemplares()
         private void Búsqueda_Load(object sender, EventArgs e)
         {
             CargarTodosLosEjemplares();
         }
 
+
+        //PRE:  El usuario pulsa el boton "cancelar"
+        //POS:  Se cierra el formulario
         private void button_cancelar_Click(object sender, EventArgs e)
         {
             this.Close();

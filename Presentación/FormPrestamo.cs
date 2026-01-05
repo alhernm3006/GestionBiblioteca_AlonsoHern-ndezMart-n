@@ -17,6 +17,8 @@ namespace Presentación
         private LógicaNegocio.PersonalSala personal;
         private List<Ejemplar> ejemplaresEnPrestamo;
 
+        //PRE:  personal es un PersonalSala valido.
+        //POS:  Se inicializa una lista vacia de ejemplares para el préstamo y llama a CargarDatosIniciales()
         public FormPrestamo(LógicaNegocio.PersonalSala personal)
         {
             InitializeComponent();
@@ -25,6 +27,8 @@ namespace Presentación
             CargarDatosIniciales();
         }
 
+        //PRE:  codigo corresponde a un préstamo existente y personal es un PersonalSala valido.
+        //POS:  Busca el préstamo y carga sus datos. Se llama a  CargarDatosIniciales()
         public FormPrestamo(LógicaNegocio.PersonalSala personal, string codigo)
         {
             InitializeComponent();
@@ -53,6 +57,8 @@ namespace Presentación
         }
 
 
+        //PRE: 
+        //POS: Se establece la fecha actual en el textBox y rellena el comboBox con los usuarios activos
         private void CargarDatosIniciales()
         {
             textBox_fecha.Text = DateTime.Now.ToShortDateString();
@@ -64,6 +70,9 @@ namespace Presentación
             comboBox_usuario.ValueMember = "DNI";
         }
 
+        //PRE: 
+        //POS:  Abre el formulario Búsqueda. Si se selecciona un ejemplar, verifica que no esté ya en la lista.  Si no se ha añadido
+        //       lo añade a ejemplaresEnPrestamo y actualiza la vista llamando a ActualizarVistaEjemplares()
         private void button_añadirEjemplar_Click(object sender, EventArgs e)
         {
             Búsqueda formBusqueda = new Búsqueda(this.personal);
@@ -91,6 +100,9 @@ namespace Presentación
             }
         }
 
+
+        //PRE:  
+        //POS:  Se actualiza el FlowLayoutPanel con los ejemplares que se quieren prestar
         private void ActualizarVistaEjemplares()
         {
             flowLayoutPanel1.Controls.Clear();
@@ -106,6 +118,9 @@ namespace Presentación
             }
         }
 
+
+        //PRE:  
+        //POS:  Se crea el objeto Prestamo. Llama a personal.realizarPrestamo(). Muestra un mensaje de éxito y se cierra el formulario.
         private void button_aceptar_Click(object sender, EventArgs e)
         {
             if (string.IsNullOrWhiteSpace(textBox_idprestamo.Text))
@@ -139,6 +154,9 @@ namespace Presentación
             this.Close();
         }
 
+
+        //PRE:  El usuario pulsa el boton "cancelar"
+        //POS:  Se cierra el formulario
         private void button_cancelar_Click(object sender, EventArgs e)
         {
             this.Close();

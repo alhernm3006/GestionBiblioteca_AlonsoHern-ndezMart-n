@@ -12,6 +12,9 @@ namespace Presentación
     public partial class ListadoPrestamo : Presentación.ListadoBase
     {
         private LógicaNegocio.PersonalSala personal;
+
+        //PRE:  personal es un PersonalSala valido.
+        //POS:  Se inicializa el formulario
         public ListadoPrestamo(LógicaNegocio.PersonalSala personal)
         {
             InitializeComponent();
@@ -19,6 +22,9 @@ namespace Presentación
             this.Text = "Listado de Préstamos";
         }
 
+
+        //PRE:  Se carga el listado de prestamos
+        //POS:  Se obtienen todos los prestamos. A partir de esos prestamos se almacenan sus datos en un objeto de tipo DatosPrestamo. Esos objetos se almacenan en una lista. Se llama a CargarDatos() con esa lista.
         private void ListadoPrestamo_Load(object sender, EventArgs e)
         {
             List<DatosPrestamo> listaParaMostrar = new List<DatosPrestamo>();

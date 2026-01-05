@@ -17,6 +17,9 @@ namespace Presentación
     {
         private LógicaNegocio.PersonalBiblioteca personal;
         private string operacion;
+
+        //PRE:  dni y operacion son válidos. personal es un PersonalBiblioteca valido.
+        //POS:  Inicializa el formulario en modo Alta, asignando el DNI y bloqueando su edición.
         public FormUsuario(string dni, string operacion, LógicaNegocio.PersonalBiblioteca personal)
         {
             InitializeComponent();
@@ -29,6 +32,11 @@ namespace Presentación
                 textBox_DNI.ReadOnly = true;
             }
         }
+
+        //PRE:  dni, operacion y nombre son validos. personal es un PersonalBiblioteca valido.
+        //POS:  Inicializa el formulario mostrando los datos del usuario:
+        //      - Si la operacion es baja: Se pone en modo de lectura el textBox del DNI
+        //      - Si la operacion es busqueda: Oculta botones de aceptar y salir, y pone el modo de solo lectura para el DNI y el nombre
         public FormUsuario(string dni, string operacion, string nombre, LógicaNegocio.PersonalBiblioteca personal)
         {
             InitializeComponent();
@@ -55,6 +63,9 @@ namespace Presentación
             }
         }
 
+        //PRE:  
+        //POS:  - Alta: Se crea un objeto Usuario y llama a personal.altaUsuario(). Muestra éxito y cierra.
+        //      - Baja: Se llama a personal.bajaUsuario(). Muestra éxito y cierra.
         private void button_aceptar_Click(object sender, EventArgs e)
         {
             if (!textBox_Nombre.ReadOnly)
@@ -84,6 +95,8 @@ namespace Presentación
             }
         }
 
+        //PRE:  El usuario pulsa el boton "salir".
+        //POS:  Se cierra el formulario.
         private void button_salir_Click(object sender, EventArgs e)
         {
             this.DialogResult = DialogResult.Cancel;
