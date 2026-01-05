@@ -17,6 +17,8 @@ namespace Persistencia
         private static Tabla<String> tablaAudioLibros;
         private static Tabla<ClavePrestamoEjemplar> tablaPrestamosEjemplares;
 
+        // PRE: 
+        // POS: Devuelve la  tabla de Usuarios. Si es null, la inicializa antes de devolverla vacía.
         public static Tabla<String> TablaUsuarios
         {
             get
@@ -29,6 +31,8 @@ namespace Persistencia
             }
         }
 
+        // PRE: 
+        // POS: Devuelve la  tabla de Prestamos. Si es null, la inicializa antes de devolverla vacía.
         public static Tabla<String> TablaPrestamos
         {
             get
@@ -41,6 +45,8 @@ namespace Persistencia
             }
         }
 
+        // PRE: 
+        // POS: Devuelve la  tabla de Personal. Si es null, la inicializa antes de devolverla vacía.
         public static Tabla<String> TablaPersonal
         {
             get
@@ -53,6 +59,8 @@ namespace Persistencia
             }
         }
 
+        // PRE: 
+        // POS: Devuelve la  tabla deDocumentos. Si es null, la inicializa antes de devolverla vacía.
         public static Tabla<String> TablaDocumentos
         {
             get
@@ -65,6 +73,8 @@ namespace Persistencia
             }
         }
 
+        // PRE: 
+        // POS: Devuelve la  tabla de Libros en papel. Si es null, la inicializa antes de devolverla vacía.
         public static Tabla<String> TablaLibrosPapel
         {
             get
@@ -77,6 +87,8 @@ namespace Persistencia
             }
         }
 
+        // PRE: 
+        // POS: Devuelve la  tabla de AudioLibros. Si es null, la inicializa antes de devolverla vacía.
         public static Tabla<String> TablaAudioLibros
         {
             get
@@ -89,6 +101,8 @@ namespace Persistencia
             }
         }
 
+        // PRE: 
+        // POS: Devuelve la  tabla de Ejemplares. Si es null, la inicializa antes de devolverla vacía.
         public static Tabla<ClaveEjemplar> TablaEjemplares
         {
             get
@@ -101,6 +115,8 @@ namespace Persistencia
             }
         }
 
+        // PRE: 
+        // POS: Devuelve la  tabla de Prestamos. Si es null, la inicializa antes de devolverla vacía.
         public static Tabla<ClavePrestamoEjemplar> TablaPrestamosEjemplares
         {
             get
