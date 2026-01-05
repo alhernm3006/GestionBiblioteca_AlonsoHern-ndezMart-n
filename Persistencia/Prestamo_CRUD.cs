@@ -9,6 +9,8 @@ namespace Persistencia
 {
     public class Prestamo_CRUD
     {
+        // PRE: El objeto 'prestamo' no debe ser nulo. .
+        // POS: Devuelve true si el préstamo se inserta correctamente en la base de datos.
         public bool Insertar(Prestamo prestamo)
         {
             if (!BD.TablaPrestamos.Contains(prestamo.ID))
@@ -28,6 +30,9 @@ namespace Persistencia
             return false;
         }
 
+        // PRE: 'idPrestamo' no debe ser nulo.
+        // POS: Devuelve el objeto Prestamo completo si existe en la base de datos
+        //      Devuelve null si el préstamo no existe.
         public Prestamo Buscar(string idPrestamo)
         {
             if (BD.TablaPrestamos.Contains(idPrestamo))
@@ -50,6 +55,8 @@ namespace Persistencia
             return null;
         }
 
+        // PRE: 'idPrestamo' no debe ser nulo.
+        // POS: Elimina el préstamo de la tabla principal.
         public void Eliminar(string idPrestamo)
         {
             if (!BD.TablaPrestamos.Contains(idPrestamo))
@@ -57,31 +64,30 @@ namespace Persistencia
                 throw new Exception("El préstamo no existe.");
             }
 
-            // 1. Borrar las líneas de detalle en TablaPrestamosEjemplares
-            // Como no podemos modificar una colección mientras la recorremos con foreach,
-            // primero buscamos los elementos a borrar y los guardamos en una lista temporal.
 
             var lineasABorrar = new List<Prestamo_EjemplarDato>();
 
             foreach (var item in BD.TablaPrestamosEjemplares)
             {
-                // La clave compuesta tiene el Id del prestamo dentro
+              
                 if (item.Id.Id == idPrestamo)
                 {
                     lineasABorrar.Add((Prestamo_EjemplarDato)item);
                 }
             }
 
-            // Ahora sí los borramos
+          
             foreach (var linea in lineasABorrar)
             {
                 BD.TablaPrestamosEjemplares.Remove(linea.Id);
             }
 
-            // 2. Borrar el préstamo de la tabla principal
+          
             BD.TablaPrestamos.Remove(idPrestamo);
         }
 
+        // PRE: 
+        // POS: Devuelve una lista con todos los préstamos almacenados en el sistema.
         public List<Prestamo> ListarTodos()
         {
             List<Prestamo> lista = new List<Prestamo>();
@@ -93,6 +99,8 @@ namespace Persistencia
             return lista;
         }
 
+        // PRE: 'dni' no debe ser nulo.
+        // POS: Devuelve una lista de todos los préstamos asociados al usuario con el DNI especificado.
         public List<Prestamo> PrestamosUsuario(string dni)
         {
             List<Prestamo> lista = new List<Prestamo>();
@@ -107,28 +115,31 @@ namespace Persistencia
             return lista;
         }
 
+        // PRE: 'isbn' y 'codigo' no deben ser nulos.
+        // POS: Busca en las líneas de detalle si el ejemplar pertenece a un préstamo activo.
+        //      Si lo encuentra, actualiza la fecha de devolución real, a la fecha actual.
+
         public void RegistrarDevolucionEjemplar(string isbn, string codigo)
         {
-            // Recorremos la tabla de relaciones Prestamo-Ejemplar
+            
             foreach (var item in BD.TablaPrestamosEjemplares)
             {
                 Prestamo_EjemplarDato peDato = (Prestamo_EjemplarDato)item;
 
-                // 1. Buscamos coincidencias por ISBN y Código
+               
                 if (peDato.Id.Ejemplar.ISBN == isbn && peDato.Id.Ejemplar.Codigo == codigo)
                 {
-                    // 2. Verificamos que el préstamo padre exista y esté ACTIVO (enProceso)
-                    // Esto es crucial porque el libro pudo prestarse anteriormente y esas líneas viejas no se tocan.
+                  
                     if (BD.TablaPrestamos.Contains(peDato.Id.Id))
                     {
                         PrestamoDato pDato = (PrestamoDato)BD.TablaPrestamos[peDato.Id.Id];
 
                         if (pDato.Estado == EstadoPrestamo.enProceso.ToString())
                         {
-                            // 3. Establecemos la fecha de devolución real al momento actual
+                           
                             peDato.FechaDevolucion = DateTime.Now;
 
-                            // Ya encontramos el préstamo activo para este libro, terminamos.
+                          
                             return;
                         }
                     }

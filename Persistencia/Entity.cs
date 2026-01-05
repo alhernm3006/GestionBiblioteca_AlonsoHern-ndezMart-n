@@ -10,6 +10,8 @@ namespace Persistencia
     {
         private T id;
 
+        // PRE: 'id' no debe ser nulo .
+        // POS: Crea una nueva instancia de la clase base Entity.
         public Entity (T id)
         {
             this.id = id;
@@ -17,6 +19,7 @@ namespace Persistencia
 
         public T Id
         {
+            // POS: Devuelve el identificador asociado a la entidad.
             get { return this.id; }
         }
     }

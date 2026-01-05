@@ -9,6 +9,9 @@ namespace Persistencia
 {
     internal class Transformer
     {
+
+        // PRE: 'dato' no debe ser nulo. El ISBN del documento y el ID del personal referenciados en 'dato' deben existir en la base de datos.
+        // POS: Devuelve una instancia completa de Ejemplar reconstruida a partir de los datos.
         public static Ejemplar EjemplarDatoAEjemplar(EjemplarDato dato)
         {
             DocumentoDato docDato = (DocumentoDato)BD.TablaDocumentos[dato.Isbn];
@@ -26,11 +29,16 @@ namespace Persistencia
             return ejemplar;
         }
 
+        // PRE: 'ejemplar' no debe ser nulo.
+        // POS: Devuelve un objeto EjemplarDato con la información necesaria para persistir el ejemplar.
         public static EjemplarDato EjemplarAEjemplarDato(Ejemplar ejemplar)
         {
             return new EjemplarDato(new ClaveEjemplar(ejemplar.Documento.ISBN, ejemplar.Codigo), ejemplar.Estado.ToString(), ejemplar.PersonalAdquisicion.IdUsuario);
         }
 
+        // PRE: 'dato' no debe ser nulo.
+        // POS: Devuelve un objeto AudioLibro si el ID existe en la tabla de documentos y se puede reconstruir.
+        //      Devuelve null si el ID no se encuentra en BD.TablaDocumentos.
         public static AudioLibro AudioLibroDatoAAudioLibro(AudioLibroDato dato)
         {
             AudioLibro audiolibro = null;
@@ -48,11 +56,16 @@ namespace Persistencia
             return audiolibro;
         }
 
+        // PRE: 'audioLibro' no debe ser nulo.
+        // POS: Devuelve un objeto AudioLibroDato con la información específica del audiolibro para su persistencia.
         public static AudioLibroDato AudioLibroAAudioLibroDato(AudioLibro audioLibro)
         {
             return new AudioLibroDato(audioLibro.ISBN, audioLibro.Formato, audioLibro.Duracion);
         }
 
+        // PRE: 'dato' no debe ser nulo.
+        // POS: Devuelve un objeto Documentoque puede ser Libro o AudioLibro dependiendo de en qué tabla específica se encuentre el ISBN.
+        //      Asigna el estado correspondiente.
         public static Documento DocumentoDatoADocumento(DocumentoDato dato)
         {
             Documento documento = null;
@@ -74,12 +87,16 @@ namespace Persistencia
             return documento;
         }
 
+        // PRE: 'doc' no debe ser nulo.
+        // POS: Devuelve un objeto DocumentoDato con la información general del documento.
         public static DocumentoDato DocumentoADocumentoDato(Documento doc)
         {
             return new DocumentoDato(doc.ISBN, doc.Titulo, doc.Autor, doc.Año, doc.Editorial, doc.Estado.ToString());
         }
 
-
+        // PRE: 'dato' no debe ser nulo.
+        // POS: Devuelve un objeto LibroPapel reconstruido si el ID existe en la tabla de libros papel.
+        //      Devuelve null si no se encuentra en dicha tabla.
         public static LibroPapel LibroPapelDatoALibroPapel(LibroPapelDato dato)
         {
             LibroPapel libro = null;
@@ -96,12 +113,16 @@ namespace Persistencia
             return libro;
         }
 
+        // PRE: 'libroPapel' no debe ser nulo.
+        // POS: Devuelve un objeto LibroPapelDato con el ISBN del libro.
         public static LibroPapelDato LibroPapelALibroPapelDato(LibroPapel libroPapel)
         {
             return new LibroPapelDato(libroPapel.ISBN);
         }
 
-
+        // PRE: 'dato' no debe ser nulo. El DNI del usuario y el ID del personal deben existir en la base de datos.
+        // POS: Devuelve un objeto Prestamo reconstruido, incluyendo el Usuario, el Personal y el Estado parseado.
+        //      La lista de ejemplares se inicializa vacía.
         public static Prestamo PrestamoDatoAPrestamo(PrestamoDato dato)
         {
             UsuarioDato uDato = (UsuarioDato)BD.TablaUsuarios[dato.DniUsuario];
@@ -115,12 +136,17 @@ namespace Persistencia
             return new Prestamo(dato.Id, dato.FechaInicio, dato.FechaFin, estadoEnum, usuario, personal, new List<Ejemplar>());
         }
 
+
+        // PRE: 'prestamo' no debe ser nulo.
+        // POS: Devuelve un objeto PrestamoDato con la información necesaria para persistir el préstamo.
         public static PrestamoDato PrestamoAPrestamoDato(Prestamo prestamo)
         {
             return new PrestamoDato(prestamo.ID, prestamo.FechaInicio, prestamo.FechaFin, prestamo.Estado.ToString(), prestamo.Usuario.DNI, prestamo.PersonalSala.IdUsuario);
         }
 
-
+        // PRE: 'dato' no debe ser nulo. 'dato.Rol' debe ser "adquisicion" o "sala" .
+        // POS: Devuelve una instancia de PersonalAdquisicion o PersonalSala según el rol.
+        //      Devuelve null si el rol no es reconocido.
         public static PersonalBiblioteca PersonalBilbiotecaDatoAPersonalBilbioteca(PersonalBibliotecaDato dato)
         {
             switch (dato.Rol.ToLower())
@@ -134,6 +160,8 @@ namespace Persistencia
             }
         }
 
+        // PRE: 'personalBiblioteca' no debe ser nulo.
+        // POS: Devuelve un objeto PersonalBibliotecaDato con el rol asignado ("adquisicion" o "sala") según el tipo de instancia.
         public static PersonalBibliotecaDato PersonalBilbiotecaAPersonalBilbiotecaDato(PersonalBiblioteca personalBiblioteca)
         {
             string rol;
@@ -148,12 +176,15 @@ namespace Persistencia
             return new PersonalBibliotecaDato(personalBiblioteca.IdUsuario, personalBiblioteca.Nombre, personalBiblioteca.Contraseña, rol);
         }
 
-
+        // PRE: 'usuario' no debe ser nulo.
+        // POS: Devuelve un objeto UsuarioDato para su persistencia.
         public static UsuarioDato UsuarioAUsuarioDato(Usuario usuario)
         {
             return new UsuarioDato(usuario.DNI, usuario.Nombre, usuario.Estado.ToString());
         }
 
+        // PRE: 'dato' no debe ser nulo.
+        // POS: Devuelve un objeto Usuario reconstruido con su estado correspondiente.
         public static Usuario UsuarioDatoAUsuario(UsuarioDato dato)
         {
             Usuario u = new Usuario(dato.Id, dato.Nombre);

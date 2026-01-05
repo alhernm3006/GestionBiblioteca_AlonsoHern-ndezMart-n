@@ -9,6 +9,9 @@ namespace Persistencia
 {
     public class Documento_CRUD
     {
+        // PRE: 'isbn' no debe ser nulo.
+        // POS: Devuelve el objeto Documento si existe en la base de datos y su estado es distinto de "inactivo".
+        //      Devuelve null si no existe o si está marcado como inactivo.
         public Documento Buscar(string isbn)
         {
             if (BD.TablaDocumentos.Contains(isbn))
@@ -23,6 +26,9 @@ namespace Persistencia
             return null;
         }
 
+        // PRE: 'textoTitulo' no debe ser nulo .
+        // POS: Devuelve una lista de documentos cuyo título contiene la cadena 'textoTitulo' .
+        //      La búsqueda incluye documentos activos e inactivos. Devuelve una lista vacía si no hay coincidencias.
         public List<Documento> BuscarPorTitulo(string textoTitulo)
         {
             List<Documento> resultados = new List<Documento>();
@@ -41,6 +47,9 @@ namespace Persistencia
             return resultados;
         }
 
+        // PRE: 'isbn' no debe ser nulo.
+        // POS: Devuelve true si encuentra el documento y cambia su estado a "inactivo".
+        //      Devuelve false si el documento no existe en la base de datos.
         public bool Eliminar(string isbn)
         {
             if (BD.TablaDocumentos.Contains(isbn))
@@ -52,6 +61,8 @@ namespace Persistencia
             return false;
         }
 
+        // PRE: 
+        // POS: Devuelve una lista con todos los documentos registrados en el sistema.
         public List<Documento> ListarTodos()
         {
             List<Documento> lista = new List<Documento>();
