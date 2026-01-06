@@ -33,7 +33,7 @@ namespace Persistencia
         // POS: Devuelve un objeto EjemplarDato con la información necesaria para persistir el ejemplar.
         public static EjemplarDato EjemplarAEjemplarDato(Ejemplar ejemplar)
         {
-            return new EjemplarDato(new ClaveEjemplar(ejemplar.Documento.ISBN, ejemplar.Codigo), ejemplar.Estado.ToString(), ejemplar.PersonalAdquisicion.IdUsuario);
+            return new EjemplarDato(new ClaveEjemplar(ejemplar.Documento.ISBN, ejemplar.Codigo), ejemplar.Estado.ToString(), ejemplar.PersonalAdquisicion.IdPersonal);
         }
 
         // PRE: 'dato' no debe ser nulo.
@@ -141,7 +141,7 @@ namespace Persistencia
         // POS: Devuelve un objeto PrestamoDato con la información necesaria para persistir el préstamo.
         public static PrestamoDato PrestamoAPrestamoDato(Prestamo prestamo)
         {
-            return new PrestamoDato(prestamo.ID, prestamo.FechaInicio, prestamo.FechaFin, prestamo.Estado.ToString(), prestamo.Usuario.DNI, prestamo.PersonalSala.IdUsuario);
+            return new PrestamoDato(prestamo.ID, prestamo.FechaInicio, prestamo.FechaFin, prestamo.Estado.ToString(), prestamo.Usuario.DNI, prestamo.PersonalSala.IdPersonal);
         }
 
         // PRE: 'dato' no debe ser nulo. 'dato.Rol' debe ser "adquisicion" o "sala" .
@@ -173,7 +173,7 @@ namespace Persistencia
             {
                 rol = "sala";
             }
-            return new PersonalBibliotecaDato(personalBiblioteca.IdUsuario, personalBiblioteca.Nombre, personalBiblioteca.Contraseña, rol);
+            return new PersonalBibliotecaDato(personalBiblioteca.IdPersonal, personalBiblioteca.Nombre, personalBiblioteca.Contraseña, rol);
         }
 
         // PRE: 'usuario' no debe ser nulo.

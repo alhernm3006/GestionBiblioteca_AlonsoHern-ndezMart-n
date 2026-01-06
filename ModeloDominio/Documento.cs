@@ -15,6 +15,10 @@ namespace ModeloDominio
         private int año;
         private string editorial;
         private EstadoActivoInactivo estado;
+
+        // PRE: ISBN, titulo, autor y editorial no deben ser nulos ni estar vacíos. 
+        //      El año debe ser > 0.
+        // POS: Inicializa los atributos del documento. El estado por defecto se establece en 'inactivo'.
         public Documento(string ISBN, string titulo, string autor, int año, string editorial)
         {
             this.isbn = ISBN;
@@ -25,6 +29,8 @@ namespace ModeloDominio
             this.estado = EstadoActivoInactivo.inactivo;
         }
 
+        // PRE: el documento tiene que ser inicializada previamente
+        // POS: devuelve el isbn del documento
         public string ISBN
         {
             get
@@ -32,6 +38,9 @@ namespace ModeloDominio
                 return isbn;
             }
         }
+
+        // PRE: el documento tiene que ser inicializada previamente
+        // POS: devuelve el título del documento
         public string Titulo
         {
             get
@@ -39,6 +48,9 @@ namespace ModeloDominio
                 return titulo;
             }
         }
+
+        // PRE: el documento tiene que ser inicializada previamente
+        // POS: devuelve el autor del documento
         public string Autor
         {
             get
@@ -46,6 +58,9 @@ namespace ModeloDominio
                 return autor;
             }
         }
+
+        // PRE: el documento tiene que ser inicializada previamente
+        // POS: devuelve el año del documento
         public int Año
         {
             get
@@ -53,6 +68,9 @@ namespace ModeloDominio
                 return año;
             }
         }
+
+        // PRE: el documento tiene que ser inicializada previamente
+        // POS: devuelve el editorial del documento
         public string Editorial
         {
             get
@@ -60,17 +78,24 @@ namespace ModeloDominio
                 return editorial;
             }
         }
+
+        // PRE: el documento tiene que ser inicializada previamente
         public EstadoActivoInactivo Estado
         {
+            // POS: devuelve el estado del documento
             get
             {
                 return estado;
             }
+            // POS: establece el valor del estado pasado al documento
             set
             {
                 this.estado = value;
             }
         }
+
+        // PRE: el documento tiene que ser inicializada previamente
+        // POS: devuelve la representación en cadena de caracteres del documento
         public override string ToString()
         {
             return "Título: " + titulo + " Autor: " + autor + " ISBN: " + isbn + " Año: " + año + " Editorial: " + editorial + " Estado: " + estado;

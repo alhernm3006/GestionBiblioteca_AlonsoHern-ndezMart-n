@@ -14,7 +14,7 @@ namespace Persistencia
         //      Devuelve false si ya existe un miembro del personal con el mismo IdUsuario.
         public bool Insertar(PersonalBiblioteca personal)
         {
-            if (!BD.TablaPersonal.Contains(personal.IdUsuario))
+            if (!BD.TablaPersonal.Contains(personal.IdPersonal))
             {
                 BD.TablaPersonal.Add(Transformer.PersonalBilbiotecaAPersonalBilbiotecaDato(personal));
                 return true;
