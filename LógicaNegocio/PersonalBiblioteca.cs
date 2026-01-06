@@ -33,13 +33,13 @@ namespace LógicaNegocio
         public String Contraseña { get { return contraseña; } }
 
         // PRE: idPersonal, contraseña y rol no deben ser nulos ni vacíos.
-        // POS: devuelve true si el identificador existe en la base de datos con el rol correspondiente y false en caso contrario
+        // POS: devuelve true si se han introducido correctamente las credenciales, false en caso contrario
         public bool iniciarSesion(string idPersonal, string contraseña, String rol)
         {
             this.idPersonal = idPersonal;
             this.contraseña = contraseña;
             ModeloDominio.PersonalBiblioteca p = personalCRUD.Buscar(idPersonal);
-            if (p != null)
+            if (p != null && p.Contraseña == contraseña)
             {
                 switch (rol)
                 {
